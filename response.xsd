@@ -5,8 +5,8 @@
     xmlns:ewp="https://github.com/erasmus-without-paper/ewp-specs-architecture/blob/stable-v1/common-types.xsd"
     elementFormDefault="qualified"
 
-    targetNamespace="https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/blob/master/response.xsd"
-    xmlns="https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/blob/master/response.xsd"
+    targetNamespace="https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/tree/master"
+    xmlns="https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/tree/master"
 >
     <!-- WRTODO: Replace all occurrences of 'master' (in all projects) with 'stable-v1' upon release. -->
 
@@ -63,6 +63,12 @@
 
             E.g. a student name, photo, a history of changes (OutgoingMobilityHistoryEntry
             should be used for that, as it is shared).
+
+            Attributes:
+            - id
+
+            Elements:
+            - ... (I think one of them needs to be <timeline>)
             -->
             <xs:element name="timeline">
                 <xs:complexType>
