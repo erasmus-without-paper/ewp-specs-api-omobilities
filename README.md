@@ -10,8 +10,8 @@ Summary
 
 This document describes the **Outgoing Mobilities API**. This API is
 implemented by the sending institution. It allows the receiving institution to
-retrieve given Outgoing Mobility objects. <b>Each</b> such object describes
-<b>a complete history of a single student mobility</b>.
+retrieve given Outgoing Mobility objects. **Each** such object describes
+**a complete history of a single student mobility**.
 
 
 Request method
@@ -71,23 +71,23 @@ caller:
 Handling of invalid parameters
 ------------------------------
 
- * General [error handling rules][error-handling] apply. 
+ * General [error handling rules][error-handling] apply.
 
  * Invalid (unknown) `mobility_id` values MUST be ignored. Servers MUST return
    a valid (HTTP 200) XML response in such cases, but the response will simply
    not contain the information on the unknown `mobility_id` values. (If all
    values are unknown, servers MUST respond with an empty envelope.)
- 
+
  * If the caller doesn't have permission to view some of the `mobility_ids`,
    then such `mobility_ids` MUST also be ignored, exactly as above. Servers
    MUST return a valid (HTTP 200) XML response in such cases.
-   
+
  * Currently, clients have no way of telling the difference between "this
    `mobility_id` does not exist" and "it does exist, but you don't have access
    to it". In both cases, the proper `<mobility>` element will simply be
-   missing from the response. If such feature is requested, we may add it in 
+   missing from the response. If such feature is requested, we may add it in
    future versions of this API.
- 
+
  * If the length of `mobility_id` list is greater than 100, servers MAY respond
    with HTTP 400. Clients SHOULD split such large requests into a couple of
    smaller ones.

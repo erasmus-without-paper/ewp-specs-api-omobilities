@@ -2,12 +2,18 @@
 <xs:schema
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+    xmlns:ewp="https://github.com/erasmus-without-paper/ewp-specs-architecture/blob/stable-v1/common-types.xsd"
     elementFormDefault="qualified"
 
     targetNamespace="https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/blob/master/response.xsd"
     xmlns="https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/blob/master/response.xsd"
 >
     <!-- WRTODO: Replace all occurrences of 'master' (in all projects) with 'stable-v1' upon release. -->
+
+    <xs:import
+        schemaLocation="https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-architecture/stable-v1/common-types.xsd"
+        namespace="https://github.com/erasmus-without-paper/ewp-specs-architecture/blob/stable-v1/common-types.xsd"
+    />
 
     <xs:annotation>
         <xs:documentation>
@@ -27,17 +33,88 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="mobility" minOccurs="0" maxOccurs="unbounded" type="WRTODO">
-                    <!--
-                    Attributes:
-                    - id
-
-                    Elements:
-                    - ...
-                    -->
+                <xs:element name="mobility" minOccurs="0" maxOccurs="unbounded" type="OutgoingMobilityObject">
+                    <xs:annotation>
+                        <xs:documentation>
+                            Response consists of a list of matching Outgoing Mobility objects. Clients
+                            should use the `id` attribute to match objects with their `mobility_id` request
+                            parameters.
+                        </xs:documentation>
+                    </xs:annotation>
                 </xs:element>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+
+    <xs:complexType name="OutgoingMobilityObject">
+        <xs:annotation>
+            <xs:documentation>
+                This describes a single Outgoing Mobility object.
+
+                If you haven't read it before, please read an introduction on Outgoing Mobility
+                objects (and EWP Mobility process in general) here:
+
+                https://github.com/erasmus-without-paper/ewp-specs-mobility-flowcharts#common-workflow
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <!--
+            TODO: Properties of the mobility.
+
+            E.g. a student name, photo, a history of changes (OutgoingMobilityHistoryEntry
+            should be used for that, as it is shared).
+            -->
+            <xs:element name="timeline">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:group ref="OutgoingMobilityHistoryEntry" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="id" use="required" type="OutgoingMobilityIdentifier">
+            <xs:annotation>
+                <xs:documentation>
+                    Unique identifier of the mobility.
+
+                    If you are implementing a server, then please read this chapter:
+                    https://github.com/erasmus-without-paper/ewp-specs-mobility-flowcharts#mobility_ids
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:group name="OutgoingMobilityHistoryEntry">
+        <xs:annotation>
+            <xs:documentation>
+                This group matches a single history entry. The are various types of history
+                entries - this group will match any of them.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:choice>
+            <!--
+            TODO: Representations of various history entries.
+
+            E.g. accepting a nomination, rejecting a nomination, adding a new LA course,
+            changing some properties of a course, accepting LA, marking a course as
+            recognized, etc.
+            -->
+        </xs:choice>
+    </xs:group>
+
+    <xs:simpleType name="OutgoingMobilityIdentifier">
+        <xs:annotation>
+            <xs:documentation>
+                This describes the type we use as identifier of an Outgoing Mobility.
+                32 lower-case hexadecimal characters (128-bit or 16-byte, UUID-compatible).
+
+                See here for discussion:
+                https://github.com/erasmus-without-paper/general-issues/issues/10
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9a-f]{32}"/>
+        </xs:restriction>
+    </xs:simpleType>
 
 </xs:schema>
