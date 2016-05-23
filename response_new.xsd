@@ -1,0 +1,128 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="person-mobility">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="agreement-id" type="xs:string"/>
+              <xs:element name="home">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="institution-id" type="xs:string"/>
+                    <xs:element name="organization-unit-id" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="host">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="institution-id" type="xs:string"/>
+                    <xs:element name="organization-unit-id" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="person">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="given-names" type="xs:string"/>
+                    <xs:element name="family-name" type="xs:string"/>
+                    <xs:element name="email" type="xs:string"/>
+                    <xs:element name="phone" type="xs:long"/>
+                    <xs:element name="dob" type="xs:date"/>
+                    <xs:element name="gender" type="xs:byte"/>
+                    <xs:element name="nationality" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="start-date" type="xs:date"/>
+              <xs:element name="end-date" type="xs:date"/>
+              <xs:element name="eqf-level" type="xs:byte"/>
+              <xs:element name="rec-lang-comp">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="lang" type="xs:string"/>
+                    <xs:element name="level" type="xs:byte"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="learning-opportunity-specification">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="0" name="planned">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="learning-opportunity-specification-id" type="xs:string"/>
+                          <xs:element name="start-term" type="xs:string"/>
+                          <xs:element name="end-term" type="xs:string"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="recognized">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="learning-opportunity-specification-id" type="xs:string"/>
+                          <xs:element name="start-term">
+                            <xs:complexType mixed="true">
+                              <xs:sequence>
+                                <xs:element minOccurs="0" name="title">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute ref="xml:lang"/>
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" name="start-date" type="xs:date"/>
+                                <xs:element minOccurs="0" name="end-date" type="xs:date"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="end-term">
+                            <xs:complexType mixed="true">
+                              <xs:sequence>
+                                <xs:element minOccurs="0" name="title">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute ref="xml:lang"/>
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" name="start-date" type="xs:date"/>
+                                <xs:element minOccurs="0" name="end-date" type="xs:date"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="recommended">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="learning-opportunity-specification-id" type="xs:string"/>
+                          <xs:element name="start-term" type="xs:string"/>
+                          <xs:element name="end-term" type="xs:string"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="timeline">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="discuss" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:string" use="optional"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
