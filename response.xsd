@@ -93,7 +93,7 @@
     <xs:group name="OutgoingMobilityHistoryEntry">
         <xs:annotation>
             <xs:documentation>
-                This group matches a single history entry. The are various types of history
+                This group matches a single history entry. There are various types of history
                 entries - this group will match any of them.
             </xs:documentation>
         </xs:annotation>
