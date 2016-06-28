@@ -24,17 +24,19 @@ Author
 Author Date
     - indicates the time when the author has first initiated the change
       (this time is based on the remote server clock).
-Commit (also referred as "revision")
-    - a set of changes.
+Commit #N
+    - a set of changes which has been applied in unison.
+Revision #N
+    - the state of the document itself after applying commit #N.
+Tag
+    - an additional label which could be put on any revision (e.g. "this
+      revision has been approved by the sending coordinator").
 Committer HEI
     - SCHAC ID of the HEI who had pushed a commit (or a tag) to the remote
       master host.
 Commit Date
     - indicates the time when the master host has received and accepted the
       commit or tag (this time is based on the master server clock).
-Tag
-    - an additional label which could be put on any revision (e.g. "this
-      revision has been approved by the sending coordinator").
 
 "Author Date" and "Commit Date" can differ significantly when the client system
 delays pushing user's changes to the remote master (this may happen for a
@@ -49,14 +51,14 @@ flow).
     student and HEI data, as in this section of the example document:
     https://i.imgur.com/ZNAvw5g.png
     -->
-    <revision
-        id="1"
-        committer-hei="uw.edu.pl"
+    <commit
+        revision="1"
+        committer-hei-id="uw.edu.pl"
         commit-date="2015-03-26T08:44:12+02:00"
     >
         <!--
         There will be only one `create` element in the timeline, and always on the
-        first place of the first revision.
+        first place of the first commit.
         -->
         <create
             author="Sending Coordinator's Name &lt;coordinator@uw.edu.pl>"
@@ -68,7 +70,7 @@ flow).
 
                 Initial contents should include at least all elements which are *required*
                 in the Mobility object. (All optional elements can be committed later, in
-                separate revisions.)
+                separate commits.)
                 -->
                 <student>Student's Name and Data</student>
                 <sending-hei>University of Warsaw, Poland</sending-hei>
@@ -77,16 +79,16 @@ flow).
                 </receiving-hei>
             </initial-contents>
         </create>
-    </revision>
+    </commit>
 
     <!--
-    Nomination gets acceppted. (Not sure if there's need for it to be approved
+    Nomination gets accepted. (Not sure if there's need for it to be approved
     by the sending coordinator? Probably not.)
     -->
 
     <tag
         revision="1"
-        committer-hei="uni-bonn.de"
+        committer-hei-id="uni-bonn.de"
         commit-date="2015-03-27T11:44:15+02:00"
     >
         <approve-nomination
@@ -98,12 +100,12 @@ flow).
     <!--
     In the example given, first (initial) version of the LA is approved
     on 26.07.2015, while still being empty. https://i.imgur.com/dk0Wg9k.png
-    We can express it as approvingLA in Mobility object's revision 1.
+    We can express it as approving LA in Mobility object's revision 1.
     -->
 
     <tag
         revision="1"
-        committer-hei="uw.edu.pl"
+        committer-hei-id="uw.edu.pl"
         commit-date="2015-03-26T10:00:00+02:00"
     >
         <approve-learning-agreement
@@ -113,7 +115,7 @@ flow).
     </tag>
     <tag
         revision="1"
-        committer-hei="uni-bonn.de"
+        committer-hei-id="uni-bonn.de"
         commit-date="2015-03-26T16:00:02+02:00"
     >
         <approve-learning-agreement
@@ -126,9 +128,9 @@ flow).
     Courses are added to the LA. Let's assume it is the STUDENT who adds them.
     -->
 
-    <revision
-        id="2"
-        committer-hei="uw.edu.pl"
+    <commit
+        revision="2"
+        committer-hei-id="uw.edu.pl"
         commit-date="2015-03-26T08:44:12+02:00"
     >
         <add-course-to-learning-agreement>
@@ -143,30 +145,30 @@ flow).
         </add-course-to-learning-agreement>
 
         <!--
-        More courses can be added in a single revision, OR each course can be
-        added in its own separate revision.
+        More courses can be added in a single commit, OR each course can be
+        added in its own separate commit.
         -->
-    </revision>
+    </commit>
 
     <!--
-    I'm skipping revisions 3, 4, 5, 6, and 7 for simplicity. These revisions
+    I'm skipping commits 3, 4, 5, 6, and 7 to avoid clutter. Each of these commits
     will contain a single <add-course-to-learning-agreement/> element as above,
     created for these courses: https://i.imgur.com/tGziWKs.png
 
-    (Of course, we could also pack all of them into revision 2.)
+    (Of course, we could also pack all of them into commit 2.)
     -->
 
     <!--
     At this point the second version of the LA gets accepted. However, based on
     the example PDF document, we cannot truly deduce who accepted it an when. The
-    way I understand the PDF, we only know when the (N-1)-st revision got cancelled
+    way I understand this PDF, we only know when the (N-1)-st revision got cancelled
     (and replaced with the final one). So, there are multiple scenarios leading to
     the result presented in the PDF. I'll just pick one of these possible scenarios.
     -->
 
     <tag
         revision="7"
-        committer-hei="uw.edu.pl"
+        committer-hei-id="uw.edu.pl"
         commit-date="2015-10-26T10:00:00+02:00"
     >
         <approve-learning-agreement
@@ -176,7 +178,7 @@ flow).
     </tag>
     <tag
         revision="7"
-        committer-hei="uni-bonn.de"
+        committer-hei-id="uni-bonn.de"
         commit-date="2015-10-30T16:00:02+02:00"
     >
         <approve-learning-agreement
@@ -192,9 +194,9 @@ flow).
     who does it (both scenarios are possible in EWP).
     -->
 
-    <revision
-        id="8"
-        committer-hei="uni-bonn.de"
+    <commit
+        revision="8"
+        committer-hei-id="uni-bonn.de"
         commit-date="2015-11-03T16:00:02+02:00"
     >
         <delete-course-from-learning-agreement
@@ -211,13 +213,13 @@ flow).
                 Cannot assign the student to this course due to the lack of places.
             </details>
         </delete-course-from-learning-agreement>
-    </revision>
+    </commit>
 
     <!-- Revision 9. Another course gets added instead. https://i.imgur.com/v5lFlJk.png -->
 
-    <revision
-        id="9"
-        committer-hei="uw.edu.pl"
+    <commit
+        revision="9"
+        committer-hei-id="uw.edu.pl"
         commit-date="2015-11-04T08:44:12+02:00"
     >
         <add-course-to-learning-agreement>
@@ -238,12 +240,12 @@ flow).
             </position>
             <reason-code>5</reason-code> <!-- "Substituting a deleted component" -->
         </add-course-to-learning-agreement>
-    </revision>
+    </commit>
 
     <!-- LA gets approved again. -->
     <tag
         revision="9"
-        committer-hei="uw.edu.pl"
+        committer-hei-id="uw.edu.pl"
         commit-date="2015-11-04T10:00:00+02:00"
     >
         <approve-learning-agreement
@@ -253,7 +255,7 @@ flow).
     </tag>
     <tag
         revision="9"
-        committer-hei="uni-bonn.de"
+        committer-hei-id="uni-bonn.de"
         commit-date="2015-11-05T16:00:02+02:00"
     >
         <approve-learning-agreement
