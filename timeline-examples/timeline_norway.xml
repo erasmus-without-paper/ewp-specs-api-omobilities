@@ -1,180 +1,180 @@
 <response>
-	
-	<!-- The current version is always included in its entirety, no
-	need to compute it each time from the timeline entries -->
+    
+    <!-- The current version is always included in its entirety, no
+    need to compute it each time from the timeline entries -->
 
-	<learning-agreement>
-		<revision>9</revision>
+    <learning-agreement>
+        <revision>9</revision>
 
-	    <student>Student's Name and Data</student>
-	    <sending-hei>University of Warsaw, Poland</sending-hei>
-	    <receiving-hei>
-	        Rheinische Friedrich-Wilhelms Universität Bonn, Germany
-	    </receiving-hei>
-	    <courses>
-	        <course>
-	            <name>S4D1 - Graduate Seminar on Differential Geometry</name>
-		        <position>0</position>
-	        </course>
-	        <course>
-	            <name>V4D1 - Algebraic Topology I</name>
-		        <position>1</position>
-	        </course>
-	        <course>
-	            <name>V4D1 - Excercises to Algebraic Topology I</name>
-		        <position>2</position>
-	        </course>
-	        <course>
-	            <name>V4D3 - Advanced Geometry I</name>
-		        <position>3</position>
-	        </course>
-	        <course>
-	            <name>V4D3 - Exercises to Advanced Geometry I</name>
-		        <position>4</position>
-	        </course>
-	        <course>
-	            <name>V5D4 - Selected Topics in Geometry</name>
-		        <position>5</position>
-	        </course>
-	    </courses>
+        <student>Student's Name and Data</student>
+        <sending-hei>University of Warsaw, Poland</sending-hei>
+        <receiving-hei>
+            Rheinische Friedrich-Wilhelms Universität Bonn, Germany
+        </receiving-hei>
+        <courses>
+            <course>
+                <name>S4D1 - Graduate Seminar on Differential Geometry</name>
+                <position>0</position>
+            </course>
+            <course>
+                <name>V4D1 - Algebraic Topology I</name>
+                <position>1</position>
+            </course>
+            <course>
+                <name>V4D1 - Excercises to Algebraic Topology I</name>
+                <position>2</position>
+            </course>
+            <course>
+                <name>V4D3 - Advanced Geometry I</name>
+                <position>3</position>
+            </course>
+            <course>
+                <name>V4D3 - Exercises to Advanced Geometry I</name>
+                <position>4</position>
+            </course>
+            <course>
+                <name>V5D4 - Selected Topics in Geometry</name>
+                <position>5</position>
+            </course>
+        </courses>
 
-	    <approve
-	        author="Sending Coordinator's Name &lt;coordinator@uw.edu.pl>"
-	        author-date="2015-11-04T10:00:00+02:00"
-	    	hei="uw.edu.pl"
-	    />
-	    <approve
-	        author="Receiving Coordinator's Name &lt;coordinator@uni-bonn.de>"
-	        author-date="2015-11-05T16:00:00+02:00"
-	    	hei="uni-bonn.de"
-	    />
+        <approve
+            author="Sending Coordinator's Name &lt;coordinator@uw.edu.pl>"
+            author-date="2015-11-04T10:00:00+02:00"
+            hei="uw.edu.pl"
+        />
+        <approve
+            author="Receiving Coordinator's Name &lt;coordinator@uni-bonn.de>"
+            author-date="2015-11-05T16:00:00+02:00"
+            hei="uni-bonn.de"
+        />
 
-	</learning-agreement>
+    </learning-agreement>
 
-	<!-- The timeline includes the whole history of changes, no need to parse it
-	unless really needed -->
+    <!-- The timeline includes the whole history of changes, no need to parse it
+    unless really needed -->
 
     <timeline>
-    	<timeline_entry>
-	    	<revision>1</revision>
-	        <add
-	            author="Sending Coordinator's Name &lt;coordinator@uw.edu.pl>"
-	            author-date="2015-03-26T08:44:12+02:00"
-	            hei="uw.edu.pl"
-	        >
-			    <student>Student's Name and Data</student>
-			    <sending-hei>University of Warsaw, Poland</sending-hei>
-			    <receiving-hei>
-			        Rheinische Friedrich-Wilhelms Universität Bonn, Germany
-			    </receiving-hei>
-			</add>
-		</timeline_entry>
+        <timeline_entry>
+            <revision>1</revision>
+            <add
+                author="Sending Coordinator's Name &lt;coordinator@uw.edu.pl>"
+                author-date="2015-03-26T08:44:12+02:00"
+                hei="uw.edu.pl"
+            >
+                <student>Student's Name and Data</student>
+                <sending-hei>University of Warsaw, Poland</sending-hei>
+                <receiving-hei>
+                    Rheinische Friedrich-Wilhelms Universität Bonn, Germany
+                </receiving-hei>
+            </add>
+        </timeline_entry>
 
-		<!-- Separate timeline entries for each approval, to avoid altering the
-		old timeline entries -->
+        <!-- Separate timeline entries for each approval, to avoid altering the
+        old timeline entries -->
 
-		<timeline_entry>
-			<revision>1</revision>
-	        <approve
-	            author="Sending Coordinator's Name &lt;coordinator@uw.edu.pl>"
-	            author-date="2015-03-26T10:00:00+02:00"
-	            hei="uw.edu.pl"
-	        />
-		</timeline_entry>
+        <timeline_entry>
+            <revision>1</revision>
+            <approve
+                author="Sending Coordinator's Name &lt;coordinator@uw.edu.pl>"
+                author-date="2015-03-26T10:00:00+02:00"
+                hei="uw.edu.pl"
+            />
+        </timeline_entry>
 
-		<timeline_entry>
-			<revision>1</revision>
-	        <approve
-	            author="Receiving Coordinator's Name &lt;coordinator@uni-bonn.de>"
-	            author-date="2015-07-26T16:00:00+02:00"
-		    	hei="uni-bonn.de"
-	        />
-		</timeline_entry>
+        <timeline_entry>
+            <revision>1</revision>
+            <approve
+                author="Receiving Coordinator's Name &lt;coordinator@uni-bonn.de>"
+                author-date="2015-07-26T16:00:00+02:00"
+                hei="uni-bonn.de"
+            />
+        </timeline_entry>
 
-		<timeline_entry>
-			<revision>2</revision>
-			<add-courses
-	            author="Student's Name &lt;student@uw.edu.pl>"
-	            author-date="2015-03-26T08:44:12+02:00"
-	            hei="uw.edu.pl"
-			>
-		        <course>
-		            <name>German Language Course</name>
-			        <position>0</position>
-		        </course>
-			</add-courses>
-		</timeline_entry>
+        <timeline_entry>
+            <revision>2</revision>
+            <add-courses
+                author="Student's Name &lt;student@uw.edu.pl>"
+                author-date="2015-03-26T08:44:12+02:00"
+                hei="uw.edu.pl"
+            >
+                <course>
+                    <name>German Language Course</name>
+                    <position>0</position>
+                </course>
+            </add-courses>
+        </timeline_entry>
 
-		<!-- Skipping rev. 3-6 to avoid clutter, as in Wojtek's example -->
+        <!-- Skipping rev. 3-6 to avoid clutter, as in Wojtek's example -->
 
-		<timeline_entry>
-			<revision>7</revision>
-		    <approve
-		        author="Sending Coordinator's Name &lt;coordinator@uw.edu.pl>"
-		        author-date="2015-10-26T10:00:00+02:00"
-		    	hei="uw.edu.pl"
-		    />
-		</timeline_entry>
+        <timeline_entry>
+            <revision>7</revision>
+            <approve
+                author="Sending Coordinator's Name &lt;coordinator@uw.edu.pl>"
+                author-date="2015-10-26T10:00:00+02:00"
+                hei="uw.edu.pl"
+            />
+        </timeline_entry>
 
-		<timeline_entry>
-			<revision>7</revision>
-		    <approve
-		        author="Receiving Coordinator's Name &lt;coordinator@uni-bonn.de>"
-		        author-date="2015-10-30T16:00:00+02:00"
-		    	hei="uni-bonn.de"
-		    />
-		</timeline_entry>
+        <timeline_entry>
+            <revision>7</revision>
+            <approve
+                author="Receiving Coordinator's Name &lt;coordinator@uni-bonn.de>"
+                author-date="2015-10-30T16:00:00+02:00"
+                hei="uni-bonn.de"
+            />
+        </timeline_entry>
 
-		<timeline_entry>
-			<revision>8</revision>
-			<delete-courses
-	            author="Receiving Coordinator's Name &lt;coordinator@uni-bonn.de>"
-	            author-date="2015-11-03T16:00:00+02:00"
-		    	hei="uni-bonn.de"
-	        >
-		        <course>
-		            <name>German Language Course</name>
-			        <position>0</position>
-		            <reason-code>1</reason-code>
-		            <details>
-		                Cannot assign the student to this course due to the lack of places.
-		            </details>
-		        </course>
-			</delete-courses>
-		</timeline_entry>
+        <timeline_entry>
+            <revision>8</revision>
+            <delete-courses
+                author="Receiving Coordinator's Name &lt;coordinator@uni-bonn.de>"
+                author-date="2015-11-03T16:00:00+02:00"
+                hei="uni-bonn.de"
+            >
+                <course>
+                    <name>German Language Course</name>
+                    <position>0</position>
+                    <reason-code>1</reason-code>
+                    <details>
+                        Cannot assign the student to this course due to the lack of places.
+                    </details>
+                </course>
+            </delete-courses>
+        </timeline_entry>
 
-		<timeline_entry>
-			<revision>9</revision>
-			<add-course
-	            author="Student's Name &lt;student@uw.edu.pl>"
-	            author-date="2015-11-04T08:44:12+02:00"
-		    	hei="uw.edu.pl"
-			>
-	            <course>
-	                <name>V5D4 - Selected Topics in Geometry</name>
-	                <position>5</position>
-	                <reason-code>5</reason-code> <!-- "Substituting a deleted component" -->
-	            </course>
-			</add-course>
-		</timeline_entry>
+        <timeline_entry>
+            <revision>9</revision>
+            <add-course
+                author="Student's Name &lt;student@uw.edu.pl>"
+                author-date="2015-11-04T08:44:12+02:00"
+                hei="uw.edu.pl"
+            >
+                <course>
+                    <name>V5D4 - Selected Topics in Geometry</name>
+                    <position>5</position>
+                    <reason-code>5</reason-code> <!-- "Substituting a deleted component" -->
+                </course>
+            </add-course>
+        </timeline_entry>
 
-		<timeline_entry>
-			<revision>9</revision>
-		    <approve
-		        author="Sending Coordinator's Name &lt;coordinator@uw.edu.pl>"
-		        author-date="2015-11-04T10:00:00+02:00"
-		    	hei="uw.edu.pl"
-		    />
-		</timeline_entry>
+        <timeline_entry>
+            <revision>9</revision>
+            <approve
+                author="Sending Coordinator's Name &lt;coordinator@uw.edu.pl>"
+                author-date="2015-11-04T10:00:00+02:00"
+                hei="uw.edu.pl"
+            />
+        </timeline_entry>
 
-		<timeline_entry>
-			<revision>9</revision>
-		    <approve
-		        author="Receiving Coordinator's Name &lt;coordinator@uni-bonn.de>"
-		        author-date="2015-11-05T16:00:00+02:00"
-		    	hei="uni-bonn.de"
-		    />
-		</timeline_entry>
+        <timeline_entry>
+            <revision>9</revision>
+            <approve
+                author="Receiving Coordinator's Name &lt;coordinator@uni-bonn.de>"
+                author-date="2015-11-05T16:00:00+02:00"
+                hei="uni-bonn.de"
+            />
+        </timeline_entry>
 
-    </timeline>	
+    </timeline>    
 </response>
