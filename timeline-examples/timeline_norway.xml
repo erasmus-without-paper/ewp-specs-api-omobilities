@@ -1,5 +1,5 @@
 <response>
-    
+
     <!-- The current version is always included in its entirety, no
     need to compute it each time from the timeline entries -->
 
@@ -176,5 +176,5 @@
             />
         </timeline_entry>
 
-    </timeline>    
+    </timeline>
 </response>

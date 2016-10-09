@@ -7,32 +7,32 @@
             <xs:sequence>
               <xs:element name="agreement-id" type="xs:string"/>
               <xs:annotation>
-                <xs:documentation>The ID of the IIA that the mobility is connected to</xs:documentation>  
+                <xs:documentation>The ID of the IIA that the mobility is connected to</xs:documentation>
               </xs:annotation>
               <xs:element name="home">
                 <xs:annotation>
-                  <xs:documentation>Describing the Home institution</xs:documentation>  
+                  <xs:documentation>Describing the Home institution</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                   <xs:sequence>
                     <xs:element name="institution-id" type="xs:string"/>
                     <xs:element name="organization-unit-id" type="xs:string"/>
                     <xs:annotation>
-                      <xs:documentation>Department</xs:documentation>  
+                      <xs:documentation>Department</xs:documentation>
                     </xs:annotation>
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>
               <xs:element name="host">
                 <xs:annotation>
-                  <xs:documentation>Describing the Host institution</xs:documentation>  
+                  <xs:documentation>Describing the Host institution</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                   <xs:sequence>
                     <xs:element name="institution-id" type="xs:string"/>
                     <xs:element name="organization-unit-id" type="xs:string"/>
                     <xs:annotation>
-                      <xs:documentation>Department</xs:documentation>  
+                      <xs:documentation>Department</xs:documentation>
                     </xs:annotation>
                   </xs:sequence>
                 </xs:complexType>
@@ -58,7 +58,7 @@
               </xs:annotation>
               <xs:element name="rec-lang-comp">
                 <xs:annotation>
-                  <xs:documentation>Required language competence for the nomination</xs:documentation>  
+                  <xs:documentation>Required language competence for the nomination</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                   <xs:sequence>
