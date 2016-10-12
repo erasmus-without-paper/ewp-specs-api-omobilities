@@ -10,7 +10,7 @@
         stick with this decision.
         -->
         <!--
-        Kais comment: I think this naming is unfortunate, as it is easily confused
+        Kai's comment: I think this naming is unfortunate, as it is easily confused
         with sending requests and receiving responses. But since this nomenclature
         is used "everywhere", I will conform to that.
         -->
@@ -51,7 +51,7 @@
                   http://www.howtocallabroad.com/qa/plus-sign.html
                 -->
                 <!--
-                Kais comment: I leave this to the group.
+                Kai's comment: I leave this to the group.
                 -->
                 <prefix>47</prefix>
                 <phone>99999999</phone>
@@ -62,7 +62,7 @@
             Wojtek's comment: Probably it's <citizenship> what we need.
             -->
             <!-- 
-            Kais comment: After googling one vs. the other, I agree.
+            Kai's comment: After googling one vs. the other, I agree.
             -->
             <citizenship>no</citizenship>
         </person>
@@ -74,7 +74,7 @@
         Wojtek's comment: How are these related to arrival and departure dates?
         -->
         <!-- 
-        Kais comment: This is the nomination date interval. Arrival and departure
+        Kai's comment: This is the nomination date interval. Arrival and departure
         are the actual dates.
         -->
         <start-date>2017-01-01</start-date>
@@ -87,7 +87,7 @@
             Related issue: https://github.com/erasmus-without-paper/ewp-specs-architecture/issues/11
             -->
             <!-- 
-            Kais comment: Yes, I have made all languages and citizenships lowercase.
+            Kai's comment: Yes, I have made all languages and citizenships lowercase.
             -->
             <lang>en</lang>
             <level>5</level>
@@ -103,7 +103,7 @@
             entries.
             -->
             <!-- 
-            Kais comment: Ok.
+            Kai's comment: Ok.
             -->
             <document-id>some-id</document-id>
             <components>
@@ -115,7 +115,7 @@
                     planned/recognized status?
                     -->
                     <!-- 
-                    Kais comment: No, the component example has one of each
+                    Kai's comment: No, the component example has one of each
                     (planned, recognized, recommended). The idea is that a component
                     is planned (mandatory) as one LOI, recognized (optional) as another
                     and/or recommended (optional) as a third.
@@ -129,7 +129,7 @@
                             <learning-opportunity-specification-ref>
                                 <los-code>MA100</los-code>
                                 <!--
-                                Kais comment: I think these should be removed, as this is a
+                                Kai's comment: I think these should be removed, as this is a
                                 LOI reference (they are non-key LOS elements).
                                 -->
                                 <title lang="en">Introductory calculus</title>
@@ -139,7 +139,7 @@
                                 <year>2017</year>
                                 <term xml:lang="en-us">Spring</term>
                                 <!--
-                                Kais comment: I think these should be removed, as this is an
+                                Kai's comment: I think these should be removed, as this is an
                                 Academic Term reference (they are non-key Academic Term
                                 elements).
                                 -->
@@ -149,7 +149,7 @@
                             <academic-term type="end">
                                 <year>2017</year>
                                 <term xml:lang="en-us">Spring</term>
-                                <!-- Kais comment: Should remove non-key info (see above) -->
+                                <!-- Kai's comment: Should remove non-key info (see above) -->
                                 <start-date>2017-01-01</start-date>
                                 <end-date>2017-06-30</end-date>
                             </academic-term>
@@ -161,7 +161,7 @@
                             those.
                             -->
                             <!-- 
-                            Kais comment: Aha. In that case, there should be a duplication of
+                            Kai's comment: Aha. In that case, there should be a duplication of
                             all LOS properties that can change over time. This is messy, in my
                             opinion (and un-RESTful) - you end up duplicating "everything" to
                             make sure you catch all changes. How about a Course CNR API?
@@ -172,21 +172,21 @@
                         <learning-opportunity-instance>
                             <learning-opportunity-specification-ref>
                                 <los-code>MX101</los-code>
-                                <!-- Kais comment: Should remove non-key info (see above) -->
+                                <!-- Kai's comment: Should remove non-key info (see above) -->
                                 <title lang="en">Beginner's calculus</title>
                                 <subject-area-code>11.1</subject-area-code>
                             </learning-opportunity-specification-ref>
                             <academic-term type="start">
                                 <year>2017</year>
                                 <term xml:lang="en-us">Fall</term>
-                                <!-- Kais comment: Should remove non-key info (see above) -->
+                                <!-- Kai's comment: Should remove non-key info (see above) -->
                                 <start-date>2017-07-01</start-date>
                                 <end-date>2017-12-31</end-date>
                             </academic-term>
                             <academic-term type="end">
                                 <year>2017</year>
                                 <term xml:lang="en-us">Fall</term>
-                                <!-- Kais comment: Should remove non-key info (see above) -->
+                                <!-- Kai's comment: Should remove non-key info (see above) -->
                                 <start-date>2017-07-01</start-date>
                                 <end-date>2017-12-31</end-date>
                             </academic-term>
