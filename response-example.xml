@@ -35,15 +35,15 @@
             <prefixed-phone>
                 <!--
                 Wojtek's comment:
-                
+
                 I think we should either search for an existing XML standard
                 (e.g. based on E.123?), or simply allow any string to be passed
                 for the phone number.
-                
+
                 Example problems include (but probably are not limited to):
-                
+
                 - extension numbers - should we introduce <ext> element?
-                
+
                 - dial out codes (probably the easiest way of dealing them is to
                   force server implementers to begin each phone number with a "+"
                   sign):
@@ -58,7 +58,7 @@
             </prefixed-phone>
             <birth-date>1985-05-05</birth-date>
             <gender>1</gender>
-            <!-- 
+            <!--
             Wojtek's comment: Probably it's <citizenship> what we need.
             -->
             <!-- 
@@ -70,7 +70,7 @@
             <mobility-group>Student</mobility-group>
             <mobility-category>Studies</mobility-category>
         </mobility-type>
-        <!-- 
+        <!--
         Wojtek's comment: How are these related to arrival and departure dates?
         -->
         <!-- 
@@ -82,12 +82,17 @@
         <subject-area-code>07.3</subject-area-code>
         <eqf-level>4</eqf-level>
         <lang-comp>
-            <!-- 
+            <!--
             Wojtek's comment: ISO languages codes are always in lower-case.
             Related issue: https://github.com/erasmus-without-paper/ewp-specs-architecture/issues/11
             -->
             <!-- 
             Kai's comment: Yes, I have made all languages and citizenships lowercase.
+            -->
+            <!--
+            Wojtek's comment: Here's a twist: ISO *country* codes are always *upper-case*.
+            ISO puts a clear distinction between countries and languages this way.
+            And this means that citizenships should stay upper case, I believe.
             -->
             <lang>en</lang>
             <level>5</level>
@@ -108,7 +113,7 @@
             <document-id>some-id</document-id>
             <components>
                 <component>
-                    <!-- 
+                    <!--
                     Wojtek's comment: A single component has multiple planned
                     and recognized LOIs in this example. I would think that a
                     single component would always contain a single LOI, with
@@ -154,7 +159,7 @@
                                 <end-date>2017-06-30</end-date>
                             </academic-term>
                             <instruction-lang>en</instruction-lang>
-                            <!-- 
+                            <!--
                             Wojtek's comment: We probably need ECTS points here too, along
                             with all other vital properties of LOS, because some properties
                             can change in time, and Courses API may not be enough to retrieve
@@ -165,6 +170,12 @@
                             all LOS properties that can change over time. This is messy, in my
                             opinion (and un-RESTful) - you end up duplicating "everything" to
                             make sure you catch all changes. How about a Course CNR API?
+                            -->
+                            <!--
+                            Wojtek's comment: I agree that it's a bit messy, but I'm not sure if
+                            we can get around it. We have discussed this on previous meetings. I'll
+                            explain in Warsaw. (Notes to self: Optionality of Courses API, no "LOI API",
+                            legal issues with signing stuff.)
                             -->
                         </learning-opportunity-instance>
                     </planned>
@@ -268,10 +279,10 @@
             <lang>en</lang>
             <level>8</level>
         </lang-comp>
-        <!-- 
+        <!--
         Wojtek's comment: There's no timeline, so I know that it's a nomination
         only. But how can I tell if this nomination is accepted, rejected, or
-        pending? 
+        pending?
         -->
         <!--
         Kai's comment: There's no timeline because I have no opinion about the
