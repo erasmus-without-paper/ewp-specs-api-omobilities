@@ -139,13 +139,13 @@ Data model entities involved in the response
 
  * Mobility
  * Person
+ * Person Contact Info
  * Coordinator
- * Contact
  * IIA Partner
- * Mobility Component
+ * Learning Agreement
+ * Learning Agreement Component
  * Learning Opportunity Specification
  * Learning Opportunity Instance
- * Academic Year?
  * Academic Term
 
 
