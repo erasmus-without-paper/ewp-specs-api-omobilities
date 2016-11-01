@@ -7,19 +7,19 @@
         <sending>
             <institution-id>uio.no</institution-id>
             <!-- Optional -->
-            <organization-unit-id>fsat.no</organization-unit-id>
+            <unit-id>fsat.no</unit-id>
         </sending>
         <receiving>
             <institution-id>uw.edu.pl</institution-id>
-            <!-- Optional -->
-            <organization-unit-id>something.pl</organization-unit-id>
         </receiving>
         <person>
             <person-id>12345678901</person-id>
-            <given-names>Mister</given-names>
-            <family-name>Personson</family-name>
+            <first-names>Mister</first-names>
+            <last-name>Personson</last-name>
             <email>mr.p@fsat.no</email>
-            <phone>47-99999999</phone>
+            <p:phone-number>
+                <p:e164>+4799999999</p:e164>
+            </p:phone-number>
             <birth-date>1985-05-05</birth-date>
             <!-- Optional -->
             <!-- ISO ? -->
@@ -49,11 +49,20 @@
         <!-- Optional -->
         <document-id>some_id</document-id>
         <!-- Optional set of coordinators with different roles -->
-        <coordinator role="admission">
-            <family-name>Person</family-name>
-            <given-names>Contact</given-names>
+        <coordinator>
+            <first-names>Contact</first-names>
+            <last-name>Person</last-name>
             <email>contact.person@uio.no</email>
-            <phone>99999999</phone>
+            <p:phone-number>
+                <p:e164>+4788888888</p:e164>
+            </p:phone-number>
+            <role>
+                <header>Admission</header>
+                <description xml:lang="en">Advising incoming students in regard to admission procedures.</description>
+                <other-info>
+                    Other information, which is not present in the model itself, e.g. calling hours.
+                </other-info>
+            </role>
         </coordinator>
         <components type="planned">
             <learning-opportunity-instance>
@@ -88,35 +97,34 @@
                 <url>some/url</url>
                 <!-- Optional -->
                 <isced-code>0541</isced-code>
-                <academic-year>
-                    <year-name>2016/2017</year-name>
-                    <academic-term>
-                        <term-name>HØST</term-name>
-                        <title xml:lang="en-us">Fall</title>
-                        <title xml:lang="no">Høst</title>
-                        <start-date>2016-07-01</start-date>
-                        <end-date>2016-12-31</end-date>
-                        <!-- 
-                        Kai's comment:
-                        I'm not really happy with putting LOI data inside the AT element, but the enclosing
-                        LOI element contains duplicated LOS data, and this follows the same pattern...
-                        Alternative suggestions are welcome.
-                        -->
-                        <credits scheme="ects">15</credits>
-                        <!-- Optional -->
-                        <lang-of-instruction>en</lang-of-instruction>
-                    </academic-term>
-                    <academic-term>
-                        <term-name>VÅR</term-name>
-                        <title xml:lang="en-us">Spring</title>
-                        <title xml:lang="no">Vår</title>
-                        <start-date>2017-01-01</start-date>
-                        <end-date>2017-06-30</end-date>
-                        <credits scheme="ects">15</credits>
-                        <!-- Optional -->
-                        <lang-of-instruction>en</lang-of-instruction>
-                    </academic-term>
-                </academic-year>
+                <academic-term>
+                    <academic-year-id>2016/2017</academic-year-id>
+                    <academic-term-id>HØST</academic-term-id>
+                    <display-name xml:lang="en-us">Fall</display-name>
+                    <display-name xml:lang="no">Høst</display-name>
+                    <start-date>2016-07-01</start-date>
+                    <end-date>2016-12-31</end-date>
+                    <!-- 
+                    Kai's comment:
+                    I'm not really happy with putting LOI data inside the AT element, but the enclosing
+                    LOI element contains duplicated LOS data, and this follows the same pattern...
+                    Alternative suggestions are welcome.
+                    -->
+                    <credits scheme="ects">15</credits>
+                    <!-- Optional -->
+                    <lang-of-instruction>en</lang-of-instruction>
+                </academic-term>
+                <academic-term>
+                    <academic-year-id>2016/2017</academic-year-id>
+                    <academic-term-id>VÅR</academic-term-id>
+                    <display-name xml:lang="en-us">Spring</display-name>
+                    <display-name xml:lang="no">Vår</display-name>
+                    <start-date>2017-01-01</start-date>
+                    <end-date>2017-06-30</end-date>
+                    <credits scheme="ects">15</credits>
+                    <!-- Optional -->
+                    <lang-of-instruction>en</lang-of-instruction>
+                </academic-term>
             </learning-opportunity-instance>
         </components>
         <components type="recommended">
@@ -131,19 +139,17 @@
                 <url>some/url</url>
                 <!-- Optional -->
                 <isced-code>0541</isced-code>
-                <academic-year>
-                    <year-name>2016/2017</year-name>
-                    <academic-term>
-                        <term-name>HØST</term-name>
-                        <title xml:lang="en-us">Fall</title>
-                        <title xml:lang="no">Høst</title>
-                        <start-date>2016-07-01</start-date>
-                        <end-date>2017-06-30</end-date>
-                        <credits scheme="ects">15</credits>
-                        <!-- Optional -->
-                        <lang-of-instruction>en</lang-of-instruction>
-                    </academic-term>
-                </academic-year>
+                <academic-term>
+                    <academic-year-id>2016/2017</academic-year-id>
+                    <academic-term-id>HØST</academic-term-id>
+                    <display-name xml:lang="en-us">Fall</display-name>
+                    <display-name xml:lang="no">Høst</display-name>
+                    <start-date>2016-07-01</start-date>
+                    <end-date>2016-12-31</end-date>
+                    <credits scheme="ects">15</credits>
+                    <!-- Optional -->
+                    <lang-of-instruction>en</lang-of-instruction>
+                </academic-term>
             </learning-opportunity-instance>
         </components>
         <timeline>
@@ -156,18 +162,19 @@
         <iia-id>some_id</iia-id>
         <sending>
             <institution-id>uio.no</institution-id>
-            <organization-unit-id>fsat.no</organization-unit-id>
+            <unit-id>fsat.no</unit-id>
         </sending>
         <receiving>
             <institution-id>uw.edu.pl</institution-id>
-            <organization-unit-id>something.pl</organization-unit-id>
         </receiving>
         <person>
             <person-id>23456789012</person-id>
-            <given-names>Miz</given-names>
-            <family-name>Personson</family-name>
+            <first-names>Miz</first-names>
+            <last-name>Personson</last-name>
             <email>ms.p@fsat.no</email>
-            <phone>47-88888888</phone>
+            <p:phone-number>
+                <p:e164>+4777777777</p:e164>
+            </p:phone-number>
             <birth-date>1985-06-06</birth-date>
             <!-- Optional -->
             <gender>2</gender>
@@ -190,11 +197,17 @@
             <level>8</level>
         </lang-comp>
         <!-- Optional set of coordinators with different roles -->
-        <coordinator role="admin">
-            <family-name>Person</family-name>
-            <given-names>Contact</given-names>
-            <email>contact.person@uio.no</email>
-            <phone>99999999</phone>
+        <coordinator>
+            <first-names>Contact</first-names>
+            <last-name>Person</last-name>
+            <email>contact.person@uw.edu.pl</email>
+            <role>
+                <header>Admission</header>
+                <description xml:lang="en">Advising incoming students in regard to admission procedures.</description>
+                <other-info>
+                    Other information, which is not present in the model itself, e.g. calling hours.
+                </other-info>
+            </role>
         </coordinator>
         <timeline>
             <!-- ... -->
