@@ -139,7 +139,6 @@ Data model entities involved in the response
 
  * Mobility
  * Person
- * Person Contact Info
  * Coordinator
  * IIA Partner
  * Learning Agreement
