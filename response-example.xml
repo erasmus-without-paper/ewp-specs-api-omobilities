@@ -73,7 +73,7 @@
                 can change in time, and Courses API may not be enough to retrieve
                 those.
                 -->
-                <!-- 
+                <!--
                 Kai's comment: Aha. In that case, there should be a duplication of
                 all LOS properties that can change over time. This is messy, in my
                 opinion (and un-RESTful) - you end up duplicating "everything" to
@@ -85,7 +85,7 @@
                 explain in Warsaw. (Notes to self: Optionality of Courses API, no "LOI API",
                 legal issues with signing stuff.)
                 -->
-                <!-- 
+                <!--
                 Kai's comment: Ok, I will duplicate some information from the Course API:
                 -->
                 <type>Course</type>
@@ -104,7 +104,7 @@
                     <display-name xml:lang="no">Høst</display-name>
                     <start-date>2016-07-01</start-date>
                     <end-date>2016-12-31</end-date>
-                    <!-- 
+                    <!--
                     Kai's comment:
                     I'm not really happy with putting LOI data inside the AT element, but the enclosing
                     LOI element contains duplicated LOS data, and this follows the same pattern...
