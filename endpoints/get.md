@@ -32,17 +32,14 @@ format.
 
 ### `sending_hei_id` (required)
 
-An identifier of the institution which is the master of the Outgoing Mobility
-objects we are attempting to retrieve. This parameter MUST be required by the
-server even if it covers only a single institution.
+SCHAC ID of the mobilities' owner HEI (in EWP, the *sending* HEI is always the
+mobility's owner). This parameter MUST be required by the server even if the
+server covers only a single institution.
 
-Note, that `mobility_id` identifiers should be unique within the entire EWP
-Network, not only within a single sending HEI (see discussion
-[here](https://github.com/erasmus-without-paper/general-issues/issues/10)).
-That might imply that, in theory, the `sending_hei_id` parameter could be
-skipped. However, it still exists, and it is required, for performance and/or
-clarity reasons (see discussion [here]
-(https://github.com/erasmus-without-paper/ewp-specs-api-echo/issues/3#issuecomment-228278115)).
+Since `mobility_id` identifiers are universally unique, you might wonder why
+`sending_hei_id` parameter is required here. You can read a related discussion
+[here](https://github.com/erasmus-without-paper/ewp-specs-api-echo/issues/3#issuecomment-228278115)
+(in short - for performance and clarity reasons).
 
 
 ### `mobility_id` (repeatable, required)
@@ -58,6 +55,10 @@ of it. The server is REQUIRED to process all of them.
 Server implementers provide their own chosen value of `<max-mobility-ids>` via
 their manifest entry (see [manifest-entry.xsd](manifest-entry.xsd)). Clients
 SHOULD parse this value (or assume it's equal to `1`).
+
+**Currently, this API describes mobilities of one type only** - *Student
+Mobilities for Studies*. This may change in the future (although, it's also
+possible that a separate API for each mobility type might be released).
 
 
 Permissions
@@ -89,11 +90,13 @@ Handling of invalid parameters
 
  * General [error handling rules][error-handling] apply.
 
- * Invalid (unknown) `mobility_id` values MUST be **ignored**. Servers MUST
-   return a valid (HTTP 200) XML response in such cases, but the response will
-   simply not contain the information on the unknown `mobility_id` values. If
-   all values are unknown, servers MUST respond with an empty `<response>`
-   element. This requirement is true even when `<max-mobility-ids>` is `1`.
+ * Invalid (unknown) `mobility_id` values MUST be **ignored**. Same applies to
+   `mobility_id` values matching mobilities of different type than *Student
+   Mobility for Studies*. Servers MUST return a valid (HTTP 200) XML response
+   in such cases, but the response will simply not contain the information on
+   the unknown `mobility_id` values. If all values are unknown, servers MUST
+   respond with an empty `<response>` element. This requirement is true even
+   when `<max-mobility-ids>` is `1`.
 
  * If the caller doesn't have permission to read some of the `mobility_ids`,
    then such `mobility_ids` MUST also be **ignored**, exactly as above. Servers
