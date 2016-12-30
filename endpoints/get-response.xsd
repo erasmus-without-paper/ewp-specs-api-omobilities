@@ -45,21 +45,27 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="student-mobility-for-studies" minOccurs="0" maxOccurs="unbounded">
-                    <xs:annotation>
-                        <xs:documentation>
-                            A list of matching Student Mobilities for Studies. Clients should use the
-                            `mobility-id` elements to match objects with their `mobility_id` request
-                            parameters.
-
-                            Currently this is the only type of mobility exposed by this API. More types
-                            MAY come in the future.
-                        </xs:documentation>
-                    </xs:annotation>
-                </xs:element>
+                <xs:group ref="SequenceOfMobilities"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+
+    <xs:group name="SequenceOfMobilities">
+        <xs:sequence>
+            <xs:element ref="student-mobility-for-studies" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>
+                        A list of matching Student Mobilities for Studies. Clients should use the
+                        `mobility-id` elements to match objects with their `mobility_id` request
+                        parameters.
+
+                        Currently this is the only type of mobility exposed by this API. More types
+                        MAY come in the future.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
 
     <xs:element name="student-mobility-for-studies">
         <xs:complexType>
