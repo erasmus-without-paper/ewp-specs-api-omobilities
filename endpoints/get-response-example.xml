@@ -13,12 +13,12 @@
         <mobility-id>c442c289-5541-4cae-9edb-8ad83e133613</mobility-id>
         <sending-hei>
             <hei-id>uio.no</hei-id>
-            <ounit-id>fsat.no</ounit-id>
-            <iia-id>ABC/2005/123</iia-id>
+            <ounit-id>140</ounit-id>
+            <iia-id>dd87538e-49e3-44ae-844e-55ad1b819ce9</iia-id>
         </sending-hei>
         <receiving-hei>
             <hei-id>uw.edu.pl</hei-id>
-            <iia-id>DEF62753/2005</iia-id>
+            <iia-id>549117543</iia-id> <!-- We recommend UUIDs though. -->
         </receiving-hei>
         <student>
             <given-names>Mister</given-names>
@@ -55,10 +55,10 @@
         </nominee-language-skill>
         <component-studied>
             <!-- Direct reference to the Courses API. -->
-            <los-id>CR/KR502B</los-id>
+            <los-id>CR/f9c7677f-e3e3-4106-a865-1d1e8867830e</los-id>
             <component-code>KR502B</component-code>
             <title>Introductory calculus</title>
-            <loi-id>CRI/52485892</loi-id>
+            <loi-id>CRI/fbe7f54e-af18-4e3e-bc74-c3d3392131b3</loi-id>
             <academic-term-display-name>Spring 2009/2010</academic-term-display-name>
             <credit>
                 <scheme>ects</scheme>
@@ -159,10 +159,10 @@
                         </reason>
                         <index>0</index>
                         <component-studied>
-                            <los-id>CR/KR502B</los-id>
+                            <los-id>CR/f9c7677f-e3e3-4106-a865-1d1e8867830e</los-id>
                             <component-code>KR502B</component-code>
                             <title>Introductory calculus</title>
-                            <loi-id>CRI/52485892</loi-id>
+                            <loi-id>CRI/fbe7f54e-af18-4e3e-bc74-c3d3392131b3</loi-id>
                             <academic-term-display-name>Spring 2009/2010</academic-term-display-name>
                             <credit>
                                 <scheme>ects</scheme>
