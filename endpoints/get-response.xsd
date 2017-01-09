@@ -319,7 +319,7 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="nominee-field-isced-code" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:element name="nominee-isced-f-code" type="xs:string" minOccurs="0" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
                             The student is sent to the mobility as part of one of his study programmes.

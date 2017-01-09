@@ -40,7 +40,7 @@
         <actual-arrival-date>2010-02-05</actual-arrival-date>
         <actual-departure-date>2010-06-19</actual-departure-date>
         <nominee-eqf-level>7</nominee-eqf-level>
-        <nominee-field-isced-code>1234</nominee-field-isced-code>
+        <nominee-isced-f-code>1234</nominee-isced-f-code>
         <nominee-language-skill>
             <language>no</language>
             <cefr-level>C2</cefr-level>
