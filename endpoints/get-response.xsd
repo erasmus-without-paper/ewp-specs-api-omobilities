@@ -3,6 +3,7 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:a="https://github.com/erasmus-without-paper/ewp-specs-types-address/tree/master"
     xmlns:p="https://github.com/erasmus-without-paper/ewp-specs-types-phonenumber/tree/master"
+    xmlns:course="https://github.com/erasmus-without-paper/ewp-specs-api-courses/tree/master"
     xmlns:xml="http://www.w3.org/XML/1998/namespace"
     xmlns:ewp="https://github.com/erasmus-without-paper/ewp-specs-architecture/blob/stable-v1/common-types.xsd"
     elementFormDefault="qualified"
@@ -25,6 +26,11 @@
     <xs:import
         schemaLocation="../../ewp-specs-types-phonenumber/schema.xsd"
         namespace="https://github.com/erasmus-without-paper/ewp-specs-types-phonenumber/tree/master"
+    /> <!-- WRTODO: absolute paths! -->
+
+    <xs:import
+        schemaLocation="../../ewp-specs-api-courses/response.xsd"
+        namespace="https://github.com/erasmus-without-paper/ewp-specs-api-courses/tree/master"
     /> <!-- WRTODO: absolute paths! -->
 
     <xs:annotation>
@@ -416,7 +422,7 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="los-id" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:element name="los-id" type="course:LosID" minOccurs="0" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
                             The EWP's LOS ID of the component, exactly as exposed via the receiving HEI's
@@ -469,7 +475,7 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="loi-id" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:element name="loi-id" type="course:LoiID" minOccurs="0" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
                             The EWP's LOI ID of the component, exactly as exposed via the receiving HEI's
@@ -550,7 +556,7 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="los-id" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:element name="los-id" type="course:LosID" minOccurs="1" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
                             The EWP's LOS ID of the component, exactly as exposed via the sending HEI's
@@ -560,7 +566,7 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="loi-id" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:element name="loi-id" type="course:LoiID" minOccurs="1" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
                             The EWP's LOI ID of the component, exactly as exposed via the sending HEI's

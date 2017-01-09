@@ -55,10 +55,10 @@
         </nominee-language-skill>
         <component-studied>
             <!-- Direct reference to the Courses API. -->
-            <los-id>C/KR502B</los-id>
+            <los-id>CR/KR502B</los-id>
             <component-code>KR502B</component-code>
             <title>Introductory calculus</title>
-            <loi-id>Z/52485892</loi-id>
+            <loi-id>CRI/52485892</loi-id>
             <academic-term-display-name>Spring 2009/2010</academic-term-display-name>
             <credit>
                 <scheme>ects</scheme>
@@ -76,8 +76,8 @@
             </credit>
         </component-studied>
         <component-recognized>
-            <los-id>8f0d7dad2bb6d40148c3c7e0baf03efb8dd92fca</los-id>
-            <loi-id>212419af43263e2130bac0b5041d89e217bb6cbd</loi-id>
+            <los-id>CR/8f0d7dad-2bb6-d401-48c3-c7e0baf03efb</los-id>
+            <loi-id>CRI/212419af-4326-3e21-30ba-c0b5041d89e2</loi-id>
         </component-recognized>
         <timeline>
             <!--
@@ -159,10 +159,10 @@
                         </reason>
                         <index>0</index>
                         <component-studied>
-                            <los-id>C/KR502B</los-id>
+                            <los-id>CR/KR502B</los-id>
                             <component-code>KR502B</component-code>
                             <title>Introductory calculus</title>
-                            <loi-id>Z/52485892</loi-id>
+                            <loi-id>CRI/52485892</loi-id>
                             <academic-term-display-name>Spring 2009/2010</academic-term-display-name>
                             <credit>
                                 <scheme>ects</scheme>
@@ -216,8 +216,8 @@
                     <insert-component-recognized>
                         <index>0</index>
                         <component-recognized>
-                            <los-id>8f0d7dad2bb6d40148c3c7e0baf03efb8dd92fca</los-id>
-                            <loi-id>212419af43263e2130bac0b5041d89e217bb6cbd</loi-id>
+                            <los-id>CR/8f0d7dad-2bb6-d401-48c3-c7e0baf03efb</los-id>
+                            <loi-id>CRI/212419af-4326-3e21-30ba-c0b5041d89e2</loi-id>
                         </component-recognized>
                     </insert-component-recognized>
                 </changeset>
