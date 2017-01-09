@@ -441,7 +441,7 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="component-code" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:element name="los-code" type="xs:string" minOccurs="0" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
                             This is the optional component code to be displayed to the end user. This field
@@ -451,7 +451,14 @@
                             a valid EWP's LOS ID used in the Courses API.
 
                             In case of many HEIs, it will be equal to the LOS ID provided above, but it's
-                            purpose is entirely different.
+                            purpose is entirely different. LOS IDs are surrogate identifiers (and, as such,
+                            should not be displayed to the user), while LOS codes are "human readable", but
+                            don't they are *not used* to identify entities in EWP network.
+
+                            Related links:
+                            https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/9
+                            https://en.wikipedia.org/wiki/Surrogate_key
+                            https://en.wikipedia.org/wiki/Natural_key
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
