@@ -370,7 +370,7 @@
                 <xs:element ref="component-recognized" minOccurs="0" maxOccurs="unbounded">
                     <xs:annotation>
                         <xs:documentation>
-                            An optional list of components recognized (or planned to be recognized) at the
+                            An OPTIONAL list of components recognized (or planned to be recognized) at the
                             sending HEI.
 
                             This loosely corresponds to tables B or D on the EUC LA template (attached in
@@ -378,6 +378,10 @@
                             instead. This means that you should treat this content as a draft. If you want
                             to retrieve the *last accepted* version (or any of the other previously
                             accepted versions), you will need to go through the timeline entries.
+
+                            Note, that very few servers are planning to provide this feature at the initial
+                            stages of EWP adoption:
+                            https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/11
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
