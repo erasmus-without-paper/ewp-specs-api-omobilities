@@ -5,6 +5,24 @@ This document describes all the changes made to the *Outgoing Mobilities API*
 document, starting from its first beta draft version.
 
 
+0.2.0
+-----
+
+* The `<component-code>` element has been renamed to `<los-code>`. Also, the
+  types and example values of `<los-id>` and `<loi-id>` elements were changed.
+  Both of these changes are an aftereffect of the ID/code change in the Courses
+  API. See [this thread]
+  (https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/9).
+
+* Renamed `nominee-field-isced-code` to `nominee-isced-f-code` ([why?]
+  (https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/8#issuecomment-270402114)).
+
+* Added a new `planned_arrival_after` request parameter.
+
+* Used surrogate IDs in examples ([why?]
+  (https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/9#issuecomment-271272493)).
+
+
 0.1.1
 -----
 
