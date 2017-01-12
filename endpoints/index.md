@@ -35,6 +35,10 @@ An identifier of the institution which is the sending partner of the
 mobilities. This parameter MUST be required by the server even if it covers
 only a single institution. It is *not* repeatable.
 
+**By default**, the server returns all mobilities the requester *has access to*
+(regardless of their receiving partner, arrival date, nor status). This
+includes very old mobilities, and the cancelled ones.
+
 
 ### `receiving_hei_id` (repeatable, optional)
 
@@ -44,6 +48,17 @@ contain only such Outgoing Mobility objects whose receiving institution matches
 
 This parameter is *repeatable*, so the request MAY contain multiple occurrences
 of it. The server is REQUIRED to process all of them.
+
+
+### `planned_arrival_after` (optional)
+
+A date in the `YYYY-mm-dd` format. If given, then the client states that it is
+interested only in the mobilities with `<planned-arrival-date>` coming *after*
+this given date.
+
+This parameter was added to allow the client to synchronize only a smaller
+subset of all mobilities more easily. (Many clients may not care to store
+mobilities, which have ended long ago.)
 
 
 Permissions
