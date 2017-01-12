@@ -56,7 +56,7 @@
         <component-studied>
             <!-- Direct reference to the Courses API. -->
             <los-id>CR/f9c7677f-e3e3-4106-a865-1d1e8867830e</los-id>
-            <component-code>KR502B</component-code>
+            <los-code>KR502B</los-code>
             <title>Introductory calculus</title>
             <loi-id>CRI/fbe7f54e-af18-4e3e-bc74-c3d3392131b3</loi-id>
             <academic-term-display-name>Spring 2009/2010</academic-term-display-name>
@@ -67,7 +67,7 @@
         </component-studied>
         <component-studied>
             <!-- Or, generic component description typed in by hand. -->
-            <component-code>ABC 123</component-code>
+            <los-code>ABC 123</los-code>
             <title>Some other course</title>
             <academic-term-display-name>spring</academic-term-display-name>
             <credit>
@@ -160,7 +160,7 @@
                         <index>0</index>
                         <component-studied>
                             <los-id>CR/f9c7677f-e3e3-4106-a865-1d1e8867830e</los-id>
-                            <component-code>KR502B</component-code>
+                            <los-code>KR502B</los-code>
                             <title>Introductory calculus</title>
                             <loi-id>CRI/fbe7f54e-af18-4e3e-bc74-c3d3392131b3</loi-id>
                             <academic-term-display-name>Spring 2009/2010</academic-term-display-name>
@@ -204,7 +204,7 @@
                     <insert-component-studied>
                         <index>1</index>
                         <component-studied>
-                            <component-code>ABC 123</component-code>
+                            <los-code>ABC 123</los-code>
                             <title>Some other course</title>
                             <academic-term-display-name>spring</academic-term-display-name>
                             <credit>
