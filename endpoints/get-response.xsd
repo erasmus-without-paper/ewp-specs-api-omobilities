@@ -206,17 +206,25 @@
                     </xs:annotation>
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="given-names" type="xs:string" minOccurs="1" maxOccurs="1">
+                            <xs:element name="given-names" type="ewp:StringWithOptionalLang" minOccurs="1" maxOccurs="unbounded">
                                 <xs:annotation>
                                     <xs:documentation>
                                         The given names of the person.
+
+                                        It MAY be specified in multiple languages (and/or multiple alphabets), as it
+                                        has been explained in the `contact` element:
+                                        https://github.com/erasmus-without-paper/ewp-specs-types-contact
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
-                            <xs:element name="family-name" type="xs:string" minOccurs="1" maxOccurs="1">
+                            <xs:element name="family-name" type="ewp:StringWithOptionalLang" minOccurs="1" maxOccurs="unbounded">
                                 <xs:annotation>
                                     <xs:documentation>
                                         The family name of the person.
+
+                                        It MAY be specified in multiple languages (and/or multiple alphabets), as it
+                                        has been explained in the `contact` element:
+                                        https://github.com/erasmus-without-paper/ewp-specs-types-contact
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>

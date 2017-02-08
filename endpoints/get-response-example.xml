@@ -22,12 +22,14 @@
             <iia-id>549117543</iia-id> <!-- We recommend UUIDs though. -->
         </receiving-hei>
         <student>
-            <given-names>Mister</given-names>
-            <family-name>Personson</family-name>
+            <given-names>Ivan Petrovich</given-names>
+            <given-names xml:lang="ru-Cyrl">Иван Петрович</given-names>
+            <family-name>Sidorov</family-name>
+            <family-name xml:lang="ru-Cyrl">Сидоров</family-name>
             <birth-date>1985-05-05</birth-date>
             <citizenship>NO</citizenship>
             <gender>1</gender>
-            <email>personson@example.com</email>
+            <email>ivan@example.com</email>
             <a:mailing-address>
                 <!-- See https://github.com/erasmus-without-paper/ewp-specs-types-address -->
             </a:mailing-address>

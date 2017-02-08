@@ -15,6 +15,9 @@ master (unreleased)
   in the UUID format anymore (reasoning [here]
   (https://github.com/erasmus-without-paper/general-issues/issues/10#issuecomment-280302623)).
 
+* It is now allowed to provide names of the student in multiple languages or
+  scripts (same way as in Abstract Contact data type). 
+
 * Minor fixes in the texts (spelling, style, etc.).
 
 
