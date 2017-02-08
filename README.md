@@ -12,9 +12,8 @@ This document describes the **Outgoing Mobilities API**. This API is
 implemented by the sending institution. It allows the receiving HEI to read,
 write and enumerate mobilities stored on the sending HEI's servers.
 
-**Currently, this API describes mobilities of one type only** - *Student
-Mobilities for Studies*. This may change in the future (although, it's also
-possible that a separate API for each mobility type might be released).
+Currently, this API describes mobilities **of one type only** - *Student
+Mobilities for Studies*. More types MAY be added in the future.
 
 
 Introduction
@@ -23,13 +22,13 @@ Introduction
 ### Reminder on vocabulary
 
 Keep in mind that definitions of "sending HEI" and "receiving HEI" come from
-the student mobility vocabulary. In case of this particular API this means
-that:
+the "mobility vocabulary", not the "HTTP vocabulary". In case of this
+particular API this means that:
 
 * **sending HEI == responding HEI** (HEI which is sending the student == HEI
-  which implements the API, and responds to the HTTP request),
+  which implements the API, *receives* the HTTP request, and responds to it),
 * **receiving HEI == requesting HEI** (HEI which is receiving the student ==
-  HEI which implements the client, and sends the HTTP request).
+  HEI which implements the client, and *sends* the HTTP request).
 
 As long as we use these terms consistently, there shouldn't be much confusion
 though.

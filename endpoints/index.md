@@ -43,8 +43,8 @@ includes very old mobilities, and the cancelled ones.
 ### `receiving_hei_id` (repeatable, optional)
 
 A list of institution identifiers. If given, then the results returned MUST
-contain only such Outgoing Mobility objects whose receiving institution matches
-**any** of the `receiving_hei_id` identifiers.
+contain only those mobilities whose receiving institution matches **at least
+one** of the given `receiving_hei_id` identifiers.
 
 This parameter is *repeatable*, so the request MAY contain multiple occurrences
 of it. The server is REQUIRED to process all of them.
@@ -57,8 +57,8 @@ interested only in the mobilities with `<planned-arrival-date>` coming *after*
 this given date.
 
 This parameter was added to allow the client to synchronize only a smaller
-subset of all mobilities more easily. (Many clients may not care to store
-mobilities, which have ended long ago.)
+subset of all mobilities more easily (because many clients don't want to store
+mobilities which have ended long ago).
 
 
 Permissions
@@ -102,7 +102,8 @@ Handling of invalid parameters
      same results,
    * `?sending_hei_id=known&receiving_hei_id=UNKNOWN` will **NEVER** return any
      results,
-   * `?sending_hei_id=known` will return results again (though not the same).
+   * `?sending_hei_id=known` will return results again (but not necessarily the
+     same results as the ones returned in the first two bullets).
 
 
 Response

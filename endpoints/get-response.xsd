@@ -57,13 +57,19 @@
     </xs:element>
 
     <xs:group name="SequenceOfMobilities">
+        <xs:annotation>
+            <xs:documentation>
+                This is global, because it is used in external XSDs. It MUST stay this way, for
+                backward compatibility.
+            </xs:documentation>
+        </xs:annotation>
         <xs:sequence>
             <xs:element ref="student-mobility-for-studies" minOccurs="0" maxOccurs="unbounded">
                 <xs:annotation>
                     <xs:documentation>
-                        A list of matching Student Mobilities for Studies. Clients should use the
-                        `mobility-id` elements to match objects with their `mobility_id` request
-                        parameters.
+                        A list of matching Student Mobilities for Studies. (Clients should use the
+                        `mobility-id` subelements to match objects with their `mobility_id` request
+                        parameters.)
 
                         Currently this is the only type of mobility exposed by this API. More types
                         MAY come in the future.
@@ -115,7 +121,7 @@
                             <xs:element name="ounit-id" type="ewp:AsciiPrintableIdentifier" minOccurs="0" maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
-                                        Optional organizational onit ID. If given, then it refers to the unit within
+                                        Optional organizational unit ID. If given, then it refers to the unit within
                                         the sending HEI's organizational structure, which is responsible for this
                                         student.
 
@@ -128,7 +134,7 @@
                                 <xs:annotation>
                                     <xs:documentation>
                                         Optional ID of the Institutional Agreement based on which the student is being
-                                        sent.
+                                        nominated/sent.
 
                                         This ID should be provided by the server ONLY if it implements EWP's
                                         Interinstitutional Agreements API. Clients can fetch more information on this
@@ -195,6 +201,9 @@
                     <xs:annotation>
                         <xs:documentation>
                             The section describes the student who is being sent for this mobility.
+
+                            These fields MAY change in time (e.g. after the student changes his name or
+                            address).
                         </xs:documentation>
                     </xs:annotation>
                     <xs:complexType>
@@ -260,8 +269,8 @@
                             <xs:element ref="p:phone-number" minOccurs="0" maxOccurs="unbounded">
                                 <xs:annotation>
                                     <xs:documentation>
-                                        A list of possibly phone numbers at which this person can be reached.
-                                        If possible, the "best" numbers should be listed first.
+                                        A list of phone numbers at which this person can possibly be reached.
+                                        The "best" numbers should be listed first.
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
@@ -282,7 +291,7 @@
                     <xs:annotation>
                         <xs:documentation>
                             Planned start date of the mobility (when the student is supposed to arrive).
-                            This date is provided by the sending HEI.
+                            This date is provided by the sending HEI before the mobility.
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
@@ -290,7 +299,7 @@
                     <xs:annotation>
                         <xs:documentation>
                             Planned end date of the mobility (when the student is supposed to leave).
-                            This date is provided by the sending HEI.
+                            This date is provided by the sending HEI before the mobility.
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
@@ -314,9 +323,10 @@
                     <!-- WRTODO: Is it okay that this is required? Perhaps it's a mistake? -->
                     <xs:annotation>
                         <xs:documentation>
-                            The student is sent to the mobility as part of one of his study programmes.
+                            The student is sent for the mobility as part of one of his study programmes.
                             This field contains the student's EQF level on this programme *at the time of
-                            the nomination*.
+                            the nomination* (and it SHOULD NOT change in time, as opposed to the fields
+                            present in the `student` element).
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
@@ -333,7 +343,8 @@
                 <xs:element name="nominee-language-skill" minOccurs="0" maxOccurs="unbounded">
                     <xs:annotation>
                         <xs:documentation>
-                            List of the student's language skills *at the time of the nomination*.
+                            List of the student's language skills *at the time of the nomination* (they
+                            SHOULD NOT change in time).
                         </xs:documentation>
                     </xs:annotation>
                     <xs:complexType>
@@ -804,9 +815,8 @@
     <xs:complexType name="ComponentListChange" abstract="true">
         <xs:annotation>
             <xs:documentation>
-                A common class for describing changes (subelements of `new-revision/changeset`)
-                which describe an update to a *list of components* (either studied or
-                recognized).
+                An abstract parent class which represents a single change occuring on some list
+                of elements.
             </xs:documentation>
         </xs:annotation>
         <xs:sequence>
@@ -815,14 +825,14 @@
                     <xs:documentation>
                         An optional reason for the change.
 
-                        Implementers are advised to supply a number of suggested reasons for their
+                        UI designers are advised to supply a number of suggested reasons for their
                         users (so that they can pick one when making the change). You can start with
                         those listed in the EUC LA PDF template. Users SHOULD be allowed to specify
                         their own custom reason for the change too.
 
                         Note, that we do not make use of the "reason numbers" suggested by the EUC LA
                         PDF template. We also do not attempt to introduce any other identifiable IDs or
-                        codes at this time (but we may try to, in future versions of this schema).
+                        codes at this time (but we may try to do so in future versions of this schema).
                     </xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
@@ -830,7 +840,9 @@
                         <xs:element name="display-text" type="ewp:MultilineString" minOccurs="1" maxOccurs="1">
                             <xs:annotation>
                                 <xs:documentation>
-                                    A human-readable description of the reason - preferrably in English.
+                                    A human-readable description of the reason - preferrably in English. It will
+                                    often be printed in PDF LA document (e.g. in the "Reason for change" column of
+                                    A2 or B2 table - see attached EUC LA template).
                                 </xs:documentation>
                             </xs:annotation>
                         </xs:element>
@@ -843,8 +855,8 @@
     <xs:complexType name="InsertComponentChange" abstract="true">
         <xs:annotation>
             <xs:documentation>
-                A common class for describing INSERTs to a *list of components* (either studied
-                or recognized).
+                An abstract parent class which represents a single INSERT occurring on some list
+                of elements.
             </xs:documentation>
         </xs:annotation>
         <xs:complexContent>
@@ -865,8 +877,8 @@
     <xs:complexType name="UpdateComponentChange" abstract="true">
         <xs:annotation>
             <xs:documentation>
-                A common class for describing UPDATEs to a *list of components* (either studied
-                or recognized).
+                An abstract parent class which represents a single DELETE occurring on some list
+                of elements.
             </xs:documentation>
         </xs:annotation>
         <xs:complexContent>

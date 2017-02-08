@@ -5,6 +5,12 @@ This document describes all the changes made to the *Outgoing Mobilities API*
 document, starting from its first beta draft version.
 
 
+master (unreleased)
+-------------------
+
+* Minor fixes in the texts (spelling, style, etc.).
+
+
 0.2.1
 -----
 
