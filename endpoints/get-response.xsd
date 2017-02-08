@@ -90,12 +90,10 @@
                 </xs:documentation>
             </xs:annotation>
             <xs:sequence>
-                <xs:element name="mobility-id" type="ewp:UUID" minOccurs="1" maxOccurs="1">
+                <xs:element name="mobility-id" type="ewp:AsciiPrintableIdentifier" minOccurs="1" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
-                            Unique identifier of the mobility.
-
-                            https://github.com/erasmus-without-paper/ewp-specs-api-mobilities#mobility_ids
+                            Identifier of the mobility (as assigned by the sending HEI).
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>

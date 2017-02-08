@@ -9,6 +9,12 @@ master (unreleased)
 -------------------
 
 * The `update` endpoint has been removed. This API is now strictly "read only".
+
+* Mobility IDs are no longer required to be universally unique - it is okay if
+  they are unique within the sending institution. They also don't have to be
+  in the UUID format anymore (reasoning [here]
+  (https://github.com/erasmus-without-paper/general-issues/issues/10#issuecomment-280302623)).
+
 * Minor fixes in the texts (spelling, style, etc.).
 
 
