@@ -9,8 +9,8 @@ Summary
 -------
 
 This document describes the **Outgoing Mobilities API**. This API is
-implemented by the sending institution. It allows the receiving HEI to read,
-write and enumerate mobilities stored on the sending HEI's servers.
+implemented by the sending institution. It allows the receiving HEI to read
+(but not change) data on mobilities stored on the sending HEI's servers.
 
 Currently, this API describes mobilities **of one type only** - *Student
 Mobilities for Studies*. More types MAY be added in the future.
@@ -65,7 +65,6 @@ Server implementers MUST:
 
  * Implement the [`get` endpoint](endpoints/get.md).
  * Implement the [`index` endpoint](endpoints/index.md).
- * Implement the [`update` endpoint](endpoints/update.md).
  * Put the URLs of these endpoints in their [manifest file][discovery-api], as
    described in [manifest-entry.xsd](manifest-entry.xsd).
 

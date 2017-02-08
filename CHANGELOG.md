@@ -8,6 +8,7 @@ document, starting from its first beta draft version.
 master (unreleased)
 -------------------
 
+* The `update` endpoint has been removed. This API is now strictly "read only".
 * Minor fixes in the texts (spelling, style, etc.).
 
 
