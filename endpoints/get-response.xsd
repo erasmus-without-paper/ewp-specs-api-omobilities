@@ -283,13 +283,10 @@
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="status" type="MobilityStatus" minOccurs="1" maxOccurs="1">
+                <xs:element name="status" type="_MobilityStatus" minOccurs="1" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
-                            The *current* status of the mobility.
-
-                            This status can be changed multiple times. History of these changes is recoreded
-                            in the `timeline` element. This element contains only the most recently set value.
+                            Current status of the mobility.
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
@@ -371,6 +368,139 @@
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="components-studied" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            Different versions of the list of components studied (or planned to be studied)
+                            at the receiving HEI.
+
+                            We need different versions of this list because the EUC LA template (attached in
+                            this XSD's repository) requires it.
+                        </xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:sequence minOccurs="0" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        The "before mobility" and "latest approved" sections are optional. It is allowed
+                                        to have only the "latest draft" section (this indicates that no LA has yet been
+                                        approved).
+
+                                        However, if "before mobility" section exists, then we also require "latest
+                                        approved" section to exist. In many cases, `latest-approved-changes` will be
+                                        empty, and `latest-approved-snapshot` will contain the exact contents as the
+                                        `before-mobility-snapshot` does. It might seem redundant, but we require it for
+                                        completeness (to make sure all partners understand what "latest approved"
+                                        means).
+                                    </xs:documentation>
+                                </xs:annotation>
+                                <xs:element name="before-mobility-changes" minOccurs="1" maxOccurs="1" type="_ListOfChangesTo_ComponentsStudied">
+                                    <xs:annotation>
+                                        <xs:documentation>
+                                            This element is not used when PDF LA is generated, but it is still required.
+                                            It allows server implementers to include a history of changes to the "before
+                                            mobility" section, before it has been approved. If the server doesn't keep such
+                                            history, then an appropriately formatted copy of the `before-mobility-snapshot`
+                                            is returned here.
+                                        </xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="before-mobility-snapshot" minOccurs="1" maxOccurs="1" type="_SnapshotOf_ComponentsStudied">
+                                    <xs:annotation>
+                                        <xs:documentation>
+                                            The snapshot of courses *planned* to be studied when the first version of the LA
+                                            is signed.
+
+                                            Note: This element corresponds to "Table A" on the EUC LA template (attached
+                                            in this XSD's repository).
+                                        </xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="latest-approved-changes" minOccurs="1" maxOccurs="1" type="_ListOfChangesTo_ComponentsStudied">
+                                    <xs:annotation>
+                                        <xs:documentation>
+                                            The list of changes made to the LA components after it has been first signed.
+                                            When LA is signed for the first time this element is empty, but it is often
+                                            filled later on.
+
+                                            Note: This element corresponds to "Table A2" on the EUC LA template (attached
+                                            in this XSD's repository).
+                                        </xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="latest-approved-snapshot" minOccurs="1" maxOccurs="1" type="_SnapshotOf_ComponentsStudied">
+                                    <xs:annotation>
+                                        <xs:documentation>
+                                            The latest approved snapshot of courses studied (or planned to the studedied). When
+                                            LA is signed for the first time this element contains the same courses as the
+                                            `before-mobility-snapshot` does, but this may change later in time.
+
+                                            Note: This element corresponds to "Table C" on the EUC LA template (attached
+                                            in this XSD's repository).
+                                        </xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                            </xs:sequence>
+                            <xs:element name="latest-draft-changes" minOccurs="1" maxOccurs="1" type="_ListOfChangesTo_ComponentsStudied">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        This element is not used when PDF LA is generated, but it is still required. It
+                                        allows server implementers to publish proposed changes to the LA, before they
+                                        are approved. If the server doesn't store such proposals (or if it doesn't want
+                                        to publish them), then this element will be empty.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="latest-draft-snapshot" minOccurs="1" maxOccurs="1" type="_SnapshotOf_ComponentsStudied">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        This element is not used when PDF LA is generated, but it is still required.
+                                        Similar to the `latest-draft-changes` element, but the proposed changes are
+                                        presented in a unified form. If the server doesn't store proposals (or if it
+                                        doesn't want to publish them), then this element will contain a copy of the
+                                        `latest-approved-snapshot` (or, if no `latest-approved-snapshot` exists, then
+                                        it will be empty).
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="components-recognized" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            Different versions of the list of components recognized (or planned to be
+                            recognized) at the sending HEI.
+
+                            We need different versions of this list because the EUC LA template (attached in
+                            this XSD's repository) requires it.
+
+                            PLEASE READ THE ANNOTATIONS ON THE `components-studied` ELEMENT. The
+                            `components-recognized` element has the same base format as the
+                            `components-studied` element does, and so, **we are not describing this format
+                            here again**. The only difference is that other types of entities are described
+                            by it - see tables "B", "B2" and "D" on the EUC LA template (attached in this
+                            XSD's repository).
+
+                            Note, that very few servers are planning to provide this feature at the initial
+                            stages of EWP adoption:
+                            https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/11
+                        </xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:sequence minOccurs="0" maxOccurs="1">
+                                <xs:element name="before-mobility-changes" minOccurs="1" maxOccurs="1" type="_ListOfChangesTo_ComponentsRecognized"/>
+                                <xs:element name="before-mobility-snapshot" minOccurs="1" maxOccurs="1" type="_SnapshotOf_ComponentsRecognized"/>
+                                <xs:element name="latest-approved-changes" minOccurs="1" maxOccurs="1" type="_ListOfChangesTo_ComponentsRecognized"/>
+                                <xs:element name="latest-approved-snapshot" minOccurs="1" maxOccurs="1" type="_SnapshotOf_ComponentsRecognized"/>
+                            </xs:sequence>
+                            <xs:element name="latest-draft-changes" minOccurs="1" maxOccurs="1" type="_ListOfChangesTo_ComponentsRecognized"/>
+                            <xs:element name="latest-draft-snapshot" minOccurs="1" maxOccurs="1" type="_SnapshotOf_ComponentsRecognized"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
@@ -551,7 +681,7 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:simpleType name="MobilityStatus">
+    <xs:simpleType name="_MobilityStatus">
         <xs:restriction base="xs:string">
             <xs:enumeration value="nomination">
                 <xs:annotation>
@@ -601,5 +731,208 @@
             </xs:enumeration>
         </xs:restriction>
     </xs:simpleType>
+
+    <xs:complexType name="_ListOfChangesTo_ComponentsStudied">
+        <xs:annotation>
+            <xs:documentation>
+                Describes a list of changes applied to the list of studied components. The
+                order of elements matters (see the `index` element).
+            </xs:documentation>
+        </xs:annotation>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="insert-component-studied">
+                <xs:annotation>
+                    <xs:documentation>
+                        This represents the action of adding a new `component-studied` element to the
+                        list of components (to be) studied.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:complexContent>
+                        <xs:extension base="_SingleChangeToAList_INSERT">
+                            <xs:sequence>
+                                <xs:element ref="component-studied" minOccurs="1" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>
+                                            This describes the component to be inserted.
+                                        </xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                            </xs:sequence>
+                        </xs:extension>
+                    </xs:complexContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="remove-component-studied">
+                <xs:annotation>
+                    <xs:documentation>
+                        This represents the action of removing one of the `component-studied` elements.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:complexContent>
+                        <xs:extension base="_SingleChangeToAList_DELETE">
+                            <xs:sequence>
+                            </xs:sequence>
+                        </xs:extension>
+                    </xs:complexContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="_ListOfChangesTo_ComponentsRecognized">
+        <xs:annotation>
+            <xs:documentation>
+                Describes a list of changes applied to the list of components recognized. The
+                order of elements matters (see the `index` element).
+            </xs:documentation>
+        </xs:annotation>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="insert-component-recognized">
+                <xs:annotation>
+                    <xs:documentation>
+                        This represents the action of adding a new `component-recognized` element.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:complexContent>
+                        <xs:extension base="_SingleChangeToAList_INSERT">
+                            <xs:sequence>
+                                <xs:element ref="component-recognized" minOccurs="1" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>
+                                            This describes the component to be inserted.
+                                        </xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                            </xs:sequence>
+                        </xs:extension>
+                    </xs:complexContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="remove-component-recognized">
+                <xs:annotation>
+                    <xs:documentation>
+                        This represents the action of removing one of the `component-recognized` elements.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:complexContent>
+                        <xs:extension base="_SingleChangeToAList_DELETE">
+                            <xs:sequence>
+                            </xs:sequence>
+                        </xs:extension>
+                    </xs:complexContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="_SnapshotOf_ComponentsStudied">
+        <xs:annotation>
+            <xs:documentation>
+                Describes a snapshot of the list of studied components.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="component-studied" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="_SnapshotOf_ComponentsRecognized">
+        <xs:annotation>
+            <xs:documentation>
+                Describes a snapshot of the list of components recognized.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="component-recognized" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="_SingleChangeToAList" abstract="true">
+        <xs:annotation>
+            <xs:documentation>
+                An abstract parent class which represents a single change occuring on some list
+                of elements.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="reason" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        An optional reason for the change.
+
+                        UI designers are advised to supply a number of suggested reasons for their
+                        users (so that they can pick one when making the change). You can start with
+                        those listed in the EUC LA PDF template. Users SHOULD be allowed to specify
+                        their own custom reason for the change too.
+
+                        Note, that we do not make use of the "reason numbers" suggested by the EUC LA
+                        PDF template. We also do not attempt to introduce any other identifiable IDs or
+                        codes at this time (but we may try to do so in future versions of this schema).
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="display-text" type="ewp:MultilineString" minOccurs="1" maxOccurs="1">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    A human-readable description of the reason - preferrably in English. It will
+                                    often be printed in PDF LA document (e.g. in the "Reason for change" column of
+                                    A2 or B2 table - see attached EUC LA template).
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="_SingleChangeToAList_INSERT" abstract="true">
+        <xs:annotation>
+            <xs:documentation>
+                An abstract parent class which represents a single INSERT occurring on some list
+                of elements.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="_SingleChangeToAList">
+                <xs:sequence>
+                     <xs:element name="index" type="xs:nonNegativeInteger" minOccurs="1" maxOccurs="1">
+                         <xs:annotation>
+                             <xs:documentation>
+                                 Zero-based index of the element before which to insert.
+                             </xs:documentation>
+                         </xs:annotation>
+                     </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="_SingleChangeToAList_DELETE" abstract="true">
+        <xs:annotation>
+            <xs:documentation>
+                An abstract parent class which represents a single DELETE occurring on some list
+                of elements.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="_SingleChangeToAList">
+                <xs:sequence>
+                     <xs:element name="index" type="xs:nonNegativeInteger" minOccurs="1" maxOccurs="1">
+                         <xs:annotation>
+                             <xs:documentation>
+                                 Zero-based index of the element to be removed.
+                             </xs:documentation>
+                         </xs:annotation>
+                     </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
 
 </xs:schema>
