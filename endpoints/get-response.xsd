@@ -141,7 +141,7 @@
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="receiving-hei">
+                <xs:element name="receiving-hei" minOccurs="1" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
                             This describes the receiving HEI - the institution which will be hosting the
@@ -191,7 +191,7 @@
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="student">
+                <xs:element name="student" minOccurs="1" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
                             The section describes the student who is being sent for this mobility.
@@ -310,7 +310,8 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="nominee-eqf-level" type="ewp:EqfLevel">
+                <xs:element name="nominee-eqf-level" type="ewp:EqfLevel" minOccurs="1" maxOccurs="1">
+                    <!-- WRTODO: Is it okay that this is required? Perhaps it's a mistake? -->
                     <xs:annotation>
                         <xs:documentation>
                             The student is sent to the mobility as part of one of his study programmes.
@@ -337,7 +338,7 @@
                     </xs:annotation>
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="language" type="xs:language">
+                            <xs:element name="language" type="xs:language" minOccurs="1" maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
                                         The code of the language.
@@ -385,7 +386,7 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="timeline">
+                <xs:element name="timeline" minOccurs="1" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
                             Over the timespan of the mobility some attributes of it will be changed. New
@@ -774,7 +775,7 @@
             <xs:complexContent>
                 <xs:extension base="TimelineEntry">
                     <xs:sequence>
-                        <xs:element name="new-status" type="MobilityStatus">
+                        <xs:element name="new-status" type="MobilityStatus" minOccurs="1" maxOccurs="1">
                             <xs:annotation>
                                 <xs:documentation>
                                     The new status value.
