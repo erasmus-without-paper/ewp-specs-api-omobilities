@@ -112,7 +112,7 @@
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
-                            <xs:element name="ounit-id" type="xs:string" minOccurs="0" maxOccurs="1">
+                            <xs:element name="ounit-id" type="ewp:AsciiPrintableIdentifier" minOccurs="0" maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
                                         Optional organizational onit ID. If given, then it refers to the unit within
@@ -124,7 +124,7 @@
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
-                            <xs:element name="iia-id" type="xs:string" minOccurs="0" maxOccurs="1">
+                            <xs:element name="iia-id" type="ewp:AsciiPrintableIdentifier" minOccurs="0" maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
                                         Optional ID of the Institutional Agreement based on which the student is being
@@ -161,7 +161,7 @@
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
-                            <xs:element name="ounit-id" type="xs:string" minOccurs="0" maxOccurs="1">
+                            <xs:element name="ounit-id" type="ewp:AsciiPrintableIdentifier" minOccurs="0" maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
                                         Optional organizational onit ID. If given, then it refers to the unit within
@@ -175,7 +175,7 @@
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
-                            <xs:element name="iia-id" type="xs:string" minOccurs="0" maxOccurs="1">
+                            <xs:element name="iia-id" type="ewp:AsciiPrintableIdentifier" minOccurs="0" maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
                                         Each IIA partner can assign an ID of its own to the same IIA. If the server is
