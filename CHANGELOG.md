@@ -5,6 +5,18 @@ This document describes all the changes made to the *Outgoing Mobilities API*
 document, starting from its first beta draft version.
 
 
+0.2.1
+-----
+
+* Phone Number and Address data types are now in `stable-v1` namespace.
+
+* `minOccurs` and `maxOccurs` are now provided explicitly ([why?]
+  (https://github.com/erasmus-without-paper/general-issues/issues/22)).
+
+* Introduced limits on `ounit-id` and `iia-id` values ([more information]
+  (https://github.com/erasmus-without-paper/general-issues/issues/23)).
+
+
 0.2.0
 -----
 
