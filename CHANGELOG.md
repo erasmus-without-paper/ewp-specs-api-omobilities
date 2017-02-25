@@ -8,6 +8,9 @@ document, starting from its first beta draft version.
 master (unreleased)
 -------------------
 
+* Removed the whole Learning Agreement and `<timeline>` sections. They will be
+  rewritten.
+
 * The `update` endpoint has been removed. This API is now strictly "read only".
 
 * Mobility IDs are no longer required to be universally unique - it is okay if
@@ -16,7 +19,7 @@ master (unreleased)
   (https://github.com/erasmus-without-paper/general-issues/issues/10#issuecomment-280302623)).
 
 * It is now allowed to provide names of the student in multiple languages or
-  scripts (same way as in Abstract Contact data type). 
+  scripts (same way as in Abstract Contact data type).
 
 * Minor fixes in the texts (spelling, style, etc.).
 
