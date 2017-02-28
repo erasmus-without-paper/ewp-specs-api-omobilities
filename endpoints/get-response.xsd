@@ -413,7 +413,7 @@
                                         means).
                                     </xs:documentation>
                                 </xs:annotation>
-                                <xs:element name="before-mobility-changes" minOccurs="1" maxOccurs="1" type="_ListOfChangesTo_ComponentsStudied">
+                                <xs:element name="before-mobility-changes" minOccurs="1" maxOccurs="1" type="ListOfChangesTo_ComponentsStudied">
                                     <xs:annotation>
                                         <xs:documentation>
                                             This element is not used when PDF LA is generated, but it is still required.
@@ -424,7 +424,7 @@
                                         </xs:documentation>
                                     </xs:annotation>
                                 </xs:element>
-                                <xs:element name="before-mobility-snapshot" minOccurs="1" maxOccurs="1" type="_SnapshotOf_ComponentsStudied">
+                                <xs:element name="before-mobility-snapshot" minOccurs="1" maxOccurs="1" type="SnapshotOf_ComponentsStudied">
                                     <xs:annotation>
                                         <xs:documentation>
                                             The snapshot of courses *planned* to be studied when the first version of the LA
@@ -435,7 +435,7 @@
                                         </xs:documentation>
                                     </xs:annotation>
                                 </xs:element>
-                                <xs:element name="latest-approved-changes" minOccurs="1" maxOccurs="1" type="_ListOfChangesTo_ComponentsStudied">
+                                <xs:element name="latest-approved-changes" minOccurs="1" maxOccurs="1" type="ListOfChangesTo_ComponentsStudied">
                                     <xs:annotation>
                                         <xs:documentation>
                                             The list of changes made to the LA components after it has been first signed.
@@ -447,7 +447,7 @@
                                         </xs:documentation>
                                     </xs:annotation>
                                 </xs:element>
-                                <xs:element name="latest-approved-snapshot" minOccurs="1" maxOccurs="1" type="_SnapshotOf_ComponentsStudied">
+                                <xs:element name="latest-approved-snapshot" minOccurs="1" maxOccurs="1" type="SnapshotOf_ComponentsStudied">
                                     <xs:annotation>
                                         <xs:documentation>
                                             The latest approved snapshot of courses studied (or planned to the studedied). When
@@ -460,7 +460,7 @@
                                     </xs:annotation>
                                 </xs:element>
                             </xs:sequence>
-                            <xs:element name="latest-draft-changes" minOccurs="1" maxOccurs="1" type="_ListOfChangesTo_ComponentsStudied">
+                            <xs:element name="latest-draft-changes" minOccurs="1" maxOccurs="1" type="ListOfChangesTo_ComponentsStudied">
                                 <xs:annotation>
                                     <xs:documentation>
                                         This element is not used when PDF LA is generated, but it is still required. It
@@ -470,7 +470,7 @@
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
-                            <xs:element name="latest-draft-snapshot" minOccurs="1" maxOccurs="1" type="_SnapshotOf_ComponentsStudied">
+                            <xs:element name="latest-draft-snapshot" minOccurs="1" maxOccurs="1" type="SnapshotOf_ComponentsStudied">
                                 <xs:annotation>
                                     <xs:documentation>
                                         This element is not used when PDF LA is generated, but it is still required.
@@ -509,13 +509,13 @@
                     <xs:complexType>
                         <xs:sequence>
                             <xs:sequence minOccurs="0" maxOccurs="1">
-                                <xs:element name="before-mobility-changes" minOccurs="1" maxOccurs="1" type="_ListOfChangesTo_ComponentsRecognized"/>
-                                <xs:element name="before-mobility-snapshot" minOccurs="1" maxOccurs="1" type="_SnapshotOf_ComponentsRecognized"/>
-                                <xs:element name="latest-approved-changes" minOccurs="1" maxOccurs="1" type="_ListOfChangesTo_ComponentsRecognized"/>
-                                <xs:element name="latest-approved-snapshot" minOccurs="1" maxOccurs="1" type="_SnapshotOf_ComponentsRecognized"/>
+                                <xs:element name="before-mobility-changes" minOccurs="1" maxOccurs="1" type="ListOfChangesTo_ComponentsRecognized"/>
+                                <xs:element name="before-mobility-snapshot" minOccurs="1" maxOccurs="1" type="SnapshotOf_ComponentsRecognized"/>
+                                <xs:element name="latest-approved-changes" minOccurs="1" maxOccurs="1" type="ListOfChangesTo_ComponentsRecognized"/>
+                                <xs:element name="latest-approved-snapshot" minOccurs="1" maxOccurs="1" type="SnapshotOf_ComponentsRecognized"/>
                             </xs:sequence>
-                            <xs:element name="latest-draft-changes" minOccurs="1" maxOccurs="1" type="_ListOfChangesTo_ComponentsRecognized"/>
-                            <xs:element name="latest-draft-snapshot" minOccurs="1" maxOccurs="1" type="_SnapshotOf_ComponentsRecognized"/>
+                            <xs:element name="latest-draft-changes" minOccurs="1" maxOccurs="1" type="ListOfChangesTo_ComponentsRecognized"/>
+                            <xs:element name="latest-draft-snapshot" minOccurs="1" maxOccurs="1" type="SnapshotOf_ComponentsRecognized"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
@@ -747,11 +747,14 @@
         </xs:restriction>
     </xs:simpleType>
 
-    <xs:complexType name="_ListOfChangesTo_ComponentsStudied">
+    <xs:complexType name="ListOfChangesTo_ComponentsStudied">
         <xs:annotation>
             <xs:documentation>
                 Describes a list of changes applied to the list of studied components. The
                 order of elements matters (see the `index` element).
+
+                This is global, because it is used in external XSDs. It MUST stay this way, for
+                backward compatibility.
             </xs:documentation>
         </xs:annotation>
         <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -796,11 +799,14 @@
         </xs:choice>
     </xs:complexType>
 
-    <xs:complexType name="_ListOfChangesTo_ComponentsRecognized">
+    <xs:complexType name="ListOfChangesTo_ComponentsRecognized">
         <xs:annotation>
             <xs:documentation>
                 Describes a list of changes applied to the list of components recognized. The
                 order of elements matters (see the `index` element).
+
+                This is global, because it is used in external XSDs. It MUST stay this way, for
+                backward compatibility.
             </xs:documentation>
         </xs:annotation>
         <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -844,10 +850,13 @@
         </xs:choice>
     </xs:complexType>
 
-    <xs:complexType name="_SnapshotOf_ComponentsStudied">
+    <xs:complexType name="SnapshotOf_ComponentsStudied">
         <xs:annotation>
             <xs:documentation>
                 Describes a snapshot of the list of studied components.
+
+                This is global, because it is used in external XSDs. It MUST stay this way, for
+                backward compatibility.
             </xs:documentation>
         </xs:annotation>
         <xs:sequence>
@@ -855,10 +864,13 @@
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="_SnapshotOf_ComponentsRecognized">
+    <xs:complexType name="SnapshotOf_ComponentsRecognized">
         <xs:annotation>
             <xs:documentation>
                 Describes a snapshot of the list of components recognized.
+
+                This is global, because it is used in external XSDs. It MUST stay this way, for
+                backward compatibility.
             </xs:documentation>
         </xs:annotation>
         <xs:sequence>
