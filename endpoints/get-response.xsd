@@ -64,19 +64,34 @@
             </xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:element ref="student-mobility-for-studies" minOccurs="0" maxOccurs="unbounded">
-                <xs:annotation>
-                    <xs:documentation>
-                        A list of matching Student Mobilities for Studies. (Clients should use the
-                        `mobility-id` subelements to match objects with their `mobility_id` request
-                        parameters.)
+            <xs:choice>
+                <xs:group ref="SingleMobilityObject">
+                    <xs:annotation>
+                        <xs:documentation>
+                            A list of matching mobilities. (Clients should use the `mobility-id`
+                            subelements to match objects with their `mobility_id` request parameters.)
 
-                        Currently this is the only type of mobility exposed by this API. More types
-                        MAY come in the future.
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:element>
+                            Currently there's only type of mobility exposed by this API. More types MAY
+                            come in the future.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:group>
+            </xs:choice>
         </xs:sequence>
+    </xs:group>
+
+    <xs:group name="SingleMobilityObject">
+        <xs:annotation>
+            <xs:documentation>
+                Represents a single mobility of any type.
+
+                This is global, because it is used in external XSDs. It MUST stay this way, for
+                backward compatibility.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:choice>
+            <xs:element ref="student-mobility-for-studies" minOccurs="1" maxOccurs="1"/>
+        </xs:choice>
     </xs:group>
 
     <xs:element name="student-mobility-for-studies">
