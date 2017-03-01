@@ -5,54 +5,57 @@ This document describes all the changes made to the *Outgoing Mobilities API*
 document, starting from its first beta draft version.
 
 
-master (unreleased)
--------------------
+0.3.0
+-----
+
+Learning Agreement components were **completely redesigned**:
+
+* Before this change, a single mobility held *only a single snapshot* of each
+  of the two `<component-studied>` and `<component-recognized>` lists. This
+  snapshot described the **latest draft** revision of these lists. If the
+  client wanted to extract the **latest approved** (aka "after mobility")
+  version, or the **first approved** (aka "before mobility") version, then
+  the **only way** to do this was by parsing timeline entries.
+
+  Now, each of these two component lists can have up to three snapshots -
+  `<before-mobility-snapshot>`, `<latest-approved-snapshot>`, and
+  `<latest-draft-snapshot>`.
+
+* The `<timeline>` element was removed. The concept of revisions was replaced
+  with somewhat similar concept of "changes between snapshots". Each of the
+  snapshot element described above is preceded by a respective
+  `<*-changes>` element, which describes the changes made **since a previous
+  snapshot**.
+
+  The format of the `<*-changes>` entries is a bit similar to the format
+  previously used in `<timeline>`, but the concept is very much different.
+  The primary difference is that, now, the sending HEI has **full control**
+  over these changes. It is perfectly okay to **rewrite history**, because
+  the changes *no longer represent* history. There are no commit dates, there
+  are no authors. These new elements only represent differences between
+  snapshots. We are no longer forcing implementers to keep fully change
+  history in their models.
+
+* As to **how** these snapshots and differences between them are generated,
+  it depends on the underlying model used by the server:
+
+  - Some implementers keep a complete timeline of all changes.
+  - Others keep a couple of snapshots only.
+
+  Both of these models are acceptable:
+
+  - Snapshots can be dynamically generated from a timeline of changes.
+  - And it is also possible to generate a list of changes by comparing
+    two consecutive snapshots.
+
+  We require all implementers to express their model in *both these formats*.
+  It will make the data a bit more understandable for the clients, *and* it
+  will help us detect inconsistencies in server implementations.
+
+**Other changes:**
 
 * The `update` endpoint has been removed. This API is now strictly "read only".
-
-* Learning Agreement components were **completely redesigned**:
-
-  * Before this change, a single mobility held *only a single snapshot* of each
-    of the two `<component-studied>` and `<component-recognized>` lists. This
-    snapshot described the **latest draft** revision of these lists. If the
-    client wanted to extract the **latest approved** (aka "after mobility")
-    version, or the **first approved** (aka "before mobility") version, then
-    the **only way** to do this was by parsing timeline entries.
-
-    Now, each of these two component lists can have up to three snapshots -
-    `<before-mobility-snapshot>`, `<latest-approved-snapshot>`, and
-    `<latest-draft-snapshot>`.
-
-  * The `<timeline>` element was removed. The concept of revisions was replaced
-    with somewhat similar concept of "changes between snapshots". Each of the
-    snapshot element described above is preceded by a respective
-    `<*-changes>` element, which describes the changes made **since a previous
-    snapshot**.
-
-    The format of the `<*-changes>` entries is a bit similar to the format
-    previously used in `<timeline>`, but the concept is very much different.
-    The primary difference is that, now, the sending HEI has **full control**
-    over these changes. It is perfectly okay to **rewrite history**, because
-    the changes *no longer represent* history. There are no commit dates, there
-    are no authors. These new elements only represent differences between
-    snapshots.
-
-  * As to **how** these snapshots and differences between them are generated,
-    it depends on the underlying
-    model used by the server:
-
-    - Some implementers keep a complete timeline of all changes.
-    - Others keep a couple of snapshots only.
-
-    Both of these models are acceptable:
-
-    - Snapshots can be dynamically generated from a timeline of changes.
-    - And it is also possible to generate a list of changes by comparing
-      two consecutive snapshots.
-
-    We require all implementers to express their model in *both these formats*.
-    It will make the data a bit more understandable for the clients, *and* it
-    will help us detect inconsistencies in server implementations.
+  Separate APIs will be designed to replace the `update` endpoint.
 
 * Mobility IDs are no longer required to be universally unique - it is okay if
   they are unique within the sending institution. They also don't have to be
