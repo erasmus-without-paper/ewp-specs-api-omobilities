@@ -90,7 +90,7 @@
             </xs:documentation>
         </xs:annotation>
         <xs:choice>
-            <xs:element ref="student-mobility-for-studies" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="student-mobility-for-studies"/>
         </xs:choice>
     </xs:group>
 
