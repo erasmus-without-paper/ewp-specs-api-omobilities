@@ -8,96 +8,64 @@ Outgoing Mobilities Update endpoint
 Summary
 -------
 
-This endpoint allows the receiving HEI to update the mobility entity (stored on
-the sending HEI). It allows to create new timeline entries remotely.
+This endpoint allows the receiving HEI to suggest updates to specific Outgoing
+Mobility fields, stored on the *sending* HEI's servers.
 
 
-Request method
---------------
+Updates or suggestions?
+-----------------------
+
+An "update request" can be looked at in two different ways. At first, we expect
+for EWP partners to perceive it as a set suggestions:
+
+ - **The client** will sometimes send them, sometimes not. Some IRO staff will
+   still prefer to use "the old way", and send their data by emails.
+
+ - **The server** will receive them, but it will treat them as suggestions
+   only. It will respond something like *"Thank you! We will review your
+   suggestion"*.
+
+However, if adoption of EWP goes well, then the users and developers will begin
+to get used to the new data flow, and the meaning of "update request" will
+shift:
+
+ - **The client** will send them often. Sending these "suggestions" will
+   gradually become a **requirement** for the receiving institution. IRO staff
+   members will prefer to use this API than sending an email.
+
+ - **The server** might begin to put more trust in both EWP and the partner. It
+   might consider saving updates *without* having a human review them. As this
+   continues, the server will begin responding with *"Your update has been
+   received and approved automatically"*.
+
+
+Request method and parameters
+-----------------------------
 
  * Requests MUST be made with HTTP POST method. Servers SHOULD reject all other
    request methods.
 
+ * The body of the request MUST contain a raw XML element described in the
+   [request.xsd](request.xsd) schema. The request SHOULD also contain a
+   matching `Content-Type` header (such as `text/xml`).
 
-Request parameters
-------------------
+   (This endpoint is **NOT** using the regular `application/x-www-form-urlencoded`
+   request format which most of other EWP endpoints do.)
 
-Parameters MUST be provided in the regular `application/x-www-form-urlencoded`
-format.
+ * The are various types of update requests described in the [request.xsd]
+   (request.xsd) schema. The server is NOT REQUIRED to support all of them.
+   Clients MUST check if the server supports certain type of update request
+   before sending it.
 
-
-### `sending_hei_id` (required)
-
-An identifier of the institution which is the sending partner of the mobility
-which the client wants to modify. This parameter MUST be required by the server
-even if the server covers only a single institution.
-
-Note, that `mobility_id` identifiers should be unique within the entire EWP
-Network, not only within a single sending HEI (see discussion
-[here](https://github.com/erasmus-without-paper/general-issues/issues/10)).
-That might imply that, in theory, the `sending_hei_id` parameter could be
-skipped. However, it still exists, and it is required, for performance and/or
-clarity reasons (see discussion [here]
-(https://github.com/erasmus-without-paper/ewp-specs-api-echo/issues/3#issuecomment-228278115)).
-
-
-### `mobility_id` (required)
-
-ID of Outgoing Mobility object the client wants to modify. It must "belong" to
-the sending HEI provided in the `sending_hei_id` parameter.
-
-
-### `sync_verifier` (required)
-
-Integer. The current length of the mobility's timeline. "Current" means "before
-this new change is made".
-
-This parameter is required in order to prevent [edit conflicts]
-(https://en.wikipedia.org/wiki/Edit_conflict). Before proceeding with updating
-the mobility's timeline, the server is REQUIRED to verify if the requester was
-in possession of the most recent version of this timeline.
-
-Note, that this method is not perfect, because some properties of the mobility
-can be updated without changing the timeline length.
-
-
-### `append` (required)
-
-XML element to be appended to the mobility's `<timeline>`. The value of this
-parameter MUST be a valid XML content representing a single element. Consult
-[`get-response.xsd`](get-response.xsd) for detailed specification of all
-rules regarding timeline entries.
-
- * The server MUST validate `commiter-hei-id` element (present *within* the
-   given XML). The server MUST verify that the caller is indeed covering this
-   HEI (and is therefore allowed to append commits in its name).
-
- * The server MUST replace `commit-date` value (present *within* the
-   given XML) with its own, current server time. This is to make sure that
-   subsequent timeline entries have their commit-dates in order.
-
- * The server MUST validate the appended entry and make sure that they are
-   valid in their context. If the specification does not explicitly state if
-   the action should be allowed to be performed by the remote caller, then it
-   is up to the server implementers to decide.
-
-   This also means that clients cannot be 100% sure if their timeline entry
-   will be accepted or not (regardless of how well their implementations are
-   coded). Servers SHOULD supply a proper `<user-message>` element in their
-   `<error-response>`, for clients to use in cases of such rejected requests.
+ * The server is REQUIRED to publish the list of supported update requests in
+   its [manifest entry](../manifest-entry.xsd).
 
 
 Permissions
 -----------
 
- * If the caller covers the receiving HEI of the Outgoing Mobility identified
-   by `mobility_id` parameter, then he MUST be allowed to call this API.
-
- * If the caller covers the sending HEI of the mobility, then he MAY be allowed
-   to call this API. (It seems reasonable, but we leave this decision to your
-   team.)
-
- * All other callers MUST NOT be allowed access to this API.
+All requests from the EWP Network MUST be allowed access to this API. Consult
+the [Echo API][echo] specs for details on handling unprivileged requests.
 
 
 Handling of invalid parameters
@@ -105,32 +73,30 @@ Handling of invalid parameters
 
  * General [error handling rules][error-handling] apply.
 
- * Invalid or unknown `mobility_id` values MUST result in a HTTP 400 error
+ * If some of the required parameters (the ones with `minOccurs="1"`) are
+   missing, or are passed in an invalid format, then the server MUST respond
+   with HTTP 400 error response.
+
+ * If the request contains unknown parameters (extra elements not allowed in
+   the schema), then the server MUST ignore such parameters, and continue with
+   processing the request.
+
+ * If `<mobility-id>` doesn't exist, or the requester does not cover the
+   receiving HEI of this mobility, then server MUST respond with HTTP 400 error
    response.
 
- * If object identified by `mobility_id` exists, but it is not visible to the
-   requester (and thus, not modifiable too), then the server also MUST respond
-   with HTTP 400 error.
+ * If `<sending-hei-id>` doesn't match `<mobility-id>`'s sending HEI, then the
+   server MUST respond with HTTP 400 error response.
 
- * Invalid or rejected `append` values (e.g. when the value does not conform to
-   the proper XML Schema, or the element is otherwise rejected by the server)
-   MUST result in a HTTP 400 error response. If the client did everything
-   according to the specification, but the server decided to reject his request
-   for its own reasons, then the server SHOULD supply a proper `<user-message>`
-   element in their `<error-response>`.
-
- * Invalid (out-of-date) values of `sync_verifier` MUST result in HTTP 409
-   error response. Clients which receive this error should refresh their stale
-   Outgoing Mobility object and resolve all conflicts before resubmitting
-   their requests.
+ * More requirements - in context of specific types of updates - are described
+   in the [request.xsd](request.xsd) file.
 
 
 Response
 --------
 
-Servers MUST respond with a valid XML document described by the
-[update-response.xsd](update-response.xsd) schema. See the schema annotations
-for further information.
+Servers MUST respond with a valid XML document described by the [response.xsd]
+(response.xsd) schema. See the schema annotations for further information.
 
 
 [develhub]: http://developers.erasmuswithoutpaper.eu/
@@ -139,4 +105,3 @@ for further information.
 [discovery-api]: https://github.com/erasmus-without-paper/ewp-specs-api-discovery
 [echo]: https://github.com/erasmus-without-paper/ewp-specs-api-echo
 [error-handling]: https://github.com/erasmus-without-paper/ewp-specs-architecture#error-handling
-[institutions-api]: https://github.com/erasmus-without-paper/ewp-specs-api-institutions
