@@ -11,6 +11,10 @@ Summary
 This endpoint allows the receiving HEI to suggest updates to specific Outgoing
 Mobility fields, stored on the *sending* HEI's servers.
 
+It is required to implement this endpoint, but servers are allowed to NOT
+support any of its update types (there are lots of updates types, and more will
+be added in the future).
+
 
 Updates or suggestions?
 -----------------------
@@ -37,6 +41,23 @@ shift:
    might consider saving updates *without* having a human review them. As this
    continues, the server will begin responding with *"Your update has been
    received and approved automatically"*.
+
+
+Why not separate APIs?
+----------------------
+
+Initially, the features of this endpoint were covered by multiple separate
+APIs (one API for each type of change). However, we quickly discovered **major
+similarities** between these APIs: similar request parameters, the same content
+of the response, etc. So we chose to merge them into the existing Outgoing
+Mobilities API, and allow servers to specify which updates they support.
+
+We also introduced a simple versioning on update types. As you see, each update
+type has the `-v1` suffix. If, in the future, we decide that some type of an
+update should require more request parameters, then we will release `-v2` of
+this update type, while allowing the previous versions to work in a
+backward-compatible manner. This system is not as flexible as EWP's API
+versioning is, but it should be flexible enough.
 
 
 Request method and parameters
