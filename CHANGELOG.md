@@ -5,6 +5,25 @@ This document describes all the changes made to the *Outgoing Mobilities API*
 document, starting from its first beta draft version.
 
 
+0.4.0
+-----
+
+* The `update` endpoint has been reintroduced.
+
+  - Servers are REQUIRED to implement this endpoint (publish its URL).
+  - Servers are also allowed to NOT support any of its update types (in which
+    case, the server implementation basicly does nothing).
+  - Of course, in the long run, servers are RECOMMENDED to support all types of
+    updates.
+
+  New version of this endpoint behaves completely different than the previous
+  one did (the one in version 0.2.1). It has been combined from a couple of
+  unreleased draft APIs (e.g. [this one]
+  (https://github.com/erasmus-without-paper/ewp-specs-api-nominations-approval)
+  and [this one]
+  (https://github.com/erasmus-without-paper/ewp-specs-api-arrivals-departures)).
+
+
 0.3.0
 -----
 
@@ -55,7 +74,6 @@ Learning Agreement components were **completely redesigned**:
 **Other changes:**
 
 * The `update` endpoint has been removed. This API is now strictly "read only".
-  Separate APIs will be designed to replace the `update` endpoint.
 
 * Mobility IDs are no longer required to be universally unique - it is okay if
   they are unique within the sending institution. They also don't have to be
