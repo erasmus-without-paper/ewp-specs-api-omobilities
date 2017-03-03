@@ -454,8 +454,12 @@
                                             LA is signed for the first time this element contains the same courses as the
                                             `before-mobility-snapshot` does, but this may change later in time.
 
-                                            Note: This element corresponds to "Table C" on the EUC LA template (attached
-                                            in this XSD's repository).
+                                            Note: If you want to compare this to the tables in the EUC LA PDF template
+                                            (attached in this XSD's repository), then this element describes what "Table A"
+                                            would look like if all changes from "Table A2" were applied to it. It often
+                                            *resambles* "Table C", but it's NOT its equivalent (EWP ToRs API serves an
+                                            equivalent of "Table C"). You can discuss it here:
+                                            https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/17
                                         </xs:documentation>
                                     </xs:annotation>
                                 </xs:element>
@@ -498,8 +502,8 @@
                             `components-recognized` element has the same base format as the
                             `components-studied` element does, and so, **we are not describing this format
                             here again**. The only difference is that other types of entities are described
-                            by it - see tables "B", "B2" and "D" on the EUC LA template (attached in this
-                            XSD's repository).
+                            by it - in EUC LA template, these entities are described by tables "B" and
+                            "B2" (while `components-studied` describe tables "A" and "A2").
 
                             Note, that very few servers are planning to provide this feature at the initial
                             stages of EWP adoption:
