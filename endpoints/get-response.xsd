@@ -51,7 +51,7 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:group ref="SequenceOfMobilities"/>
+                <xs:group ref="SequenceOfMobilities" minOccurs="1" maxOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
