@@ -859,13 +859,98 @@
             <xs:documentation>
                 Describes a snapshot of the list of studied components.
 
-                This is global, because it is used in external XSDs. It MUST stay this way, for
+                This is global, because it is used in other XSDs. It MUST stay this way, for
                 backward compatibility.
             </xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:element ref="component-studied" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="component-studied" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>
+                        An ordered list of components present in this snapshot.
+
+                        The order matters (search for `index` elements in this XSD to understand why).
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="approval" minOccurs="0" maxOccurs="3">
+                <xs:annotation>
+                    <xs:documentation>
+                        Indicates which of the three approving parties (student, and two coordinators)
+                        have already approved this snapshot.
+
+                        All approved snapshots (such as `before-mobility-snapshot` and
+                        `latest-approved-snapshot`) MUST contain three `approval` elements. On the
+                        other hand, the `latest-draft-snapshot` MUST be approved by zero, one or two
+                        parties, it MUST NOT be approved by all three parties (because it wouldn't be
+                        a draft anymore).
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="by-party" minOccurs="1" maxOccurs="1" type="ApprovingParty">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    The approving party.
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="timestamp" minOccurs="0" maxOccurs="1" type="xs:dateTime">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    The time when the snapshot has been approved by this party (if known).
+
+                                    Servers are NOT REQUIRED to store this information. For example, some HEIs
+                                    might get their student approvals on paper (instead of allowing the students to
+                                    approve them online). Such HEIs will put the "approved by the student" label on
+                                    the snapshot automatically, immediatelly after the snapshot gets approved by
+                                    the sending coordinator (aka `sending-hei` party). In such cases, the actual
+                                    date of student's approval is not stored in the system, but the HEI "vouches"
+                                    that such approval took place.
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="should-now-be-approved-by" minOccurs="0" maxOccurs="3" type="ApprovingParty">
+                <xs:annotation>
+                    <xs:documentation>
+                        An optional indicator that the server is now waiting for this snapshot to be
+                        approved by the parties provided here.
+
+                        There are numerous ways in which the sending HEIs might want the process of
+                        draft approval to proceed. This element allows these HEIs suggest the order of
+                        approvals they prefer. Some HEIs might even *reject* approvals unless a proper
+                        `should-now-be-approved-by` is in place. Please discuss here:
+                        https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/16
+
+                        The presence of this element MAY trigger some special behavior in the client
+                        UIs. For example, the mobilities waiting for user's approval can be highlighted
+                        for this user when he's browsing through the list of mobilities. Or, perhaps,
+                        the user might even receive an email notification.
+
+                        This element MUST NOT refer to parties which have already approved this
+                        snapshot (so, in effect, it can only be used in the `latest-draft-snapshot`
+                        element). It also MUST NOT be used if the snapshot doesn't contain any changes
+                        (i.e. when `latest-draft-changes` is empty).
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
         </xs:sequence>
+        <xs:attribute name="in-effect-since" type="xs:dateTime" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    The date at which this snapshot has been approved by all three parties. Servers
+                    are RECOMMENDED to store this date and provide it here.
+
+                    You might think it's redundant because it the same as the latest of the three
+                    timestamps present in the `approval` elements, but some servers might not store
+                    the timestamps of individual party-approvals, while deciding to store the
+                    timestamp of the *last* approval.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
     </xs:complexType>
 
     <xs:complexType name="SnapshotOf_ComponentsRecognized">
