@@ -941,13 +941,12 @@
         <xs:attribute name="in-effect-since" type="xs:dateTime" use="optional">
             <xs:annotation>
                 <xs:documentation>
-                    The date at which this snapshot has been approved by all three parties. Servers
-                    are RECOMMENDED to store this date and provide it here.
-
-                    You might think it's redundant because it the same as the latest of the three
-                    timestamps present in the `approval` elements, but some servers might not store
-                    the timestamps of individual party-approvals, while deciding to store the
-                    timestamp of the *last* approval.
+                    Indicates the date since which the snapshot is (or was) considered "in effect"
+                    by the sending HEI. In theory, this should match the latest of the three
+                    approval dates, but it doesn't have to. Servers are not required to provide
+                    this date, but it's RECOMMENDED to do so. It MAY be an approximate date. If
+                    these dates are provided, then their order MUST be consistent with the order of
+                    the snapshots on the list.
                 </xs:documentation>
             </xs:annotation>
         </xs:attribute>
