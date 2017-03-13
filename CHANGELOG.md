@@ -5,6 +5,26 @@ This document describes all the changes made to the *Outgoing Mobilities API*
 document, starting from its first beta draft version.
 
 
+0.5.0
+-----
+
+* Added a way to attach approval-related properties to LA components snapshots:
+
+  - `approval` element,
+  - `should-now-be-approved-by` element,
+  - `in-effect-since` attribute.
+
+  Discuss [here]
+  (https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/16).
+
+* Added `ewp-reason-code` to LA components changes ([details]
+  (https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/15)).
+
+* Removed incorrect references to EUC PDF LA template Tables C and D from the
+  XSD annotations ([details]
+  (https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/17)).
+
+
 0.4.0
 -----
 
