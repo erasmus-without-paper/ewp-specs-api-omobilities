@@ -73,8 +73,8 @@ Request method and parameters
    (This endpoint is **NOT** using the regular `application/x-www-form-urlencoded`
    request format which most of other EWP endpoints do.)
 
- * The are various types of update requests described in the [request.xsd]
-   (request.xsd) schema. The server is NOT REQUIRED to support all of them.
+ * The are various types of update requests described in the
+   [request.xsd](request.xsd) schema. The server is NOT REQUIRED to support all of them.
    Clients MUST check if the server supports certain type of update request
    before sending it.
 
@@ -116,8 +116,8 @@ Handling of invalid parameters
 Response
 --------
 
-Servers MUST respond with a valid XML document described by the [response.xsd]
-(response.xsd) schema. See the schema annotations for further information.
+Servers MUST respond with a valid XML document described by the
+[response.xsd](response.xsd) schema. See the schema annotations for further information.
 
 
 [develhub]: http://developers.erasmuswithoutpaper.eu/

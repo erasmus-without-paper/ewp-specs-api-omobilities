@@ -14,15 +14,15 @@ document, starting from its first beta draft version.
   - `should-now-be-approved-by` element,
   - `in-effect-since` attribute.
 
-  Discuss [here]
-  (https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/16).
+  Discuss
+  [here](https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/16).
 
-* Added `ewp-reason-code` to LA components changes ([details]
-  (https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/15)).
+* Added `ewp-reason-code` to LA components changes
+  ([details](https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/15)).
 
 * Removed incorrect references to EUC PDF LA template Tables C and D from the
-  XSD annotations ([details]
-  (https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/17)).
+  XSD annotations
+  ([details](https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/17)).
 
 
 0.4.0
@@ -38,10 +38,9 @@ document, starting from its first beta draft version.
 
   New version of this endpoint behaves completely different than the previous
   one did (the one in version 0.2.1). It has been combined from a couple of
-  unreleased draft APIs (e.g. [this one]
-  (https://github.com/erasmus-without-paper/ewp-specs-api-nominations-approval)
-  and [this one]
-  (https://github.com/erasmus-without-paper/ewp-specs-api-arrivals-departures)).
+  unreleased draft APIs
+  (e.g. [this one](https://github.com/erasmus-without-paper/ewp-specs-api-nominations-approval)
+  and [this one](https://github.com/erasmus-without-paper/ewp-specs-api-arrivals-departures)).
 
 
 0.3.0
@@ -97,8 +96,8 @@ Learning Agreement components were **completely redesigned**:
 
 * Mobility IDs are no longer required to be universally unique - it is okay if
   they are unique within the sending institution. They also don't have to be
-  in the UUID format anymore (reasoning [here]
-  (https://github.com/erasmus-without-paper/general-issues/issues/10#issuecomment-280302623)).
+  in the UUID format anymore (reasoning
+  [here](https://github.com/erasmus-without-paper/general-issues/issues/10#issuecomment-280302623)).
 
 * It is now allowed to provide names of the student in multiple languages or
   scripts (same way as in Abstract Contact data type).
@@ -111,11 +110,11 @@ Learning Agreement components were **completely redesigned**:
 
 * Phone Number and Address data types are now in `stable-v1` namespace.
 
-* `minOccurs` and `maxOccurs` are now provided explicitly ([why?]
-  (https://github.com/erasmus-without-paper/general-issues/issues/22)).
+* `minOccurs` and `maxOccurs` are now provided explicitly
+  ([why?](https://github.com/erasmus-without-paper/general-issues/issues/22)).
 
-* Introduced limits on `ounit-id` and `iia-id` values ([more information]
-  (https://github.com/erasmus-without-paper/general-issues/issues/23)).
+* Introduced limits on `ounit-id` and `iia-id` values
+  ([more information](https://github.com/erasmus-without-paper/general-issues/issues/23)).
 
 
 0.2.0
@@ -124,16 +123,15 @@ Learning Agreement components were **completely redesigned**:
 * The `<component-code>` element has been renamed to `<los-code>`. Also, the
   types and example values of `<los-id>` and `<loi-id>` elements were changed.
   Both of these changes are an aftereffect of the ID/code change in the Courses
-  API. See [this thread]
-  (https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/9).
+  API. See [this thread](https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/9).
 
-* Renamed `nominee-field-isced-code` to `nominee-isced-f-code` ([why?]
-  (https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/8#issuecomment-270402114)).
+* Renamed `nominee-field-isced-code` to `nominee-isced-f-code`
+  ([why?](https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/8#issuecomment-270402114)).
 
 * Added a new `planned_arrival_after` request parameter.
 
-* Used surrogate IDs in examples ([why?]
-  (https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/9#issuecomment-271272493)).
+* Used surrogate IDs in examples
+  ([why?](https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/9#issuecomment-271272493)).
 
 
 0.1.1
