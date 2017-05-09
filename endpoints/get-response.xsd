@@ -314,7 +314,7 @@
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="status" type="_MobilityStatus" minOccurs="1" maxOccurs="1">
+                <xs:element name="status" type="MobilityStatus" minOccurs="1" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
                             Current status of the mobility.
@@ -716,7 +716,7 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:simpleType name="_MobilityStatus">
+    <xs:simpleType name="MobilityStatus">
         <xs:restriction base="xs:string">
             <xs:enumeration value="nomination">
                 <xs:annotation>
