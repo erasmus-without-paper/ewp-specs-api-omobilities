@@ -108,13 +108,23 @@
 
                     In the future, it may become a "subclass" of a more generic Mobility parent class
                     (and some of the fields might be moved to the parent).
+
+                    Immutable elements
+                    ------------------
+
+                    Every mobility has its unique sending-hei, receiving-hei and nominee, which
+                    MUST NOT change after the mobility is created. For example, if it turns out
+                    that a different student will be nominated for this mobility, then a new
+                    mobility-id MUST be created for such nomination. However, the properties of
+                    these mobility-related entities still MAY change. E.g. the student's name may
+                    get updated.
                 </xs:documentation>
             </xs:annotation>
             <xs:sequence>
                 <xs:element name="mobility-id" type="ewp:AsciiPrintableIdentifier" minOccurs="1" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
-                            Identifier of the mobility (as assigned by the sending HEI).
+                            Identifier of the mobility (as assigned by the sending HEI). Immutable.
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
@@ -129,7 +139,7 @@
                             <xs:element name="hei-id" type="xs:string" minOccurs="1" maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
-                                        SCHAC ID of the institution.
+                                        SCHAC ID of the institution. Immutable.
                                         https://github.com/erasmus-without-paper/ewp-specs-api-registry/#schac-identifiers
 
                                         Clients can fetch more information on this HEI from the Institutions API
@@ -178,7 +188,7 @@
                             <xs:element name="hei-id" type="xs:string" minOccurs="1" maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
-                                        SCHAC ID of the institution.
+                                        SCHAC ID of the institution. Immutable.
                                         https://github.com/erasmus-without-paper/ewp-specs-api-registry/#schac-identifiers
 
                                         Clients can fetch more information on this HEI from the Institutions API
@@ -219,7 +229,7 @@
                 <xs:element name="student" minOccurs="1" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
-                            The section describes the student who is being sent for this mobility.
+                            The section describes the student who is being sent for this mobility. Immutable.
 
                             These fields MAY change in time (e.g. after the student changes his name or
                             address).
