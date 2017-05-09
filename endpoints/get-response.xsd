@@ -388,7 +388,7 @@
                             <xs:element name="language" type="xs:language" minOccurs="1" maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
-                                        The code of the language.
+                                        The BCP 47 code of the language.
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
