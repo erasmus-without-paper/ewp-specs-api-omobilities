@@ -67,16 +67,16 @@ Request method and parameters
    request methods.
 
  * The body of the request MUST contain a raw XML element described in the
-   [request.xsd](request.xsd) schema. The request SHOULD also contain a
-   matching `Content-Type` header (such as `text/xml`).
+   [update-request.xsd](update-request.xsd) schema. The request SHOULD also
+   contain a matching `Content-Type` header (such as `text/xml`).
 
    (This endpoint is **NOT** using the regular `application/x-www-form-urlencoded`
    request format which most of other EWP endpoints do.)
 
  * The are various types of update requests described in the
-   [request.xsd](request.xsd) schema. The server is NOT REQUIRED to support all of them.
-   Clients MUST check if the server supports certain type of update request
-   before sending it.
+   [update-request.xsd](update-request.xsd) schema. The server is NOT REQUIRED
+   to support all of them. Clients MUST check if the server supports certain
+   type of update request before sending it.
 
  * The server is REQUIRED to publish the list of supported update requests in
    its [manifest entry](../manifest-entry.xsd).
@@ -110,14 +110,15 @@ Handling of invalid parameters
    server MUST respond with HTTP 400 error response.
 
  * More requirements - in context of specific types of updates - are described
-   in the [request.xsd](request.xsd) file.
+   in the [update-request.xsd](update-request.xsd) file.
 
 
 Response
 --------
 
 Servers MUST respond with a valid XML document described by the
-[response.xsd](response.xsd) schema. See the schema annotations for further information.
+[update-response.xsd](update-response.xsd) schema. See the schema annotations
+for further information.
 
 
 [develhub]: http://developers.erasmuswithoutpaper.eu/
