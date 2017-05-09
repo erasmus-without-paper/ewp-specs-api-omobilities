@@ -11,9 +11,9 @@ Summary
 This endpoint allows the receiving HEI to suggest updates to specific Outgoing
 Mobility fields, stored on the *sending* HEI's servers.
 
-It is required to implement this endpoint, but servers are allowed to NOT
-support any of its update types (there are lots of updates types, and more will
-be added in the future).
+It is required to implement this endpoint, but servers are allowed to support
+only a subset of its update types (there are lots of updates types, and more
+will be added in the future).
 
 
 Updates or suggestions?
@@ -102,7 +102,7 @@ Handling of invalid parameters
    the schema), then the server MUST ignore such parameters, and continue with
    processing the request.
 
- * If `<mobility-id>` doesn't exist, or the requester does not cover the
+ * If updated mobility does not exist, or the requester does not cover the
    receiving HEI of this mobility, then server MUST respond with HTTP 400 error
    response.
 

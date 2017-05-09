@@ -42,17 +42,7 @@
                 <xs:element name="sending-hei-id" type="ewp:AsciiPrintableIdentifier" minOccurs="1" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
-                            ID of the sending HEI of the mobility.
-                        </xs:documentation>
-                    </xs:annotation>
-                </xs:element>
-                <xs:element name="mobility-id" type="ewp:AsciiPrintableIdentifier" minOccurs="1" maxOccurs="1">
-                    <xs:annotation>
-                        <xs:documentation>
-                            ID of the mobility which this update request is about.
-
-                            The sending partner of this mobility MUST match the partner provided in
-                            `sending-hei-id`.
+                            ID of the sending HEI of the mobility (or mobilities) being updated.
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
@@ -83,6 +73,16 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
+                <xs:element name="mobility-id" type="ewp:AsciiPrintableIdentifier" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            ID of the mobility which this update request is about.
+
+                            The sending partner of this mobility MUST match the partner provided in
+                            `sending-hei-id`.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
                 <xs:element name="approving-party" minOccurs="1" maxOccurs="1" type="mobility:ApprovingParty">
                     <xs:annotation>
                         <xs:documentation>
@@ -134,6 +134,16 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
+                <xs:element name="mobility-id" type="ewp:AsciiPrintableIdentifier" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            ID of the mobility which this update request is about.
+
+                            The sending partner of this mobility MUST match the partner provided in
+                            `sending-hei-id`.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
                 <xs:element name="replace-actual-arrival-date" minOccurs="0" maxOccurs="1" type="xs:date">
                     <xs:annotation>
                         <xs:documentation>
@@ -166,6 +176,16 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
+                <xs:element name="mobility-id" type="ewp:AsciiPrintableIdentifier" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            ID of the mobility which this update request is about.
+
+                            The sending partner of this mobility MUST match the partner provided in
+                            `sending-hei-id`.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
                 <xs:element name="current-latest-draft-snapshot" minOccurs="1" maxOccurs="1" type="mobility:SnapshotOf_ComponentsStudied">
                     <xs:annotation>
                         <xs:documentation>
