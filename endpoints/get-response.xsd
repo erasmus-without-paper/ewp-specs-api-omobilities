@@ -51,7 +51,14 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:group ref="SequenceOfMobilities" minOccurs="1" maxOccurs="1"/>
+                <xs:group ref="SequenceOfMobilities" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            Clients should use the `mobility-id` subelements to match objects with their
+                            `mobility_id` request parameters.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:group>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -65,11 +72,10 @@
         </xs:annotation>
         <xs:sequence>
             <xs:choice>
-                <xs:group ref="SingleMobilityObject">
+                <xs:group ref="SingleMobilityObject" minOccurs="0" maxOccurs="unbounded">
                     <xs:annotation>
                         <xs:documentation>
-                            A list of matching mobilities. (Clients should use the `mobility-id`
-                            subelements to match objects with their `mobility_id` request parameters.)
+                            A list of matching mobilities.
 
                             Currently there's only type of mobility exposed by this API. More types MAY
                             come in the future.
