@@ -5,6 +5,38 @@ This document describes all the changes made to the *Outgoing Mobilities API*
 document, starting from its first beta draft version.
 
 
+0.6.0
+-----
+
+* Backward-incompatible change in the `update` endpoint. The `<mobility-id>`
+  element  in the `update-request.xsd` file has been moved "downwards":
+  Previously ever update request referred to exactly one mobility ID, now each
+  type of update request may decide on the number of mobility IDs it refers to.
+  (If you have already implemented update requests, then you simply need to
+  move one element to a different place in the XML you send.)
+
+* New parameter in the `index` endpoint: `modified_since`. It is RECOMMENDED
+  for the servers to support this parameter, to avoid unnecessary network
+  traffic.
+
+* Certain mobility properties were marked as immutable. That is, we don't want
+  these properties to change - if they do, then a new mobility ID should be
+  created. Search for "immutable" in `endpoints/get-response.xsd` to read more
+  about this.
+
+* Bugfix: Allow for more than one mobility per `get` response
+  ([link](https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/21)).
+
+* Highlight the fact, the `xs:language` type is in BCP 47 format. This type
+  is used in `nominee-language-skill/language` element.
+
+* Fixed broken links.
+
+* New update type in `update-request.xsd`: `<update-statuses-v1>`. This is for
+  approving nominations
+  ([link](https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/22)).
+
+
 0.5.0
 -----
 
