@@ -71,18 +71,16 @@
             </xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:choice>
-                <xs:group ref="SingleMobilityObject" minOccurs="0" maxOccurs="unbounded">
-                    <xs:annotation>
-                        <xs:documentation>
-                            A list of matching mobilities.
+            <xs:group ref="SingleMobilityObject" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>
+                        A list of matching mobilities.
 
-                            Currently there's only type of mobility exposed by this API. More types MAY
-                            come in the future.
-                        </xs:documentation>
-                    </xs:annotation>
-                </xs:group>
-            </xs:choice>
+                        Currently there's only type of mobility exposed by this API. More types MAY
+                        come in the future.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:group>
         </xs:sequence>
     </xs:group>
 
