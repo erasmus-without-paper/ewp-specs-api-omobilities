@@ -5,6 +5,12 @@ This document describes all the changes made to the *Outgoing Mobilities API*
 document, starting from its first beta draft version.
 
 
+0.6.1
+-----
+
+* Minor fixes in XSD's "style".
+
+
 0.6.0
 -----
 
