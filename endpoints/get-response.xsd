@@ -286,6 +286,80 @@
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
+                            <xs:element name="photo-url" minOccurs="0" maxOccurs="unbounded">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        If given, then it contains the URLs at which the client may fetch the photo of
+                                        the student. Multiple URLs may be provided with multiple versions of the photo,
+                                        or various types of the photo.
+
+                                        * Whenever possible, the server SHOULD provide an up-to-date photo in a
+                                          standard EU passport photo aspect ratio (width x height = 35 x 45), eligable
+                                          to be used for a student card. Such photo SHOULD come first in this list.
+
+                                        * Other photos in many aspect ratios may follow. They may be variations of the
+                                          same photo (e.g. without cropping, or with a different cropping), or they may
+                                          be completely different photos.
+
+                                        * All URLs MUST be accessible to anonymous requesters as described here:
+                                          https://github.com/erasmus-without-paper/ewp-specs-sec-cliauth-none
+
+                                        * URLs MAY contain some kind of access tokens which may expire in time. Clients
+                                          MAY send the URL directly to their users' brosers, but they should be aware
+                                          that such URLs may expire at any moment. If the clients need to have a copy
+                                          of the photo, then they MUST copy the contents of the photo to their servers.
+                                    </xs:documentation>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="ewp:HTTPS">
+                                            <xs:attribute name="size-px" use="optional">
+                                                <xs:annotation>
+                                                    <xs:documentation>
+                                                        If given, then this attribute contains the exact dimensions (width and height)
+                                                        of the photo, in pixels. These are expressed by a single string of two values
+                                                        concatenated with "x" character, e.g. "350x450" means that the photo's width is
+                                                        350 pixels, and its height is 450 pixels.
+
+                                                        Clients may use this attribute to quickly browse through the list of URLs and
+                                                        pick one that suits their needs best (without actually fetching the images). It
+                                                        is RECOMMENDED (but not required) for the servers to supply it.
+                                                    </xs:documentation>
+                                                </xs:annotation>
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:pattern value="[0-9]+x[0-9]+"/>
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:attribute>
+                                            <xs:attribute name="public" use="optional" type="xs:boolean" default="false">
+                                                <xs:annotation>
+                                                    <xs:documentation>
+                                                        By default, all photos MUST be treated as private personal data, and SHOULD
+                                                        NOT be viewed to other users.
+
+                                                        However, if this attribute is "true", then either it means that the **nominee
+                                                        himself** has granted for this photo to be viewed **publicly**. This means that
+                                                        the client MAY show this photo to all other students and staff members, and
+                                                        even to anonymous users of his system. However, this choice MAY change at any
+                                                        time, so - if the client rely on it - then it MUST revalidate if the photo is
+                                                        still public every now and then.
+                                                    </xs:documentation>
+                                                </xs:annotation>
+                                            </xs:attribute>
+                                            <xs:attribute name="date" use="optional" type="xs:date">
+                                                <xs:annotation>
+                                                    <xs:documentation>
+                                                        If given, then it indicates the time when the photo has been taken, or
+                                                        uploaded. This date can be used by the client to verify if the photo is "fresh
+                                                        enough", for example for the purposes of issuing student cards, etc.
+                                                    </xs:documentation>
+                                                </xs:annotation>
+                                            </xs:attribute>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
                             <xs:element ref="a:street-address" minOccurs="0" maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>

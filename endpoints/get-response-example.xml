@@ -30,6 +30,9 @@
             <citizenship>NO</citizenship>
             <gender>1</gender>
             <email>ivan@example.com</email>
+            <photo-url size-px="350x450" date="2009-11-13">https://uio.no/student-photos/12345-small.jpg?token=878f2703-1752-4dc8-a1d9-1957a7732f0a</photo-url>
+            <photo-url size-px="3500x4500" date="2009-11-13">https://uio.no/student-photos/12345-big.jpg?token=878f2703-1752-4dc8-a1d9-1957a7732f0a</photo-url>
+            <photo-url>https://uio.no/student-photos/some-other-photo.jpg</photo-url>
             <a:mailing-address>
                 <!-- See https://github.com/erasmus-without-paper/ewp-specs-types-address -->
             </a:mailing-address>
