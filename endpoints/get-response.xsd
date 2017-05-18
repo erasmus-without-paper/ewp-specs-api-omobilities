@@ -427,7 +427,7 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="efq-level-studied-at-nomination" type="ewp:EqfLevel" minOccurs="0" maxOccurs="1">
+                <xs:element name="eqf-level-studied-at-nomination" type="ewp:EqfLevel" minOccurs="0" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
                             The student is sent for the mobility as part of one of his study programmes.
@@ -437,10 +437,10 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="efq-level-studied-at-departure" type="ewp:EqfLevel" minOccurs="0" maxOccurs="1">
+                <xs:element name="eqf-level-studied-at-departure" type="ewp:EqfLevel" minOccurs="0" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
-                            This is similar to the `efq-level-studied-at-nomination` element, but this time
+                            This is similar to the `eqf-level-studied-at-nomination` element, but this time
                             we are interested in the EQF level the student **will have** when the mobility
                             actually begins (according to many IROs this is more important than the one the
                             students has at the time of the nomination).
