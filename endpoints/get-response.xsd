@@ -640,18 +640,39 @@
                     <xs:annotation>
                         <xs:documentation>
                             The EWP's LOS ID of the component, exactly as exposed via the receiving HEI's
-                            Courses API. Please note, that is NOT necessarilly the same as the "Component
-                            Code" present on the EUC template.
+                            Courses API. Please note, that it is USUALLY NOT the same as the "Component
+                            Code" present on the EUC template (compare with `los-code` element).
                             https://github.com/erasmus-without-paper/ewp-specs-api-courses#unique-identifiers
 
-                            Please note, that the sending HEI is NOT required to make use of the receiving
-                            HEI's Courses API when LA is being drafted. Also, the receiving HEI is NOT
-                            required to implement the Courses API anyway. It is however REQUIRED for the
-                            sending HEI to keep this field in its database (because the *receiving HEI*
-                            might want to fill it out).
+                            Notes for sending HEI implementers
+                            ----------------------------------
 
-                            If the field *is* given, then the values of *many other* fields SHOULD be
-                            derived from the matching values served by the Courses API.
+                            This field is optional, but you are still REQUIRED to have a place for it in
+                            your database.
+
+                            You do not need to fill it out. In fact, in most cases it will be very
+                            difficult or even impossible for you to fill it out, because neither you nor
+                            your student has the knowledge of the correct LOS ID nor LOI ID. This is due to
+                            the fact that many courses won't have a proper LOI created in the receiving
+                            HEI's system (and so, you won't see it via the receiving HEI's Courses API).
+
+                            However, the receiving HEI *has* that knowledge (or *will have*, eventually),
+                            and you MUST allow the receiving HEI to fill out this gap. (The receiving HEI
+                            does this by calling the `update` endpoint.)
+
+                            Of course, you (or rather your coordinator, or your student) can also fill it
+                            out yourself, once a proper LOI becomes available in the receiving HEI's
+                            system. In order to allow your users to do that you will be required to
+                            replicate the course catalogue of the receiving HEI on your side (see Course
+                            Replication API for details).
+
+                            All this might seem a bit vague, but we (EWP designers) are not yet sure who
+                            should be responsible for filling out this field. We are however quite sure
+                            that both parties would benefit from filling it out.
+
+                            If the field *is* given (either by you, or by the receiving HEI), then the
+                            values of *many other* fields SHOULD be derived from (copied from) the matching
+                            values served by receiving HEI's Courses API.
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
@@ -703,11 +724,7 @@
                             Courses API.
                             https://github.com/erasmus-without-paper/ewp-specs-api-courses#unique-identifiers
 
-                            Please note, that the sending HEI is NOT required to make use of the receiving
-                            HEI's Courses API when LA is being drafted. Also, the receiving HEI is NOT
-                            required to implement the Courses API anyway. It is however REQUIRED for the
-                            sending HEI to keep this field in its database (because the *receiving HEI*
-                            might want to fill it out).
+                            Also, please see "Notes for sending HEI implementers" in the `los-id` element!
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
