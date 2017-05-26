@@ -493,7 +493,8 @@
                             at the receiving HEI.
 
                             We need different versions of this list because the EUC LA template (attached in
-                            this XSD's repository) requires it.
+                            this XSD's repository) requires it. As has been reported by WP2, the receiving
+                            HEI might also need all these versions.
                         </xs:documentation>
                     </xs:annotation>
                     <xs:complexType>
