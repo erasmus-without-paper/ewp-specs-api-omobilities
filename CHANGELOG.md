@@ -5,6 +5,29 @@ This document describes all the changes made to the *Outgoing Mobilities API*
 document, starting from its first beta draft version.
 
 
+0.7.0
+-----
+
+* Backward-incompatible change in the `get` endpoint. The previously mendatory
+  `<nominee-eqf-level>` element has been split into two separate elements,
+  both of them optional:
+
+  - `<eqf-level-studied-at-nomination>`
+  - `<eqf-level-studied-at-departure>`
+
+  See [this issue](https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/20)
+  for more details about this change.
+
+* Added optional nominee's photos to the `get` endpoint (see
+  [this issue](https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/18)).
+
+* Added a missing update type in `manifest-entry.xsd` (the schema didn't allow
+  server implementers to support the `update-statuses-v1` update).
+
+* Better explained the "optional nature" of `<los-id>` and and `<loi-id>`
+  elements.
+
+
 0.6.1
 -----
 
