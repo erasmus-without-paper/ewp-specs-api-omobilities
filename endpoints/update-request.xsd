@@ -61,6 +61,10 @@
                     <xs:element ref="update-arrival-departure-dates-v1"/>
                     <xs:element ref="update-components-studied-v1"/>
                     <xs:element ref="update-statuses-v1"/>
+                    <!--
+                    Note for future XSD designers: When adding new types here, remember to add them
+                    in the manifest-entry.xsd file too.
+                    -->
                 </xs:choice>
             </xs:sequence>
         </xs:complexType>
