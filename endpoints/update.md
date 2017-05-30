@@ -113,6 +113,51 @@ Handling of invalid parameters
    in the [update-request.xsd](update-request.xsd) file.
 
 
+Handling edit conflicts
+-----------------------
+
+[Edit conflicts](https://en.wikipedia.org/wiki/Edit_conflict) are special cases
+of bad requests. Such conflicts can always happen (they cannot be completely
+avoided), and both server and client implementers MUST be aware of them.
+
+In context of this particular API, edit conflicts occur when the receiving HEI
+attempts to change something, which has been concurrently changed on the
+sending HEI's servers. For example:
+
+ - it tries to approve a version of the LA which is no longer the "latest
+   draft" version,
+ - or, it tries to delete a course from the list of the components, but the
+   course no longer exists on this list,
+ - etc.
+
+Some edit conflicts MAY be automatically resolved be the server (the sending
+HEI), but most won't be. They must be detected though. For this reason:
+
+ * The server (the sending HEI) is REQUIRED to perform some additional
+   assertions to make sure that the client (the receiving HEI) had up-to-date
+   data before it made the request. If it turns out that the client didn't have
+   to up-to-date data, then the server will respond - as instructed by the
+   [general EWP error handling rules][error-handling] - with the [HTTP 409
+   Conflict][http-409] error.
+
+ * The client (the receiving HEI) is REQUIRED to expect these HTTP 409
+   responses, and deal with them "appropriately". Usually this means that you
+   need to fetch the fresh data from the server and ask your user to repeat his
+   action once again. For example, you can display a message of this sort:
+
+   *Sorry, it turns out that a new version of the LA has been published by the
+   sending HEI just before you clicked 'Approve'. It seems that someone else is
+   doing modifications to this LA in the same time you were viewing it, and he
+   made his change "first", so your approval couldn't be saved. Please review
+   this new version and, if it's still okay with you, click 'Approve' again!*
+
+Every update type generates edit conflicts of its own. That's why **we don't**
+explain all possible conflicts here - instead, we do that in the
+[update-request.xsd](update-request.xsd) file. (BTW - this is often true for
+all other EWP specifications too - many vital EWP requirements are described in
+the XSD annotations! You MUST read those. Always.)
+
+
 Response
 --------
 
@@ -127,3 +172,4 @@ for further information.
 [discovery-api]: https://github.com/erasmus-without-paper/ewp-specs-api-discovery
 [echo]: https://github.com/erasmus-without-paper/ewp-specs-api-echo
 [error-handling]: https://github.com/erasmus-without-paper/ewp-specs-architecture#error-handling
+[http-409]: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.10
