@@ -5,6 +5,19 @@ This document describes all the changes made to the *Outgoing Mobilities API*
 document, starting from its first beta draft version.
 
 
+0.8.0
+-----
+
+* Changed XML namespaces (as part of
+  [this issue](https://github.com/erasmus-without-paper/ewp-specs-api-iias/issues/22)).
+  Since this version, this API is in the `stable-v1` XML namespace.
+
+  This does not mean that Outgoing Mobilities API is stable. It can still
+  change in backward-incompatible ways, until version `1.0.0` is released.
+
+* Added a section about handling edit conflicts.
+
+
 0.7.0
 -----
 
