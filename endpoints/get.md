@@ -54,11 +54,7 @@ SHOULD parse this value (or assume it's equal to `1`).
 Permissions
 -----------
 
-All requests from the EWP Network MUST be allowed access to this API. Consult
-the [Echo API][echo] specs for details on handling unprivileged requests.
-
-However, only a subset of all known mobilities should be made available to the
-caller:
+Only a subset of all known mobilities should be made available to the caller:
 
  * If the caller covers the receiving HEI of this mobility, then he MUST be
    allowed access to it.

@@ -86,12 +86,9 @@ which have been either created or modified after the given point in time.
 Permissions
 -----------
 
-All requests from the EWP Network MUST be allowed access to this API. Consult
-the [Echo API][echo] specs for details on handling unprivileged requests.
-
-However, only selected Outgoing Mobility objects should be accessible to the
-caller. Visibility of objects SHOULD be kept in sync with the visibility
-described in the `get` endpoint. That is:
+Only selected Outgoing Mobility objects should be accessible to the caller.
+Visibility of objects SHOULD be kept in sync with the visibility described in
+the `get` endpoint. That is:
 
  * Servers MUST publish IDs of every mobility which is accessible (to the same
    caller) via the `get` endpoint.

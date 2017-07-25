@@ -17,7 +17,7 @@ Mobilities for Studies*. More types MAY be added in the future.
 
 
 Reminder on vocabulary
-------------
+----------------------
 
 Keep in mind that definitions of "sending HEI" and "receiving HEI" come from
 the "mobility vocabulary", not the "HTTP vocabulary". In case of this
@@ -30,6 +30,13 @@ particular API this means that:
 
 As long as we use these terms consistently, there shouldn't be much confusion
 though.
+
+
+Security
+--------
+
+For all endpoints of this API, implementers MUST follow the rules described in
+[EWP Authentication and Security, Version 1][sec-v1] document.
 
 
 Endpoints to be implemented
@@ -68,3 +75,4 @@ Data model entities involved in the response
 [echo]: https://github.com/erasmus-without-paper/ewp-specs-api-echo
 [error-handling]: https://github.com/erasmus-without-paper/ewp-specs-architecture#error-handling
 [institutions-api]: https://github.com/erasmus-without-paper/ewp-specs-api-institutions
+[sec-v1]: https://github.com/erasmus-without-paper/ewp-specs-sec-intro/tree/stable-v1

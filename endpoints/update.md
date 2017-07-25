@@ -82,13 +82,6 @@ Request method and parameters
    its [manifest entry](../manifest-entry.xsd).
 
 
-Permissions
------------
-
-All requests from the EWP Network MUST be allowed access to this API. Consult
-the [Echo API][echo] specs for details on handling unprivileged requests.
-
-
 Handling of invalid parameters
 ------------------------------
 
