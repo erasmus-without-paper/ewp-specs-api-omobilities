@@ -5,6 +5,20 @@ This document describes all the changes made to the *Outgoing Mobilities API*
 document, starting from its first beta draft version.
 
 
+0.9.0
+-----
+
+ * This API now requires implementers to upgrade their implementations to
+   [Version 2](https://github.com/erasmus-without-paper/ewp-specs-sec-intro/tree/stable-v2)
+   of the *Authentication and Security* document.
+
+   In particular, this means that the clients MUST be aware of the fact, that
+   the server is no longer required to support methods of authentication and
+   encryption which it *was* required to support in the previous versions of
+   this API. Clients SHOULD consult the newly introduced `<http-security>`
+   element in the server's manifest entry before making their requests.
+
+
 0.8.1
 -----
 
