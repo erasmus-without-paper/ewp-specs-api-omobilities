@@ -5,6 +5,51 @@ This document describes all the changes made to the *Outgoing Mobilities API*
 document, starting from its first beta draft version.
 
 
+0.10.0
+------
+
+Performed a major refactoring caused by the planned introduction of the
+Incoming Mobilities API (more information
+[here](https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/27)).
+Many XML namespaces and element names were changed:
+
+ * All XML namespaces beginning with
+   `https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/`
+   now begin with
+   `https://github.com/erasmus-without-paper/ewp-specs-api-omobilities/`.
+
+ * Elements renamed in the `get` endpoint response:
+
+   - `mobilities-get-response` is now `omobilities-get-response`,
+   - `mobility-id` is now `omobility-id`.
+
+ * Elements renamed in the `index` endpoint response:
+
+   - `mobilities-index-response` is now `omobilities-index-response`,
+   - `mobility-id` is now `omobility-id`.
+
+ * Elements renamed in the `update` endpoint's request:
+
+   - `mobilities-update-request` is now `omobilities-update-request`,
+   - `mobility-id` is now `omobility-id` (for each update type separately).
+
+ * Elements renamed in the `update` endpoint's response:
+
+   - `mobilities-update-response` is now `omobilities-update-response`.
+
+ * Elements renamed in `manifest-entry.xsd`:
+
+   - `mobilities` is now `omobilities`,
+   - `max-mobility-ids` is now `max-omobility-ids`.
+
+ * Parameters renamed in the `get` endpoint request:
+
+   - `mobility_id` is now `omobility_id`,
+
+ * We no longer encourage ignoring the `modified_since` parameter in the
+   `index` endpoint. It is recommended to support this parameter.
+
+
 0.9.0
 -----
 
