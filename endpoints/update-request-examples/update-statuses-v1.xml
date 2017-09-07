@@ -1,4 +1,4 @@
-<mobilities-update-request
+<omobilities-update-request
     xmlns="https://github.com/erasmus-without-paper/ewp-specs-api-omobilities/blob/stable-v1/endpoints/update-request.xsd"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
@@ -18,4 +18,4 @@
             <comment>Some comment.</comment>
         </single-update>
     </update-statuses-v1>
-</mobilities-update-request>
+</omobilities-update-request>

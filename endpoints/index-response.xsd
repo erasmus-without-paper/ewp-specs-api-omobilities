@@ -20,7 +20,7 @@
         </xs:documentation>
     </xs:annotation>
 
-    <xs:element name="mobilities-index-response">
+    <xs:element name="omobilities-index-response">
         <xs:annotation>
             <xs:documentation>
                 This describes the format of the response returned by the `index` endpoint of

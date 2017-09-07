@@ -1,4 +1,4 @@
-<req:mobilities-update-request
+<req:omobilities-update-request
     xmlns:req="https://github.com/erasmus-without-paper/ewp-specs-api-omobilities/blob/stable-v1/endpoints/update-request.xsd"
     xmlns="https://github.com/erasmus-without-paper/ewp-specs-api-omobilities/blob/stable-v1/endpoints/get-response.xsd"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -33,4 +33,4 @@
             </component-studied>
         </req:current-latest-draft-snapshot>
     </req:approve-components-studied-draft-v1>
-</req:mobilities-update-request>
+</req:omobilities-update-request>

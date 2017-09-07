@@ -30,7 +30,7 @@
         </xs:documentation>
     </xs:annotation>
 
-    <xs:element name="mobilities">
+    <xs:element name="omobilities">
         <xs:annotation>
             <xs:documentation>
                 If this element is present in EWP Host's manifest file, then the host states

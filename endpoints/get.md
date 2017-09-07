@@ -93,7 +93,7 @@ Handling of invalid parameters
 
  * Note, that currently clients have no way of telling the difference between
    "this mobility does not exist" and "it does exist, but I don't have access
-   to read it". In both cases, the proper `<mobility>` element will simply be
+   to read it". In both cases, the proper mobility element will simply be
    missing from the response.
 
  * If the length of `omobility_id` list is greater than `<max-omobility-ids>`,
