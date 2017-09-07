@@ -52,11 +52,11 @@ document, starting from its first beta draft version.
   - `<eqf-level-studied-at-nomination>`
   - `<eqf-level-studied-at-departure>`
 
-  See [this issue](https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/20)
+  See [this issue](https://github.com/erasmus-without-paper/ewp-specs-api-omobilities/issues/20)
   for more details about this change.
 
 * Added optional nominee's photos to the `get` endpoint (see
-  [this issue](https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/18)).
+  [this issue](https://github.com/erasmus-without-paper/ewp-specs-api-omobilities/issues/18)).
 
 * Added a missing update type in `manifest-entry.xsd` (the schema didn't allow
   server implementers to support the `update-statuses-v1` update).
@@ -91,7 +91,7 @@ document, starting from its first beta draft version.
   about this.
 
 * Bugfix: Allow for more than one mobility per `get` response
-  ([link](https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/21)).
+  ([link](https://github.com/erasmus-without-paper/ewp-specs-api-omobilities/issues/21)).
 
 * Highlight the fact, the `xs:language` type is in BCP 47 format. This type
   is used in `nominee-language-skill/language` element.
@@ -100,7 +100,7 @@ document, starting from its first beta draft version.
 
 * New update type in `update-request.xsd`: `<update-statuses-v1>`. This is for
   approving nominations
-  ([link](https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/22)).
+  ([link](https://github.com/erasmus-without-paper/ewp-specs-api-omobilities/issues/22)).
 
 
 0.5.0
@@ -113,14 +113,14 @@ document, starting from its first beta draft version.
   - `in-effect-since` attribute.
 
   Discuss
-  [here](https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/16).
+  [here](https://github.com/erasmus-without-paper/ewp-specs-api-omobilities/issues/16).
 
 * Added `ewp-reason-code` to LA components changes
-  ([details](https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/15)).
+  ([details](https://github.com/erasmus-without-paper/ewp-specs-api-omobilities/issues/15)).
 
 * Removed incorrect references to EUC PDF LA template Tables C and D from the
   XSD annotations
-  ([details](https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/17)).
+  ([details](https://github.com/erasmus-without-paper/ewp-specs-api-omobilities/issues/17)).
 
 
 0.4.0
@@ -221,15 +221,15 @@ Learning Agreement components were **completely redesigned**:
 * The `<component-code>` element has been renamed to `<los-code>`. Also, the
   types and example values of `<los-id>` and `<loi-id>` elements were changed.
   Both of these changes are an aftereffect of the ID/code change in the Courses
-  API. See [this thread](https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/9).
+  API. See [this thread](https://github.com/erasmus-without-paper/ewp-specs-api-omobilities/issues/9).
 
 * Renamed `nominee-field-isced-code` to `nominee-isced-f-code`
-  ([why?](https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/8#issuecomment-270402114)).
+  ([why?](https://github.com/erasmus-without-paper/ewp-specs-api-omobilities/issues/8#issuecomment-270402114)).
 
 * Added a new `planned_arrival_after` request parameter.
 
 * Used surrogate IDs in examples
-  ([why?](https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/9#issuecomment-271272493)).
+  ([why?](https://github.com/erasmus-without-paper/ewp-specs-api-omobilities/issues/9#issuecomment-271272493)).
 
 
 0.1.1

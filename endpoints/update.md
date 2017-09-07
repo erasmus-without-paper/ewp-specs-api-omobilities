@@ -99,7 +99,7 @@ Handling of invalid parameters
    receiving HEI of this mobility, then server MUST respond with HTTP 400 error
    response.
 
- * If `<sending-hei-id>` doesn't match `<mobility-id>`'s sending HEI, then the
+ * If `<sending-hei-id>` doesn't match `<omobility-id>`'s sending HEI, then the
    server MUST respond with HTTP 400 error response.
 
  * More requirements - in context of specific types of updates - are described

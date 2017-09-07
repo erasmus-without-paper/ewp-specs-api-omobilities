@@ -3,11 +3,11 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:xml="http://www.w3.org/XML/1998/namespace"
     xmlns:ewp="https://github.com/erasmus-without-paper/ewp-specs-architecture/blob/stable-v1/common-types.xsd"
-    xmlns:mobility="https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/blob/stable-v1/endpoints/get-response.xsd"
+    xmlns:mobility="https://github.com/erasmus-without-paper/ewp-specs-api-omobilities/blob/stable-v1/endpoints/get-response.xsd"
     elementFormDefault="qualified"
 
-    targetNamespace="https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/blob/stable-v1/endpoints/update-request.xsd"
-    xmlns="https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/blob/stable-v1/endpoints/update-request.xsd"
+    targetNamespace="https://github.com/erasmus-without-paper/ewp-specs-api-omobilities/blob/stable-v1/endpoints/update-request.xsd"
+    xmlns="https://github.com/erasmus-without-paper/ewp-specs-api-omobilities/blob/stable-v1/endpoints/update-request.xsd"
 >
     <xs:import
         schemaLocation="https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-architecture/stable-v1/common-types.xsd"
@@ -15,8 +15,8 @@
     />
 
     <xs:import
-        schemaLocation="https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-api-mobilities/master/endpoints/get-response.xsd"
-        namespace="https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/blob/stable-v1/endpoints/get-response.xsd"
+        schemaLocation="https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-api-omobilities/master/endpoints/get-response.xsd"
+        namespace="https://github.com/erasmus-without-paper/ewp-specs-api-omobilities/blob/stable-v1/endpoints/get-response.xsd"
     />
 
     <xs:annotation>
@@ -78,7 +78,7 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="mobility-id" type="ewp:AsciiPrintableIdentifier" minOccurs="1" maxOccurs="1">
+                <xs:element name="omobility-id" type="ewp:AsciiPrintableIdentifier" minOccurs="1" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
                             ID of the mobility which this update request is about.
@@ -139,7 +139,7 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="mobility-id" type="ewp:AsciiPrintableIdentifier" minOccurs="1" maxOccurs="1">
+                <xs:element name="omobility-id" type="ewp:AsciiPrintableIdentifier" minOccurs="1" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
                             ID of the mobility which this update request is about.
@@ -181,7 +181,7 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="mobility-id" type="ewp:AsciiPrintableIdentifier" minOccurs="1" maxOccurs="1">
+                <xs:element name="omobility-id" type="ewp:AsciiPrintableIdentifier" minOccurs="1" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
                             ID of the mobility which this update request is about.
@@ -278,7 +278,7 @@
                     </xs:annotation>
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="mobility-id" type="ewp:AsciiPrintableIdentifier" minOccurs="1" maxOccurs="1">
+                            <xs:element name="omobility-id" type="ewp:AsciiPrintableIdentifier" minOccurs="1" maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
                                         ID of the mobility being updated.
