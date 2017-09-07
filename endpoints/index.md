@@ -72,11 +72,6 @@ which have been either created or modified after the given point in time.
    the server only *suspects* that the mobility has been modified, then it is
    okay to include such mobility's ID in the response.
 
- * Servers MAY ignore the `modified_since` parameter completely, and *always*
-   respond with the full list of mobility IDs. (If, for some reason, the server
-   cannot reliably identify when mobitilies are updated, then it's even
-   *better* to do so.)
-
  * As we previously explained [here][index-pulling], clients MAY use the
    `index` and `get` endpoints as a pull-based method of synchronization,
    alternative (or rather complementary) to CNRs. It is RECOMMENDED for the
