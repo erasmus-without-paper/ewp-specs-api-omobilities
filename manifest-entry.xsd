@@ -96,7 +96,7 @@
 
                                     It is HIGHLY RECOMMENDED for all EWP Hosts to implement this feature. If it is
                                     not implemented, then receiving institutions will need to resolve into pulling
-                                    fresh data from your Outgoing Mobility Search API quite often - this method
+                                    fresh data from your Outgoing Mobilities API quite often - this method
                                     will increase both latency and the load on both servers.
                                 </xs:documentation>
                             </xs:annotation>
@@ -116,7 +116,6 @@
                             <xs:complexType>
                                 <xs:sequence>
                                     <xs:element name="approve-components-studied-draft-v1" minOccurs="0" maxOccurs="1" type="ewp:Empty"/>
-                                    <xs:element name="update-arrival-departure-dates-v1" minOccurs="0" maxOccurs="1" type="ewp:Empty"/>
                                     <xs:element name="update-components-studied-v1" minOccurs="0" maxOccurs="1" type="ewp:Empty"/>
                                     <xs:element name="update-statuses-v1" minOccurs="0" maxOccurs="1" type="ewp:Empty"/>
                                 </xs:sequence>
