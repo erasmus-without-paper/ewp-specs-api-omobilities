@@ -5,6 +5,19 @@ This document describes all the changes made to the *Outgoing Mobilities API*
 document, starting from its first beta draft version.
 
 
+0.11.0
+------
+
+Actual arrival and departure dates were moved to the separate API, as requested
+[here](https://github.com/erasmus-without-paper/ewp-specs-api-mobilities/issues/27).
+In context of *this* API, the following changes occurred:
+
+ * Removed `<actual-arrival-date>` and `<actual-departure-date>` from the `get`
+   endpoint's response.
+
+ * Removed the `update-arrival-departure-dates-v1` update request type.
+
+
 0.10.0
 ------
 
