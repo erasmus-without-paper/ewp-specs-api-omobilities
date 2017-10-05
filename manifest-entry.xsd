@@ -71,7 +71,7 @@
                                 </xs:documentation>
                             </xs:annotation>
                         </xs:element>
-                        <xs:element name="update-url" type="ewp:HTTPS" minOccurs="1" maxOccurs="1">
+                        <xs:element name="update-url" type="ewp:HTTPS" minOccurs="0" maxOccurs="1">
                             <xs:annotation>
                                 <xs:documentation>
                                     An URL at which the `update` endpoint is being served.
@@ -101,7 +101,7 @@
                                 </xs:documentation>
                             </xs:annotation>
                         </xs:element>
-                        <xs:element name="supported-update-types" minOccurs="1" maxOccurs="1">
+                        <xs:element name="supported-update-types" minOccurs="0" maxOccurs="1">
                             <xs:annotation>
                                 <xs:documentation>
                                     In this section the server publishes which types of updates it supports.
