@@ -50,11 +50,13 @@ This parameter is *repeatable*, so the request MAY contain multiple occurrences
 of it. The server is REQUIRED to process all of them.
 
 
-### `planned_arrival_after` (optional)
+### `receiving_academic_year_id` (optional)
 
-A date in the `YYYY-mm-dd` format. If given, then the client states that it is
-interested only in the mobilities with `<planned-arrival-date>` coming *after*
-this given date.
+An academic year identifier, in the `YYYY/YYYY` format, as defined in the
+[EWP Academic Term Data Types](https://github.com/erasmus-without-paper/ewp-specs-types-academic-term)
+document. If given, then the server MUST return only such mobilities which
+have taken place (or are planned to take place) during this single academic
+year.
 
 This parameter was added to allow the client to synchronize only a smaller
 subset of all mobilities more easily (because many clients don't want to store
