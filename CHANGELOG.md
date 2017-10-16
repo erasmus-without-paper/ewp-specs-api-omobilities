@@ -5,6 +5,30 @@ This document describes all the changes made to the *Outgoing Mobilities API*
 document, starting from its first beta draft version.
 
 
+0.12.0
+------
+
+* `manifest-entry.xsd`: `<update-url>` and `<supported-update-types>` elements
+  are now OPTIONAL (previously, they were required). This change was necessary
+  because we allow implementers to not support *any* update types (and thus we
+  shouldn't force them to have an update endpoint).
+
+* Changes in `get` endpoint response:
+
+  - `<planned-arrival-date>` and `<planned-departure-date>` are now OPTIONAL
+    (previously, there were required).
+  - New REQUIRED element: `<receiving-academic-year-id>`.
+
+  These two changes are related. See discussion
+  [here](https://github.com/erasmus-without-paper/ewp-specs-api-omobilities/issues/23).
+
+* Changes in `index` endpoint parameters: `planned_arrival_after` parameter was
+  dropped, and `receiving_academic_year_id` was introduced in its place. This
+  change is related to the fact that `<planned-arrival-date>` element is no
+  longer required. See discussion
+  [here](https://github.com/erasmus-without-paper/ewp-specs-api-omobilities/issues/23).
+
+
 0.11.0
 ------
 
