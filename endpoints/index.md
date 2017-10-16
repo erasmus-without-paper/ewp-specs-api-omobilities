@@ -65,7 +65,8 @@ mobilities which have ended long ago).
 
 ### `modified_since` (optional)
 
-A datetime string in the ISO 8601 format, e.g. `2004-02-12T15:19:21+01:00`.
+A datetime string in the [`xs:dateTime` format][xs-datetime], e.g.
+`2004-02-12T15:19:21+01:00`.
 
 If given, then the server SHOULD filter the returned mobility IDs to the ones
 which have been either created or modified after the given point in time.
@@ -138,3 +139,4 @@ for further information.
 [error-handling]: https://github.com/erasmus-without-paper/ewp-specs-architecture#error-handling
 [institutions-api]: https://github.com/erasmus-without-paper/ewp-specs-api-institutions
 [index-pulling]: https://github.com/erasmus-without-paper/ewp-specs-architecture#index-pulling
+[xs-datetime]: https://www.w3.org/TR/xmlschema11-2/#dateTime
