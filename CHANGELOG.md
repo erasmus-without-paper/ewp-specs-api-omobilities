@@ -5,6 +5,14 @@ This document describes all the changes made to the *Outgoing Mobilities API*
 document, starting from its first beta draft version.
 
 
+0.12.1
+------
+
+* The `modified_since` parameter of the `index` endpoint is now in the
+  `xs:dateTime` format (not ISO 8601 format). See
+  [this thread](https://github.com/erasmus-without-paper/general-issues/issues/27).
+
+
 0.12.0
 ------
 
