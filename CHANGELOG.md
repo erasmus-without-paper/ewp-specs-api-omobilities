@@ -5,6 +5,18 @@ This document describes all the changes made to the *Outgoing Mobilities API*
 document, starting from its first beta draft version.
 
 
+0.13.0
+------
+
+* New mobility status: `nomination-verified`. This new status partially
+  replaces the previously used status `live`. The `live` status is still in
+  use, but its meaning changes. In particular, when the nomination is being
+  accepted, the status of the mobility should now change to
+  `nomination-verified`, not to `live` (as it has been previously). See
+  [this thread](https://github.com/erasmus-without-paper/ewp-specs-api-omobilities/issues/28)
+  for discussion.
+
+
 0.12.1
 ------
 
