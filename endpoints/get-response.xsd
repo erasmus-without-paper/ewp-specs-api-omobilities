@@ -254,7 +254,10 @@
                                 supposed to take place *during* the academic term identified here.
 
                                 "During" doesn't imply that it will take place over the *entire* period of the
-                                academic term.
+                                academic term. However, it's also RECOMMENDED to supply the *smallest* academic
+                                term within which the mobility period fits into (i.e. the use of an academic
+                                year should be avoided if a semester is sufficient). See here:
+                                https://github.com/erasmus-without-paper/ewp-specs-api-omobilities/pull/30#discussion_r159843983
 
                                 Note, that sending and receiving HEIs MAY use different academic term
                                 identifiers (e.g. "2010/2011-1/2" might be equal to "2010/2010-2/2"). This
