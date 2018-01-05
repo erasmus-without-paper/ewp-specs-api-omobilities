@@ -5,6 +5,19 @@ This document describes all the changes made to the *Outgoing Mobilities API*
 document, starting from its first beta draft version.
 
 
+0.14.0
+------
+
+* New REQUIRED elements (to be precise - exactly one of them is required):
+
+  - `<sending-academic-term-ewp-id>`,
+  - `<non-standard-mobility-period>`.
+
+  See the specs (and
+  [this thread](https://github.com/erasmus-without-paper/ewp-specs-types-academic-term/issues/2))
+  for details.
+
+
 0.13.0
 ------
 
