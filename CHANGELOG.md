@@ -5,6 +5,17 @@ This document describes all the changes made to the *Outgoing Mobilities API*
 document, starting from its first beta draft version.
 
 
+0.15.0
+------
+
+* Removed two mobility statuses:
+
+  - `nomination-verified`,
+  - `rejected`.
+
+* Removed the `update-statuses-v1` update request type. 
+
+
 0.14.0
 ------
 
