@@ -5,6 +5,12 @@ This document describes all the changes made to the *Outgoing Mobilities API*
 document, starting from its first beta draft version.
 
 
+0.16.0
+------
+
+Learning agreements moved to the separate API.
+
+
 0.15.0
 ------
 
