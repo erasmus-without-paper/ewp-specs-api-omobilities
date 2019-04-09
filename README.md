@@ -35,8 +35,8 @@ though.
 Security
 --------
 
-This version of this API uses [standard EWP Authentication and Security,
-Version 2][sec-v2]. Server implementers choose which security methods they
+This version of this API uses [standard EWP Authentication and Security, Version 2][sec-v2].
+Server implementers choose which security methods they
 support by declaring them in their Manifest API entry.
 
 This API handles data which is considered private. Server implementers are
@@ -53,7 +53,6 @@ Server implementers MUST:
 
  * Implement the [`get` endpoint](endpoints/get.md).
  * Implement the [`index` endpoint](endpoints/index.md).
- * Implement the [`update` endpoint](endpoints/update.md).
  * Put the URLs of these endpoints in their [manifest file][discovery-api], as
    described in [manifest-entry.xsd](manifest-entry.xsd).
 
@@ -68,18 +67,10 @@ Data model entities involved in the response
  * Person
  * Coordinator
  * IIA Partner
- * Learning Agreement
- * Learning Agreement Component
- * Learning Opportunity Specification
- * Learning Opportunity Instance
  * Academic Term
 
 
 [develhub]: http://developers.erasmuswithoutpaper.eu/
 [statuses]: https://github.com/erasmus-without-paper/ewp-specs-management#statuses
-[registry-spec]: https://github.com/erasmus-without-paper/ewp-specs-api-registry
 [discovery-api]: https://github.com/erasmus-without-paper/ewp-specs-api-discovery
-[echo]: https://github.com/erasmus-without-paper/ewp-specs-api-echo
-[error-handling]: https://github.com/erasmus-without-paper/ewp-specs-architecture#error-handling
-[institutions-api]: https://github.com/erasmus-without-paper/ewp-specs-api-institutions
 [sec-v2]: https://github.com/erasmus-without-paper/ewp-specs-sec-intro/tree/stable-v2
