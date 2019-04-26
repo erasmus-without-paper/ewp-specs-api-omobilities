@@ -75,6 +75,102 @@ Data model entities involved in the response
  * Academic Term
 
 
+Workflows of changes in nomination and departure statuses
+---------------------------------------------------------
+
+Mobility and its nomination have two different sets of statuses sent via Outgoing/Incoming Mobilities API get response. Example scenarios of status changes are presented below.
+
+* `--MOBILITYSTATUS-->` - Outgoing Mobilities API get response
+* `<--NOMINATIONSTATUS--` - Incoming Mobilities API get response
+* `S` - sending HEI
+* `R` - receiving HEI
+
+
+**1.**
+
+* S informs R via CNR about new nomination.
+* `S --NOMINATION--> R`
+* S ask R about nomination, but R has done nothing yet.
+* `S <--PENDING-- R`
+* R informs S that via CNR that nomination was changed.
+* `S <--REJECTED-- R`
+* S identifies problem and corrects nomination data
+* S informs R via CNR about changed nomination.
+* `S --NOMINATION--> R`
+* R informs S via CNR that nomination was changed.
+* `S <--VERIFIED-- R`
+
+**2.**
+
+* Nomination was sent but student or S wants to cancel the mobility.
+
+  Initial state:
+  
+  `S --NOMINATION--> R`
+  
+  `S <--ANY-- R`
+
+* S informs R via CNR about changed nomination.
+* `S --CANCELLED--> R`
+
+**3.**
+
+* Nomination status is `VERIFIED` and student is about to leave for R.
+
+  Initial state:
+
+  `S --NOMINATION--> R`
+  
+  `S <--VERIFIED-- R`
+
+* S informs R via CNR about changed nomination/mobility.
+* `S --LIVE--> R`
+* From this moment we don't care about nomination status.
+* Time passes.
+* Student passes all the exams and returns to S.
+* S informs R via CNR about changed mobility.
+* `S --RECOGNIZED--> R` (OR, sometimes, `S --LIVE--> R` - some HEIs don't store explicit information about mobility recognition)
+
+**4.**
+
+* Nomination has been accepted by the receiving HEI, and all initial formalities have been settled. Student is about to leave for R. Suddenly, student or S wants to cancel the mobility.
+
+  Initial state:
+  
+  `S --LIVE--> R`
+  
+  `S <--VERIFIED-- R`
+
+* S informs R via CNR about changed mobility.
+* `S --CANCELLED--> R`
+
+**5.**
+
+* Student returns prematurely from R. Student can't justify it and has to return money from grant.
+
+  Initial state:
+  
+  `S --LIVE--> R`
+  
+  `S <--VERIFIED-- R`
+
+* S informs R via CNR about changed mobility.
+* `S --CANCELLED--> R`
+
+**6.**
+
+* Student returns prematurely from R. Student can justify it (force majeure) and doesn't have to return money from grant.
+
+  Initial state:
+  
+  `S --LIVE--> R`
+  
+  `S <--VERIFIED-- R`
+
+* S informs R via CNR about changed mobility.
+* `S --RECOGNIZED--> R` (OR, sometimes, `S --LIVE--> R` - some HEIs don't store explicit information about mobility recognition)
+
+
 [develhub]: http://developers.erasmuswithoutpaper.eu/
 [statuses]: https://github.com/erasmus-without-paper/ewp-specs-management#statuses
 [registry-spec]: https://github.com/erasmus-without-paper/ewp-specs-api-registry
