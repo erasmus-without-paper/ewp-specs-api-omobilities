@@ -4,6 +4,12 @@ Release notes
 This document describes all the changes made to the *Outgoing Mobilities API*
 document, starting from its first beta draft version.
 
+1.0.0
+-----
+
+* First stable release.
+
+
 0.16.0
 ------
 
