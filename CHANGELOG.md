@@ -8,6 +8,7 @@ document, starting from its first beta draft version.
 -----
 
 * First stable release.
+* European Student Identifier added to the get response.
 
 
 0.16.0
