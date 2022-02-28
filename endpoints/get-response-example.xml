@@ -60,5 +60,37 @@
             <language>pl</language>
             <cefr-level>A1</cefr-level>
         </nominee-language-skill>
+        <additional-requirement>
+            <name>Motivation letter</name>
+            <file>f0f4934c-d384-41c3-a455-9bb9a689a5a3</file>
+        </additional-requirement>
+        <additional-requirement>
+            <name>Transcript of Records</name>
+            <file>2f521e8a-d9fd-4f49-9941-df9318bf190f</file>
+        </additional-requirement>
+        <additional-requirement>
+            <name>Language certificate</name>
+            <file>793ca3b8-02db-4573-9164-e84bc9a58f23</file>
+        </additional-requirement>
+        <additional-requirement>
+            <name>Reference letter</name>
+            <file>fc625bfe-19cc-44b6-80e8-4c4a05d62be9</file>
+        </additional-requirement>
+        <additional-requirement>
+            <name>Portfolio</name>
+            <file>85ba5392-fd35-4baa-9afa-220537d2ebbe</file>
+        </additional-requirement>
+        <additional-requirement>
+            <name>Portfolio</name>
+            <url>https://www.youtube.com/watch?v=gdg34IFo</url>
+        </additional-requirement>
+        <additional-requirement>
+            <name>CV</name>
+            <file>6f09ac08-454a-4278-a290-16f55663237d</file>
+        </additional-requirement>
+        <additional-requirement>
+            <name>Other document</name>
+            <file>4a483112-d306-4e77-87ff-05b823fb0e0f</file>
+        </additional-requirement>
     </student-mobility-for-studies>
 </omobilities-get-response>
