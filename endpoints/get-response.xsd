@@ -466,6 +466,21 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
+                <xs:element name="activity-type" type="MobilityActivityType" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            Student mobility activity type.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="activity-attributes" type="MobilityActivityAttributes" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            Student mobility activity attributes, such as the length of the activity,
+                            study level, or the nature of the educational components.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
                 <xs:element name="planned-arrival-date" type="xs:date" minOccurs="0" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
@@ -623,6 +638,51 @@
                     <xs:documentation>
                         The nomination has been cancelled (either by the student, or by one of the
                         partner HEIs).
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="MobilityActivityType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="student-studies">
+                <xs:annotation>
+                    <xs:documentation>
+                        Student Mobility for Studies (SMS).
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="student-traineeships">
+                <xs:annotation>
+                    <xs:documentation>
+                        Student Mobility for Traineeships (SMT).
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="MobilityActivityAttributes">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="long-term">
+                <xs:annotation>
+                    <xs:documentation>
+                        Long-term physical mobility (with an optional virtual component).
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="short-term-blended">
+                <xs:annotation>
+                    <xs:documentation>
+                        Short term blended mobility (with a compulsory virtual component).
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="short-term-doctoral">
+                <xs:annotation>
+                    <xs:documentation>
+                        Short term doctoral mobility (with an optional virtual component).
                     </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
