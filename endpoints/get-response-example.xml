@@ -9,7 +9,7 @@
         https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-api-omobilities/stable-v1/endpoints/get-response.xsd
     "
 >
-    <student-mobility-for-studies>
+    <student-mobility>
         <omobility-id>c442c289-5541-4cae-9edb-8ad83e133613</omobility-id>
         <sending-hei>
             <hei-id>uio.no</hei-id>
@@ -90,5 +90,5 @@
             <name>Other document</name>
             <file>4a483112-d306-4e77-87ff-05b823fb0e0f</file>
         </additional-requirement>
-    </student-mobility-for-studies>
+    </student-mobility>
 </omobilities-get-response>
