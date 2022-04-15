@@ -43,6 +43,8 @@
             </p:phone-number>
         </student>
         <status>live</status>
+        <activity-type>student-studies</activity-type>
+        <activity-attributes>long-term</activity-attributes>
         <planned-arrival-date>2010-02-01</planned-arrival-date>
         <planned-departure-date>2010-06-20</planned-departure-date>
         <eqf-level-studied-at-nomination>7</eqf-level-studied-at-nomination>
