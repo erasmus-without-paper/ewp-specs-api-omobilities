@@ -4,6 +4,14 @@ Release notes
 This document describes all the changes made to the *Outgoing Mobilities API*
 document, starting from its first beta draft version.
 
+
+1.0.1
+-----
+
+* Added ErasmusAPP-Dashboard Use Cases and Scenarios (PDF and XML files) (#42).
+* Added global-id to get response example.
+
+
 1.0.0
 -----
 
@@ -14,7 +22,7 @@ document, starting from its first beta draft version.
 0.16.0
 ------
 
-Learning agreements moved to the separate API.
+* Learning agreements moved to the separate API.
 
 
 0.15.1
