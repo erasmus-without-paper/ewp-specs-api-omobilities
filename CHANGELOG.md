@@ -5,6 +5,16 @@ This document describes all the changes made to the *Outgoing Mobilities API*
 document, starting from its first beta draft version.
 
 
+2.0.0
+-----
+
+* Made root mobility element name more generic.
+* Added fields for activity type and attributes.
+* Added documentation to nomination requirement fields.
+* Added requirements defined in Factsheet API to examples.
+* Made ESI (global-id field) required.
+
+
 1.0.1
 -----
 
