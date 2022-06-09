@@ -9,8 +9,8 @@ Summary
 -------
 
 This document describes the **Outgoing Mobilities API**. This API is
-implemented by the sending institution. It allows the receiving HEI to read,
-write and enumerate mobilities stored on the sending HEI's servers.
+implemented by the sending institution. It allows the receiving HEI to read
+and enumerate mobilities stored on the sending HEI's servers.
 
 Currently, this API describes mobilities **of one type only** - *Student
 Mobilities for Studies*. More types MAY be added in the future.
