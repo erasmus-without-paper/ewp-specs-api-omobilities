@@ -199,9 +199,9 @@
                             <xs:element name="iia-id" type="ewp:AsciiPrintableIdentifier" minOccurs="0" maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
-                                        Each EWP IIA partner can assign an ID of its own to the same IIA. If the server is
-                                        aware of the *receiving HEI's* ID assigned to the IIA based on which the
-                                        student is being sent, then it MUST place it here.
+                                        *Receiving HEI's* ID assigned to the IIA based on which the
+                                        student is being sent. If sending HEI's ID has been provided,
+                                        then this field MUST also be provided.
 
                                         Clients can fetch more information on this agreement from IIAs API served on
                                         the *receiving HEI's* servers (e.g., contact information of the coordinator who
