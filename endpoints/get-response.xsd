@@ -149,7 +149,7 @@
                                 <xs:annotation>
                                     <xs:documentation>
                                         ID of the EWP Institutional Agreement based on which the student is being
-                                        nominated/sent. If the server implements EWP's
+                                        nominated/sent. If such EWP IIA exists and the server implements EWP's
                                         Interinstitutional Agreements API, this field MUST be provided.
 
                                         Clients can fetch more information on this
