@@ -107,12 +107,11 @@ Mobility and its nomination have two different sets of statuses sent via Outgoin
 * S ask R about nomination, but R has done nothing yet.
 * `S <--PENDING-- R`
 * R informs S that via CNR that nomination was changed.
-* `S <--REJECTED-- R`
-* S identifies problem and corrects nomination data
+* `S <--VERIFIED-- R`
+* Student nominated by S changes her surname.
 * S informs R via CNR about changed nomination.
 * `S --NOMINATION--> R`
-* R informs S via CNR that nomination was changed.
-* `S <--VERIFIED-- R`
+* R does nothing.
 
 **2.**
 
