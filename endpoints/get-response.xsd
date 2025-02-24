@@ -286,6 +286,9 @@
                             The section describes the student who is being sent for this mobility. Immutable.
 
                             These fields MAY change in time (e.g., after the student changes his name).
+
+                            Sending HEI MUST inform the receiving HEI about the change,
+                            the receiving HEI MUST not change the previous decision about the nomination.
                         </xs:documentation>
                     </xs:annotation>
                     <xs:complexType>
