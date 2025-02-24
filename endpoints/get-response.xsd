@@ -471,8 +471,8 @@
                         The student has returned from the mobility, and all achievements have been
                         recognized as indicated on the `component-recognized` list.
 
-                        At this point, mobility SHOULD become read-only. The latest revision of it
-                        SHOULD be approved by all parties (no further draft revisions should exist).
+                        At this point, LA MUST become read-only. The latest revision of it
+                        MUST be approved by all parties (no subsequent draft revisions should exist).
                     </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
