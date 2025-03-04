@@ -60,6 +60,20 @@ that have been either created or modified after the given point in time.
    servers to support this parameter, to avoid unnecessary network traffic.
 
 
+### `global_id` (optional)
+
+A global identifier of a student.
+
+If given, then the server MUST return only mobilities belonging to that student.
+
+
+### `activity_attributes` (optional)
+
+An activity attribute (mobility type) of mobility.
+
+If given, then the server MUST return only mobilities with that activity attribute value.
+
+
 Permissions
 -----------
 
