@@ -428,6 +428,16 @@
                     </xs:annotation>
                 </xs:element>
             </xs:sequence>
+            <xs:attribute name="proposal-id" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation>
+                        Identifier of this mobility proposal. It MUST change if and only if
+                        the proposal content changes.
+
+                        It will be used in update request to identify the version being approved/commented.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
         </xs:complexType>
     </xs:element>
 
