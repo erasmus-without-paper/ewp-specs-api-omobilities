@@ -450,12 +450,6 @@
                         yet been approved nor rejected by the receiving HEI.
 
                         This is the default status with which mobility entities are first created.
-
-                        This status SHOULD be logically divided in two when presented to the user:
-                        * nomination pending/unconfirmed - when there is no response when requesting this mobility
-                          from partner's Imobility API,
-                        * nomination pending/confirmed - when there is a response when requesting this mobility
-                          from partner's Imobility API.
                     </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>

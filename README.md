@@ -89,98 +89,88 @@ Data model entities involved in the response
  * Academic Term
 
 
-Workflows of changes in nomination and departure statuses
----------------------------------------------------------
+Example scenarios of nomination status changes
+----------------------------------------------
 
-Mobility and its nomination have two different sets of statuses sent via Outgoing/Incoming Mobilities API get response. Example scenarios of status changes are presented below.
+The example scenarios of nomination status changes will be described using the following symbols:
 
-* `--MOBILITYSTATUS-->` - Outgoing Mobilities API get response
-* `<--NOMINATIONSTATUS--` - Incoming Mobilities API get response
+* `--MOBILITY-STATUS-->` - Outgoing Mobilities API get response
+* `<--MOBILITY-UPDATE--` - Outgoing Mobilities API update request
 * `S` - sending HEI
 * `R` - receiving HEI
 
 
-**1.**
+### Student changes her surname after a nomination
 
-* S informs R via CNR about new nomination.
+* S informs R via CNR about a new nomination.
 * `S --NOMINATION--> R`
-* S ask R about nomination, but R has done nothing yet.
-* `S <--PENDING-- R`
-* R informs S that via CNR that nomination was changed.
-* `S <--VERIFIED-- R`
+* S ask R about a nomination, but R has done nothing yet.
+* R informs S that via CNR that nomination has been approved.
+* `S <--APPROVE-- R`
 * Student nominated by S changes her surname.
-* S informs R via CNR about changed nomination.
+* S informs R via CNR about a changed nomination.
 * `S --NOMINATION--> R`
 * R does nothing.
 
-**2.**
+### Nomination cancelled by a student or sending HEI
 
-* Nomination was sent but student or S wants to cancel the mobility.
+* Nomination was sent but a student or S wants to cancel the mobility.
 
   Initial state:
-  
   `S --NOMINATION--> R`
-  
   `S <--ANY-- R`
 
-* S informs R via CNR about a changed nomination.
+* S informs R via CNR about a nomination cancellation.
 * `S --CANCELLED--> R`
 
-**3.**
+### Nomination recognized
 
 * Nomination status is `VERIFIED` and a student is about to leave for R.
 
   Initial state:
-
   `S --NOMINATION--> R`
-  
   `S <--VERIFIED-- R`
 
-* S informs R via CNR about changed nomination/mobility.
+* S informs R via CNR about a nomination going live.
 * `S --LIVE--> R`
 * From this moment we don't care about nomination status.
 * Time passes.
 * Student passes all the exams and returns to S.
-* S informs R via CNR about changed mobility.
+* S informs R via CNR about recognized mobility.
 * `S --RECOGNIZED--> R` (OR, sometimes, `S --LIVE--> R` - some HEIs don't store explicit information about mobility recognition)
 
-**4.**
+### Nomination cancelled after approval
 
-* Nomination has been approved by the receiving HEI, and all initial formalities have been settled. Student is about to leave for R. Suddenly, student or S wants to cancel the mobility.
+* Nomination has been approved by the receiving HEI, and all initial formalities have been settled.
+  Student is about to leave for R. Suddenly, a student or S wants to cancel the mobility.
 
   Initial state:
-  
   `S --LIVE--> R`
-  
   `S <--VERIFIED-- R`
 
-* S informs R via CNR about changed mobility.
+* S informs R via CNR about mobility cancellation.
 * `S --CANCELLED--> R`
 
-**5.**
+### Student returns prematurely - no justification
 
 * Student returns prematurely from R. Student can't justify it and has to return money from grant.
 
   Initial state:
-  
   `S --LIVE--> R`
-  
   `S <--VERIFIED-- R`
 
-* S informs R via CNR about changed mobility.
+* S informs R via CNR about mobility cancellation.
 * `S --CANCELLED--> R`
 
-**6.**
+### Student returns prematurely - force majeure
 
 * Student returns prematurely from R. Student can justify it (force majeure) and doesn't have to return money from grant.
 
   Initial state:
-  
   `S --LIVE--> R`
-  
   `S <--VERIFIED-- R`
 
-* S informs R via CNR about changed mobility.
+* S informs R via CNR about recognized mobility.
 * `S --RECOGNIZED--> R` (OR, sometimes, `S --LIVE--> R` - some HEIs don't store explicit information about mobility recognition)
 
 
