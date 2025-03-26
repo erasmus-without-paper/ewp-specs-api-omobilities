@@ -447,7 +447,7 @@
                 <xs:annotation>
                     <xs:documentation>
                         The sending HEI has nominated the student for mobility. The proposal has not
-                        yet been accepted nor rejected by the receiving HEI.
+                        yet been approved nor rejected by the receiving HEI.
 
                         This is the default status with which mobility entities are first created.
 
@@ -462,7 +462,7 @@
             <xs:enumeration value="live">
                 <xs:annotation>
                     <xs:documentation>
-                        The nomination has been accepted by the receiving HEI, and all initial
+                        The nomination has been approved by the receiving HEI, and all initial
                         formalities have been settled (i.e., a first LA version has been signed). This
                         status doesn't usually change throughout the mobility.
 

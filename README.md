@@ -146,7 +146,7 @@ Mobility and its nomination have two different sets of statuses sent via Outgoin
 
 **4.**
 
-* Nomination has been accepted by the receiving HEI, and all initial formalities have been settled. Student is about to leave for R. Suddenly, student or S wants to cancel the mobility.
+* Nomination has been approved by the receiving HEI, and all initial formalities have been settled. Student is about to leave for R. Suddenly, student or S wants to cancel the mobility.
 
   Initial state:
   

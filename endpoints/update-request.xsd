@@ -115,7 +115,7 @@
                 <xs:element name="comment" type="xs:string" minOccurs="1" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
-                            Field to describe why mobility has not been accepted and what are the suggested changes.
+                            Field to describe why mobility has not been approved and what are the suggested changes.
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
