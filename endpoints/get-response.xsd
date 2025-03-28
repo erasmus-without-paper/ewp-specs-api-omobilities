@@ -468,17 +468,6 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
-            <xs:enumeration value="recognized">
-                <xs:annotation>
-                    <xs:documentation>
-                        The student has returned from the mobility, and all achievements have been
-                        recognized as indicated on the `component-recognized` list.
-
-                        At this point, LA MUST become read-only. The latest revision of it
-                        MUST be approved by all parties (no subsequent draft revisions should exist).
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
             <xs:enumeration value="cancelled">
                 <xs:annotation>
                     <xs:documentation>
