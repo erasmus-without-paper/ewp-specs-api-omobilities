@@ -183,17 +183,6 @@ The example scenarios will be described using the following symbols:
 * S informs R via CNR about the nomination with modified student’s personal data.
 * `S --APPROVED--> R`
 
-### Change of student’s personal data (initial status: `rejected`)
-
-* If S does not want to correct the nomination to obtain R's approval,
-  then the outdated personal data do not matter — further steps do not take place.
-* S changes student’s personal data.
-* S does not inform R — personal data changes will wait for non-personal data changes.
-* S corrects the nomination according to the suggestions sent by R in update,
-  changes the proposal id and removes internal `delivered` flag.
-* S informs R via CNR about the modified nomination.
-* `S --PENDING--> R`
-
 ### Cancellation of a nomination (initial status: any)
 
 * S cancels the nomination internally.
