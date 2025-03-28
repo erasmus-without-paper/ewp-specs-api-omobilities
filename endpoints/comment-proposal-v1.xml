@@ -6,9 +6,9 @@
         https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-api-omobility/stable-v3/endpoints/update-request.xsd
     "
 >
-    <req:comment-proposal-v1>
+    <req:reject-proposal-v1>
         <req:omobility-id>c442c289-5541-4cae-9edb-8ad83e133613</req:omobility-id>
         <req:proposal-id>93C167125FA32452E9460731C57515E76B603EB1</req:proposal-id>
         <req:comment>The limit of mobilities has already been reached.</req:comment>
-    </req:comment-proposal-v1>
+    </req:reject-proposal-v1>
 </req:omobility-update-request>

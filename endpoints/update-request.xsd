@@ -38,7 +38,7 @@
                         </xs:documentation>
                     </xs:annotation>
                     <xs:element ref="approve-proposal-v1"/>
-                    <xs:element ref="comment-proposal-v1"/>
+                    <xs:element ref="reject-proposal-v1"/>
                     <!--
                     Note for future XSD designers: When adding new types here, remember to add them
                     in the manifest-entry.xsd file too.
@@ -89,7 +89,7 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="comment-proposal-v1">
+    <xs:element name="reject-proposal-v1">
         <xs:annotation>
             <xs:documentation>
                 This request is sent by the receiving HEI when it wants to comment on a `proposal`.
