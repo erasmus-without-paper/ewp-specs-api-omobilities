@@ -471,8 +471,7 @@
             <xs:enumeration value="cancelled">
                 <xs:annotation>
                     <xs:documentation>
-                        The nomination has been cancelled (either by the student, or by the
-                        partner HEI).
+                        The sending HEI has cancelled the nomination as the mobility won’t take place.
                     </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
