@@ -23,7 +23,7 @@ If HEI provides any API from the following group:
 * Incoming Mobilities CNR
 * Incoming Mobilities Stats
 
-it must provide all APIs from this group.
+it MUST provide all APIs from this group.
 
 
 ### Business requirements and processes
