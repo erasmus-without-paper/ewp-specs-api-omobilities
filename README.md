@@ -50,6 +50,32 @@ particular API, this means that:
 As long as we use these terms consistently, there shouldn't be much confusion
 though.
 
+For brevity, we will use the following shortcuts:
+* `S` - sending HEI
+* `R` - receiving HEI
+
+
+Important rules
+---------------
+
+* The nomination is uniquely identified by the `omobility-id`.
+* S sends the nomination to R – the nomination is in the `pending` state.
+* When S is sure that R has received information about the nomination
+  (it correctly received the CNR or performed a GET),
+  S must immediately inform its users about it (an internal `delivered` status may be noted in the local system).
+* R can accept the nomination – it changes the state to `verified`.
+* R can reject the nomination – it changes the state to `rejected`.
+* R cannot reject a nomination in the `verified` state.
+* If the nomination is in the `verified` state, S can notify R about the change of the student's personal data
+  (given names, family name, birthdate, nationality, gender, email).
+  This notification does not require R to make a new decision (the nomination remains in the `verified` state).
+* If the nomination is in the `verified` state, S cannot propose to R changes to this nomination
+  in the data other than student’s personal data listed in the point above.
+* If the nomination has been rejected, S can submit a proposal for changes to this nomination
+  (this requires changing the `proposal-id`). R can accept or reject this proposal.
+* S can cancel the nomination at any time – it changes the status to `cancelled`.
+  Such a nomination cannot be submitted for reconsideration.
+
 
 Security
 --------
@@ -96,8 +122,6 @@ The example scenarios of nomination status changes will be described using the f
 
 * `--MOBILITY-STATUS-->` - Outgoing Mobilities API get response
 * `<--MOBILITY-UPDATE--` - Outgoing Mobilities API update request
-* `S` - sending HEI
-* `R` - receiving HEI
 
 
 ### Student changes her surname after a nomination
