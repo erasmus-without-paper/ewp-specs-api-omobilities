@@ -21,7 +21,6 @@ If HEI provides any API from the following group:
 * Outgoing Mobilities Stats
 * Incoming Mobilities
 * Incoming Mobilities CNR
-* Incoming Mobilities Stats
 
 it MUST provide all APIs from this group.
 
