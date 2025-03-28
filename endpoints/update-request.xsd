@@ -39,10 +39,6 @@
                     </xs:annotation>
                     <xs:element ref="approve-proposal-v1"/>
                     <xs:element ref="reject-proposal-v1"/>
-                    <!--
-                    Note for future XSD designers: When adding new types here, remember to add them
-                    in the manifest-entry.xsd file too.
-                    -->
                 </xs:choice>
             </xs:sequence>
         </xs:complexType>
