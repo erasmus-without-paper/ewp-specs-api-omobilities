@@ -468,6 +468,13 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
+            <xs:enumeration value="rejected">
+                <xs:annotation>
+                    <xs:documentation>
+                        The receiving HEI has rejected the nomination and added an explanation in a mandatory comment.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
             <xs:enumeration value="cancelled">
                 <xs:annotation>
                     <xs:documentation>
