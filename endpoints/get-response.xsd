@@ -457,15 +457,14 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
-            <xs:enumeration value="live">
+            <xs:enumeration value="verified">
                 <xs:annotation>
                     <xs:documentation>
-                        The nomination has been approved by the receiving HEI, and all initial
-                        formalities have been settled (i.e., a first LA version has been signed). This
-                        status doesn't usually change throughout the mobility.
-
-                        While in this status, LA can still be modified (new revisions of it may be
-                        created, and signed).
+                        The receiving HEI has recognized the nomination as formally correct
+                        and complying with cooperation conditions.
+                        It accepted the nomination.
+                        Now it's time for settling formalities, sending student's documents,
+                        creating the first Learning Agreement, etc.
                     </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>

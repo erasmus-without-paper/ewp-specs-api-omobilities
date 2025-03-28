@@ -118,7 +118,6 @@ The example scenarios of nomination status changes will be described using the f
 
   Initial state:
   `S --PENDING--> R`
-  `S <--ANY-- R`
 
 * S informs R via CNR about a nomination cancellation.
 * `S --CANCELLED--> R`
@@ -129,15 +128,14 @@ The example scenarios of nomination status changes will be described using the f
 
   Initial state:
   `S --PENDING--> R`
-  `S <--VERIFIED-- R`
 
-* S informs R via CNR about a nomination going live.
-* `S --LIVE--> R`
+* S informs R via CNR about a nomination being verified.
+* `S --VERIFIED--> R`
 * From this moment we don't care about nomination status.
 * Time passes.
 * Student passes all the exams and returns to S.
 * S informs R via CNR about recognized mobility.
-* `S --RECOGNIZED--> R` (OR, sometimes, `S --LIVE--> R` - some HEIs don't store explicit information about mobility recognition)
+* `S --RECOGNIZED--> R` (OR, sometimes, `S --VERIFIED--> R` - some HEIs don't store explicit information about mobility recognition)
 
 ### Nomination cancelled after approval
 
@@ -145,8 +143,7 @@ The example scenarios of nomination status changes will be described using the f
   Student is about to leave for R. Suddenly, a student or S wants to cancel the mobility.
 
   Initial state:
-  `S --LIVE--> R`
-  `S <--VERIFIED-- R`
+  `S --VERIFIED--> R`
 
 * S informs R via CNR about mobility cancellation.
 * `S --CANCELLED--> R`
@@ -156,8 +153,7 @@ The example scenarios of nomination status changes will be described using the f
 * Student returns prematurely from R. Student can't justify it and has to return money from grant.
 
   Initial state:
-  `S --LIVE--> R`
-  `S <--VERIFIED-- R`
+  `S --VERIFIED--> R`
 
 * S informs R via CNR about mobility cancellation.
 * `S --CANCELLED--> R`
@@ -167,11 +163,10 @@ The example scenarios of nomination status changes will be described using the f
 * Student returns prematurely from R. Student can justify it (force majeure) and doesn't have to return money from grant.
 
   Initial state:
-  `S --LIVE--> R`
-  `S <--VERIFIED-- R`
+  `S --VERIFIED--> R`
 
 * S informs R via CNR about recognized mobility.
-* `S --RECOGNIZED--> R` (OR, sometimes, `S --LIVE--> R` - some HEIs don't store explicit information about mobility recognition)
+* `S --RECOGNIZED--> R` (OR, sometimes, `S --VERIFIED--> R` - some HEIs don't store explicit information about mobility recognition)
 
 
 [develhub]: http://developers.erasmuswithoutpaper.eu/
