@@ -8,7 +8,7 @@ Outgoing Mobility Update endpoint
 Summary
 -------
 
-This endpoint allows the receiving HEI to comment or approve a mobility,
+This endpoint allows the receiving HEI to comment or approve a mobility
 stored on the *sending* HEI's servers.
 
 
