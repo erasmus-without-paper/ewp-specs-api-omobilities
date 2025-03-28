@@ -103,13 +103,13 @@ The example scenarios of nomination status changes will be described using the f
 ### Student changes her surname after a nomination
 
 * S informs R via CNR about a new nomination.
-* `S --NOMINATION--> R`
+* `S --PENDING--> R`
 * S ask R about a nomination, but R has done nothing yet.
 * R informs S that via CNR that nomination has been approved.
 * `S <--APPROVE-- R`
 * Student nominated by S changes her surname.
 * S informs R via CNR about a changed nomination.
-* `S --NOMINATION--> R`
+* `S --PENDING--> R`
 * R does nothing.
 
 ### Nomination cancelled by a student or sending HEI
@@ -117,7 +117,7 @@ The example scenarios of nomination status changes will be described using the f
 * Nomination was sent but a student or S wants to cancel the mobility.
 
   Initial state:
-  `S --NOMINATION--> R`
+  `S --PENDING--> R`
   `S <--ANY-- R`
 
 * S informs R via CNR about a nomination cancellation.
@@ -128,7 +128,7 @@ The example scenarios of nomination status changes will be described using the f
 * Nomination status is `VERIFIED` and a student is about to leave for R.
 
   Initial state:
-  `S --NOMINATION--> R`
+  `S --PENDING--> R`
   `S <--VERIFIED-- R`
 
 * S informs R via CNR about a nomination going live.

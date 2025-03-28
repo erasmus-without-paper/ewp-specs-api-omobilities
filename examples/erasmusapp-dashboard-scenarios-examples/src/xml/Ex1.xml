@@ -22,7 +22,7 @@
             <gender>1</gender>
             <email>nalty@example_a.edu</email>
         </student>
-        <status>nomination</status>
+        <status>pending</status>
         <activity-type>student-studies</activity-type>
         <activity-attributes>long-term</activity-attributes>
         <agreement-isced-f-code>0215</agreement-isced-f-code>

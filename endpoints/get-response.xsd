@@ -443,13 +443,17 @@
 
     <xs:simpleType name="MobilityStatus">
         <xs:restriction base="xs:string">
-            <xs:enumeration value="nomination">
+            <xs:enumeration value="pending">
                 <xs:annotation>
                     <xs:documentation>
                         The sending HEI has nominated the student for mobility. The proposal has not
                         yet been approved nor rejected by the receiving HEI.
 
                         This is the default status with which mobility entities are first created.
+
+                        When the sending HEI receives confirmation from the receiving HEI
+                        that the nomination has reached the system at the receiving HEI,
+                        it notifies the users (an internal `delivered` status may be noted in the local system).
                     </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
