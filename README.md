@@ -63,13 +63,13 @@ Important rules
 * When S is sure that R has received information about the nomination
   (it correctly received the CNR or performed a GET),
   S must immediately inform its users about it (an internal `delivered` status may be noted in the local system).
-* R can accept the nomination – it changes the state to `verified`.
+* R can accept the nomination – it changes the state to `approved`.
 * R can reject the nomination – it changes the state to `rejected`.
-* R cannot reject a nomination in the `verified` state.
-* If the nomination is in the `verified` state, S can notify R about the change of the student's personal data
+* R cannot reject a nomination in the `approved` state.
+* If the nomination is in the `approved` state, S can notify R about the change of the student's personal data
   (given names, family name, birthdate, nationality, gender, email).
-  This notification does not require R to make a new decision (the nomination remains in the `verified` state).
-* If the nomination is in the `verified` state, S cannot propose to R changes to this nomination
+  This notification does not require R to make a new decision (the nomination remains in the `approved` state).
+* If the nomination is in the `approved` state, S cannot propose to R changes to this nomination
   in the data other than student’s personal data listed in the point above.
 * If the nomination has been rejected, S can submit a proposal for changes to this nomination
   (this requires changing the `proposal-id`). R can accept or reject this proposal.
@@ -153,7 +153,7 @@ The example scenarios of nomination status changes will be described using the f
   Student is about to leave for R. Suddenly, a student or S wants to cancel the mobility.
 
   Initial state:
-  `S --VERIFIED--> R`
+  `S --APPROVED--> R`
 
 * S informs R via CNR about mobility cancellation.
 * `S --CANCELLED--> R`
@@ -163,7 +163,7 @@ The example scenarios of nomination status changes will be described using the f
 * Student returns prematurely from R. Student can't justify it and has to return money from grant.
 
   Initial state:
-  `S --VERIFIED--> R`
+  `S --APPROVED--> R`
 
 * S informs R via CNR about mobility cancellation.
 * `S --CANCELLED--> R`
