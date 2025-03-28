@@ -116,57 +116,105 @@ Data model entities involved in the response
  * Academic Term
 
 
-Example scenarios of nomination status changes
-----------------------------------------------
+Workflows of changes in nomination statuses
+-------------------------------------------
 
-The example scenarios of nomination status changes will be described using the following symbols:
+Nominations have sets of statuses (pending, approved, rejected, cancelled) 
+managed by the sending institution and sent via Outgoing Mobilities API get response.
+Receiving institution verifies the nomination (approve or reject) via Outgoing Mobilities API update request.
+Scenarios of status changes are presented below.
+
+The example scenarios will be described using the following symbols:
 
 * `--MOBILITY-STATUS-->` - Outgoing Mobilities API get response
 * `<--MOBILITY-UPDATE--` - Outgoing Mobilities API update request
 
 
-### Student changes her surname after a nomination
+### Simple nomination approval
 
-* S informs R via CNR about a new nomination.
+* S informs R via CNR about the new nomination.
 * `S --PENDING--> R`
-* S ask R about a nomination, but R has done nothing yet.
-* R informs S that via CNR that nomination has been approved.
-* `S <--APPROVE-- R`
-* Student nominated by S changes her surname.
-* S informs R via CNR about a changed nomination.
+* S marks the nomination internally as `delivered`.
+* R processes the nomination internally.
+* `S <--APPROVE--R`
+* S informs R via CNR about the approved nomination.
+* `S --APPROVED--> R`
+
+### Simple nomination rejection
+
+* S informs R via CNR about the new nomination.
 * `S --PENDING--> R`
-* R does nothing.
+* S marks the nomination internally as `delivered`.
+* R processes the nomination internally.
+* `S <--REJECT--R`
+* S informs R via CNR about the rejected nomination.
+* `S --REJECTED--> R`
 
-### Nomination cancelled by a student or sending HEI
+### Rejection, correction and approval (part marked with ! may occur multiple times)
 
-* Nomination was sent but a student or S wants to cancel the mobility.
+* S informs R via CNR about the new nomination.
+* `S --PENDING--> R`
+* S marks the nomination internally as `delivered`.
+* ! R processes the nomination internally.
+* ! `S <--REJECT--R`
+* ! S informs R via CNR about the rejected nomination.
+* ! `S --REJECTED--> R`
+* ! S corrects the nomination according to the suggestions sent by R in update,
+  changes the proposal id and removes internal `delivered` flag.
+* ! S informs R via CNR about the modified nomination.
+* ! `S --PENDING--> R`
+* ! S marks the nomination internally as `delivered`.
+* R processes the nomination internally.
+* `S <--APPROVE--R`
+* S informs R via CNR about the approved nomination.
+* `S --APPROVED--> R`
 
-  Initial state:
-  `S --PENDING--> R`
+### Change of student’s personal data (initial status: `pending`)
 
-* S informs R via CNR about a nomination cancellation.
+* S changes student’s personal data.
+* S does not change the proposal id.
+* S informs R via CNR about the nomination with modified student’s personal data.
+* `S --PENDING--> R`
+
+### Change of student’s personal data (initial status: `approved`)
+
+* S changes student’s personal data.
+* S does not change the proposal id.
+* S informs R via CNR about the nomination with modified student’s personal data.
+* `S --APPROVED--> R`
+
+### Change of student’s personal data (initial status: `rejected`)
+
+* If S does not want to correct the nomination to obtain R's approval,
+  then the outdated personal data do not matter — further steps do not take place.
+* S changes student’s personal data.
+* S does not inform R — personal data changes will wait for non-personal data changes.
+* S corrects the nomination according to the suggestions sent by R in update,
+  changes the proposal id and removes internal `delivered` flag.
+* S informs R via CNR about the modified nomination.
+* `S --PENDING--> R`
+
+### Cancellation of a nomination (initial status: any)
+
+* S cancels the nomination internally.
+* S informs R via CNR about the cancelled nomination.
 * `S --CANCELLED--> R`
 
-### Nomination cancelled after approval
+### Change of non-personal data (initial status: `pending`)
 
-* Nomination has been approved by the receiving HEI, and all initial formalities have been settled.
-  Student is about to leave for R. Suddenly, a student or S wants to cancel the mobility.
+* S changes non-personal data.
+* S changes the proposal id and removes internal `delivered` flag.
+* S informs R via CNR about the modified nomination.
+* `S --PENDING--> R`
 
-  Initial state:
-  `S --APPROVED--> R`
+### Change of non-personal data (initial status: `approved`)
 
-* S informs R via CNR about mobility cancellation.
+* S cancels the nomination internally.
+* S informs R via CNR about the cancelled nomination.
 * `S --CANCELLED--> R`
-
-### Student returns prematurely - no justification
-
-* Student returns prematurely from R. Student can't justify it and has to return money from grant.
-
-  Initial state:
-  `S --APPROVED--> R`
-
-* S informs R via CNR about mobility cancellation.
-* `S --CANCELLED--> R`
+* S creates a new nomination for the same student with new mobility id and new proposal id.
+* S informs R via CNR about the new nomination.
+* `S --PENDING--> R`
 
 
 [develhub]: http://developers.erasmuswithoutpaper.eu/
