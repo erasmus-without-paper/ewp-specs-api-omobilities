@@ -1,0 +1,14 @@
+<req:omobility-update-request
+    xmlns:req="https://github.com/erasmus-without-paper/ewp-specs-api-omobility/blob/stable-v3/endpoints/update-request.xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        https://github.com/erasmus-without-paper/ewp-specs-api-omobility/blob/stable-v3/endpoints/update-request.xsd
+        https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-api-omobility/stable-v3/endpoints/update-request.xsd
+    "
+>
+    <req:reject-proposal-v1>
+        <req:omobility-id>c442c289-5541-4cae-9edb-8ad83e133613</req:omobility-id>
+        <req:proposal-id>93C167125FA32452E9460731C57515E76B603EB1</req:proposal-id>
+        <req:comment>The limit of mobilities has already been reached.</req:comment>
+    </req:reject-proposal-v1>
+</req:omobility-update-request>

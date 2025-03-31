@@ -1,5 +1,5 @@
 <omobilities-get-response>
-    <student-mobility-for-studies>
+    <student-mobility proposal-id="AE61266750D019063512516C7EE01968012C81F25A89" >
         <omobility-id>c442c289-5541-4cae-9edb-8ad83e133</omobility-id>
         <sending-hei>
             <hei-id>example_a.edu</hei-id>
@@ -9,22 +9,24 @@
         <receiving-hei>
             <hei-id>example_b.edu</hei-id>
             <ounit-id>5653486D98511E16E0530B501E0A4594</ounit-id>
+            <iia-id>549117543-498-2093-121212-c4</iia-id>
         </receiving-hei>
+        <sending-academic-term-ewp-id>2022/2023-2/2</sending-academic-term-ewp-id>
         <receiving-academic-year-id>2022/2023</receiving-academic-year-id>
         <student>
             <given-names>Nalty</given-names>
             <family-name>Patel</family-name>
-            <global-id>urn:schac:personalUniqueCode:int:esi:example_a.edu:85525839</global-id>
+            <global-id>urn:schac:personalUniqueCode:int:esi:uio:no:85525839</global-id>
+            <birth-date>1985-05-05</birth-date>
+            <nationality>NO</nationality>
+            <gender>1</gender>
             <email>nalty@example_a.edu</email>
         </student>
         <status>cancelled</status>
-        <planned-arrival-date>2022-02-01</planned-arrival-date>
-        <planned-departure-date>2022-06-20</planned-departure-date>
+        <activity-type>student-studies</activity-type>
+        <activity-attributes>long-term</activity-attributes>
+        <agreement-isced-f-code>0215</agreement-isced-f-code>
         <eqf-level-studied-at-departure>7</eqf-level-studied-at-departure>
         <nominee-isced-f-code>0215</nominee-isced-f-code>
-        <nominee-language-skill>
-            <language>en</language>
-            <cefr-level>B2</cefr-level>
-        </nominee-language-skill>
-    </student-mobility-for-studies>
+    </student-mobility>
 </omobilities-get-response>

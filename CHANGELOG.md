@@ -5,6 +5,54 @@ This document describes all the changes made to the *Outgoing Mobilities API*
 document, starting from its first beta draft version.
 
 
+3.0.0
+-----
+
+* Update Scenarios document and examples.
+* Renamed verified as approved.
+* Added important rules.
+* Updated approve and reject examples.
+* Renamed comment to reject.
+* Added rejected status.
+* Reworded cancelled status description.
+* Removed recognized status.
+* Replaced live status with verified.
+* Renamed nomination status as pending.
+* Updated scenarios.
+* Changed "accept" to "approve".
+* Added update endpoint and proposal id.
+* Added changelog for version 3.0.0.
+* Added global_id and activity_attributes parameters to the index.
+* Added "is mutually approved" to the iia-id description.
+* Receiving HEI's ID must be provided with sending HEI's ID.
+* IIA ID must be provided if it exists.
+* Removed notes from iia-id description.
+* All Outgoing and Incoming Mobilities APIs are required.
+* Removed the student-traineeships activity type.
+* Removed additional requirements.
+* Updated scenario examples.
+* Added an optional comment field.
+* Both iia-id fields are mandatory for digitally signed agreements.
+* Added agreement-isced-f-code mandatory field.
+* Removed eqf-level-studied-at-nomination and made at-departure mandatory.
+* Made nominee-isced-f-code mandatory.
+* Made email mandatory.
+* Made nationality mandatory.
+* Renamed citizenship to nationality.
+* Made birthdate mandatory.
+* Removed nominee-language-skill.
+* Removed planned-arrival-date and planned-departure-date.
+* Removed phone-number.
+* Removed street-address and mailing-address.
+* Removed photo-url.
+* Made gender mandatory.
+* ISCED must be four-digit.
+* Added MBR to resources and README.
+* Made sending CNRs mandatory.
+* Removed receiving and sending HEI parameters.
+* Incremented namespace version.
+
+
 2.0.0
 -----
 

@@ -1,24 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:a="https://github.com/erasmus-without-paper/ewp-specs-types-address/tree/stable-v1"
-    xmlns:p="https://github.com/erasmus-without-paper/ewp-specs-types-phonenumber/tree/stable-v1"
     xmlns:trm="https://github.com/erasmus-without-paper/ewp-specs-types-academic-term/tree/stable-v1"
     xmlns:ewp="https://github.com/erasmus-without-paper/ewp-specs-architecture/blob/stable-v1/common-types.xsd"
     elementFormDefault="qualified"
 
-    targetNamespace="https://github.com/erasmus-without-paper/ewp-specs-api-omobilities/blob/stable-v2/endpoints/get-response.xsd"
-    xmlns="https://github.com/erasmus-without-paper/ewp-specs-api-omobilities/blob/stable-v2/endpoints/get-response.xsd"
+    targetNamespace="https://github.com/erasmus-without-paper/ewp-specs-api-omobilities/blob/stable-v3/endpoints/get-response.xsd"
+    xmlns="https://github.com/erasmus-without-paper/ewp-specs-api-omobilities/blob/stable-v3/endpoints/get-response.xsd"
 >
 
     <xs:import
         schemaLocation="https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-architecture/stable-v1/common-types.xsd"
         namespace="https://github.com/erasmus-without-paper/ewp-specs-architecture/blob/stable-v1/common-types.xsd"
-    />
-
-    <xs:import
-        schemaLocation="https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-types-address/stable-v1/schema.xsd"
-        namespace="https://github.com/erasmus-without-paper/ewp-specs-types-address/tree/stable-v1"
     />
 
     <xs:import
@@ -36,7 +29,7 @@
             This schema is a part of the Erasmus Without Paper project. Before you start
             using it, make sure you have read the general rules described here:
 
-            http://developers.erasmuswithoutpaper.eu/
+            https://developers.erasmuswithoutpaper.eu/
         </xs:documentation>
     </xs:annotation>
 
@@ -74,7 +67,7 @@
                     <xs:documentation>
                         A list of matching mobilities.
 
-                        Currently there's only type of mobility exposed by this API. More types MAY
+                        Currently, there's only one type of mobility exposed by this API. More types MAY
                         come in the future.
                     </xs:documentation>
                 </xs:annotation>
@@ -155,12 +148,12 @@
                             <xs:element name="iia-id" type="ewp:AsciiPrintableIdentifier" minOccurs="0" maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
-                                        Optional ID of the Institutional Agreement based on which the student is being
-                                        nominated/sent.
+                                        ID of the EWP Institutional Agreement based on which the student is being
+                                        nominated/sent. If such EWP IIA exists, is mutually approved, and the server implements EWP's
+                                        Interinstitutional Agreements API, this field MUST be provided.
 
-                                        This ID should be provided by the server ONLY if it implements EWP's
-                                        Interinstitutional Agreements API. Clients can fetch more information on this
-                                        agreement from IIAs API served on the sending HEI's servers (e.g. contact
+                                        Clients can fetch more information on this
+                                        agreement from IIAs API served on the sending HEI's servers (e.g., contact
                                         information to an appropriate IRO representative responsible for sending
                                         students for mobilities based on this IIA).
                                     </xs:documentation>
@@ -206,12 +199,12 @@
                             <xs:element name="iia-id" type="ewp:AsciiPrintableIdentifier" minOccurs="0" maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
-                                        Each IIA partner can assign an ID of its own to the same IIA. If the server is
-                                        aware of the *receiving HEI's* ID assigned to the IIA based on which the
-                                        student is being sent, then it outputs it here.
+                                        *Receiving HEI's* ID assigned to the IIA based on which the
+                                        student is being sent. If sending HEI's ID has been provided,
+                                        then this field MUST also be provided.
 
                                         Clients can fetch more information on this agreement from IIAs API served on
-                                        the *receiving HEI's* servers (e.g. contact information of the coordinator who
+                                        the *receiving HEI's* servers (e.g., contact information of the coordinator who
                                         will receive the students).
                                     </xs:documentation>
                                 </xs:annotation>
@@ -228,9 +221,7 @@
                             is "non-standard", and is not contained by any single academic term.
 
                             This information needs to be provided "from the start" (when a new nomination is
-                            created). It is different than the information provided in the
-                            `planned-arrival-date` and `planned-departure-date` elements (which may be
-                            provided at later date).
+                            created).
 
                             For more information, read this thread:
                             https://github.com/erasmus-without-paper/ewp-specs-types-academic-term/issues/2
@@ -248,8 +239,8 @@
                                 year should be avoided if a semester is sufficient). See here:
                                 https://github.com/erasmus-without-paper/ewp-specs-api-omobilities/pull/30#discussion_r159843983
 
-                                Note, that sending and receiving HEIs MAY use different academic term
-                                identifiers (e.g. "2010/2011-1/2" might be equal to "2010/2010-2/2"). This
+                                Note that sending and receiving HEIs MAY use different academic term
+                                identifiers (e.g. "2022/2023-1/2" might be equal to "2022/2022-2/2"). This
                                 particular identifier is the term identifier at the *sending* HEI, not the
                                 receiving HEI.
                             </xs:documentation>
@@ -275,7 +266,7 @@
                             place).
 
                             Note, that sending and receiving HEIs MAY use different academic year
-                            identifiers (e.g. "2010/2011" vs. "2010/2010" or "2011/2011"). This
+                            identifiers (e.g. "2022/2023" vs. "2022/2022" or "2023/2023"). This
                             particular identifier is the year identifier at the *receiving* HEI, not the
                             sending HEI.
 
@@ -290,8 +281,10 @@
                         <xs:documentation>
                             The section describes the student who is being sent for this mobility. Immutable.
 
-                            These fields MAY change in time (e.g. after the student changes his name or
-                            address).
+                            These fields MAY change in time (e.g., after the student changes his name).
+
+                            Sending HEI MUST inform the receiving HEI about the change,
+                            the receiving HEI MUST not change the previous decision about the nomination.
                         </xs:documentation>
                     </xs:annotation>
                     <xs:complexType>
@@ -327,129 +320,31 @@
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
-                            <xs:element name="birth-date" type="xs:date" minOccurs="0" maxOccurs="1">
+                            <xs:element name="birth-date" type="xs:date" minOccurs="1" maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
-                                        RECOMMENDED. Date of birth.
+                                        Date of birth.
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
-                            <xs:element name="citizenship" type="ewp:CountryCode" minOccurs="0" maxOccurs="1">
+                            <xs:element name="nationality" type="ewp:CountryCode" minOccurs="1" maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
-                                        Code of the country to which the person belongs administratively and that
-                                        issues the ID card and/or passport. E.g. "PL".
+                                        Nationality of the person, e.g. "PL".
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
-                            <xs:element name="gender" type="ewp:Gender" minOccurs="0" maxOccurs="1">
+                            <xs:element name="gender" type="ewp:Gender" minOccurs="1" maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
-                                        Optional code of the gender.
+                                        Code of the gender.
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
-                            <xs:element name="email" type="ewp:Email" minOccurs="0" maxOccurs="1">
+                            <xs:element name="email" type="ewp:Email" minOccurs="1" maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
                                         Email address at which student should be contacted.
-                                    </xs:documentation>
-                                </xs:annotation>
-                            </xs:element>
-                            <xs:element name="photo-url" minOccurs="0" maxOccurs="unbounded">
-                                <xs:annotation>
-                                    <xs:documentation>
-                                        If given, then it contains the URLs at which the client may fetch the photo of
-                                        the student. Multiple URLs may be provided with multiple versions of the photo,
-                                        or various types of the photo.
-
-                                        * Whenever possible, the server SHOULD provide an up-to-date photo in a
-                                          standard EU passport photo aspect ratio (width x height = 35 x 45), eligable
-                                          to be used for a student card. Such photo SHOULD come first in this list.
-
-                                        * Other photos in many aspect ratios may follow. They may be variations of the
-                                          same photo (e.g. without cropping, or with a different cropping), or they may
-                                          be completely different photos.
-
-                                        * All URLs MUST be accessible to anonymous requesters as described here:
-                                          https://github.com/erasmus-without-paper/ewp-specs-sec-cliauth-none
-
-                                        * URLs MAY contain some kind of access tokens which may expire in time. Clients
-                                          MAY send the URL directly to their users' brosers, but they should be aware
-                                          that such URLs may expire at any moment. If the clients need to have a copy
-                                          of the photo, then they MUST copy the contents of the photo to their servers.
-                                    </xs:documentation>
-                                </xs:annotation>
-                                <xs:complexType>
-                                    <xs:simpleContent>
-                                        <xs:extension base="ewp:HTTPS">
-                                            <xs:attribute name="size-px" use="optional">
-                                                <xs:annotation>
-                                                    <xs:documentation>
-                                                        If given, then this attribute contains the exact dimensions (width and height)
-                                                        of the photo, in pixels. These are expressed by a single string of two values
-                                                        concatenated with "x" character, e.g. "350x450" means that the photo's width is
-                                                        350 pixels, and its height is 450 pixels.
-
-                                                        Clients may use this attribute to quickly browse through the list of URLs and
-                                                        pick one that suits their needs best (without actually fetching the images). It
-                                                        is RECOMMENDED (but not required) for the servers to supply it.
-                                                    </xs:documentation>
-                                                </xs:annotation>
-                                                <xs:simpleType>
-                                                    <xs:restriction base="xs:string">
-                                                        <xs:pattern value="[0-9]+x[0-9]+"/>
-                                                    </xs:restriction>
-                                                </xs:simpleType>
-                                            </xs:attribute>
-                                            <xs:attribute name="public" use="optional" type="xs:boolean" default="false">
-                                                <xs:annotation>
-                                                    <xs:documentation>
-                                                        By default, all photos MUST be treated as private personal data, and SHOULD
-                                                        NOT be viewed to other users.
-
-                                                        However, if this attribute is "true", then either it means that the **nominee
-                                                        himself** has granted for this photo to be viewed **publicly**. This means that
-                                                        the client MAY show this photo to all other students and staff members, and
-                                                        even to anonymous users of his system. However, this choice MAY change at any
-                                                        time, so - if the client rely on it - then it MUST revalidate if the photo is
-                                                        still public every now and then.
-                                                    </xs:documentation>
-                                                </xs:annotation>
-                                            </xs:attribute>
-                                            <xs:attribute name="date" use="optional" type="xs:date">
-                                                <xs:annotation>
-                                                    <xs:documentation>
-                                                        If given, then it indicates the time when the photo has been taken, or
-                                                        uploaded. This date can be used by the client to verify if the photo is "fresh
-                                                        enough", for example for the purposes of issuing student cards, etc.
-                                                    </xs:documentation>
-                                                </xs:annotation>
-                                            </xs:attribute>
-                                        </xs:extension>
-                                    </xs:simpleContent>
-                                </xs:complexType>
-                            </xs:element>
-                            <xs:element ref="a:street-address" minOccurs="0" maxOccurs="1">
-                                <xs:annotation>
-                                    <xs:documentation>
-                                        Optional street address of the person's home.
-                                    </xs:documentation>
-                                </xs:annotation>
-                            </xs:element>
-                            <xs:element ref="a:mailing-address" minOccurs="0" maxOccurs="1">
-                                <xs:annotation>
-                                    <xs:documentation>
-                                        The postal address of this person. (This is usually much more useful
-                                        than street address.)
-                                    </xs:documentation>
-                                </xs:annotation>
-                            </xs:element>
-                            <xs:element ref="p:phone-number" minOccurs="0" maxOccurs="unbounded">
-                                <xs:annotation>
-                                    <xs:documentation>
-                                        A list of phone numbers at which this person can possibly be reached.
-                                        The "best" numbers should be listed first.
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
@@ -478,163 +373,112 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="planned-arrival-date" type="xs:date" minOccurs="0" maxOccurs="1">
+                <xs:element name="agreement-isced-f-code" type="Isced" minOccurs="1" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
-                            Planned start date of the mobility (when the student is supposed to arrive).
-                            This date is provided by the sending HEI before the mobility.
+                            The field of education of the agreement.
+                            This field must use the 4-digit code based on ISCED-F 2013 standards.
+                            It is strongly recommended to use codes included in the Beneficiary Module data dictionary.
+
+                            The sending HEI indicates the ISCED field of education
+                            of the agreement's cooperation condition they want to nominate the student on.
+                            This field was added to "connect" (in a technical or functional way)
+                            a nomination to an agreement on the receiving HEI's side.
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="planned-departure-date" type="xs:date" minOccurs="0" maxOccurs="1">
-                    <xs:annotation>
-                        <xs:documentation>
-                            Planned end date of the mobility (when the student is supposed to leave).
-                            This date is provided by the sending HEI before the mobility.
-                        </xs:documentation>
-                    </xs:annotation>
-                </xs:element>
-                <xs:element name="eqf-level-studied-at-nomination" type="ewp:EqfLevel" minOccurs="0" maxOccurs="1">
+                <xs:element name="eqf-level-studied-at-departure" type="ewp:EqfLevel" minOccurs="1" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
                             The student is sent for the mobility as part of one of his study programmes.
-                            This field contains the student's EQF level on this programme *at the time of
-                            the nomination* (and it SHOULD NOT change in time, as opposed to the fields
-                            present in the `student` element).
+                            This field contains the EQF level the student **will have** when the mobility
+                            actually begins.
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="eqf-level-studied-at-departure" type="ewp:EqfLevel" minOccurs="0" maxOccurs="1">
-                    <xs:annotation>
-                        <xs:documentation>
-                            This is similar to the `eqf-level-studied-at-nomination` element, but this time
-                            we are interested in the EQF level the student **will have** when the mobility
-                            actually begins (according to many IROs this is more important than the one the
-                            students has at the time of the nomination).
-
-                            Server implementers are encouraged to supply both values. If it is not
-                            possible, then at least one SHOULD be supplied.
-                        </xs:documentation>
-                    </xs:annotation>
-                </xs:element>
-                <xs:element name="nominee-isced-f-code" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:element name="nominee-isced-f-code" type="Isced" minOccurs="1" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
                             The student is sent to the mobility as part of one of his study programmes.
                             This field contains the ISCED-F field of education code that is closest to the
                             subject this programme (or, as EUC put is, "closest to the degree to be awarded
                             to the student by the Sending Institution").
-                        </xs:documentation>
-                    </xs:annotation>
-                </xs:element>
-                <xs:element name="nominee-language-skill" minOccurs="0" maxOccurs="unbounded">
-                    <xs:annotation>
-                        <xs:documentation>
-                            List of the student's language skills *at the time of the nomination* (they
-                            SHOULD NOT change in time).
-                        </xs:documentation>
-                    </xs:annotation>
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="language" type="xs:language" minOccurs="1" maxOccurs="1">
-                                <xs:annotation>
-                                    <xs:documentation>
-                                        The BCP 47 code of the language.
-                                    </xs:documentation>
-                                </xs:annotation>
-                            </xs:element>
-                            <xs:element name="cefr-level" type="ewp:CefrLevel" minOccurs="0" maxOccurs="1">
-                                <xs:annotation>
-                                    <xs:documentation>
-                                        The level of language skill the student had.
-                                    </xs:documentation>
-                                </xs:annotation>
-                            </xs:element>
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name="additional-requirement" minOccurs="0" maxOccurs="unbounded">
-                    <xs:annotation>
-                        <xs:documentation>
-                            Requirements listed in the Factsheet API of the receiving HEI,
-                            that SHOULD be satisfied by the incoming students by sending a file or a URL.
 
-                            The name and type (file or URL) MUST be exactly as documented in the Factsheet API.
+                            Note: ISCED code MUST be four-digit.
                         </xs:documentation>
                     </xs:annotation>
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1">
-                                <xs:annotation>
-                                    <xs:documentation>
-                                        Name of requirement MUST be exactly as documented in the Factsheet API.
-                                    </xs:documentation>
-                                </xs:annotation>
-                            </xs:element>
-                            <xs:choice>
-                                <xs:element name="file" type="xs:string" minOccurs="1" maxOccurs="1">
-                                    <xs:annotation>
-                                        <xs:documentation>
-                                            Identifier of the file that MUST be accessible to the receiving HEI
-                                            through the EWP File API.
-                                        </xs:documentation>
-                                    </xs:annotation>
-                                </xs:element>
-                                <xs:element name="url" type="ewp:HTTP" minOccurs="1" maxOccurs="1">
-                                    <xs:annotation>
-                                        <xs:documentation>
-                                            URL of the file that meets all restrictions mentioned in Factsheet API.
-                                        </xs:documentation>
-                                    </xs:annotation>
-                                </xs:element>
-                            </xs:choice>
-                        </xs:sequence>
-                    </xs:complexType>
+                </xs:element>
+                <xs:element name="comment" type="xs:string" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            An optional comment. It is RECOMMENDED for comments to be provided only when
+                            necessary. Some example comments:
+                            * Person X from your university has agreed to accept an additional student
+                              above the limit defined in the IIA cooperation conditions,
+                            * A student at our university has completed a three-year bachelor's degree
+                              and is in the first year of second-cycle studies.
+                              Since in your country the bachelor's degree is four years,
+                              the student should go to first-cycle studies.
+
+                            These comments MUST be visible only to the IRO members, not the students.
+
+                            It is left unspecified how servers should handle these comments - e.g.,
+                            they may store them along their mobilities, or they may forward them to specific persons, etc.
+                        </xs:documentation>
+                    </xs:annotation>
                 </xs:element>
             </xs:sequence>
+            <xs:attribute name="proposal-id" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation>
+                        Identifier of this mobility proposal. It MUST change if and only if
+                        the proposal content changes.
+
+                        It will be used in update request to identify the version being approved/rejected.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
         </xs:complexType>
     </xs:element>
 
     <xs:simpleType name="MobilityStatus">
         <xs:restriction base="xs:string">
-            <xs:enumeration value="nomination">
+            <xs:enumeration value="pending">
                 <xs:annotation>
                     <xs:documentation>
                         The sending HEI has nominated the student for mobility. The proposal has not
-                        yet been accepted nor rejected by the receiving HEI.
+                        yet been approved nor rejected by the receiving HEI.
 
                         This is the default status with which mobility entities are first created.
+
+                        When the sending HEI receives confirmation from the receiving HEI
+                        that the nomination has reached the system at the receiving HEI,
+                        it notifies the users (an internal `delivered` status may be noted in the local system).
                     </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
-            <xs:enumeration value="live">
+            <xs:enumeration value="approved">
                 <xs:annotation>
                     <xs:documentation>
-                        The nomination has been accepted by the receiving HEI, and all initial
-                        formalities have been settled (i.e. a first LA version has been signed). This
-                        status doesn't usually change throughout the mobility.
-
-                        While in this status, LA can still be modified (new revisions of it may be
-                        created, and signed).
+                        The receiving HEI has recognized the nomination as formally correct
+                        and complying with cooperation conditions.
+                        It accepted the nomination.
+                        Now it's time for settling formalities, sending student's documents,
+                        creating the first Learning Agreement, etc.
                     </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
-            <xs:enumeration value="recognized">
+            <xs:enumeration value="rejected">
                 <xs:annotation>
                     <xs:documentation>
-                        The student has returned from the mobility and all achievements have been
-                        recognized as indicated on the `component-recognized` list.
-
-                        At this point, the mobility SHOULD become read-only. The latest revision of it
-                        SHOULD be approved by all parties (no subsequent draft revisions should exist).
+                        The receiving HEI has rejected the nomination and added an explanation in a mandatory comment.
                     </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="cancelled">
                 <xs:annotation>
                     <xs:documentation>
-                        The nomination has been cancelled (either by the student, or by one of the
-                        partner HEIs).
+                        The sending HEI has cancelled the nomination as the mobility won’t take place.
                     </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
@@ -647,13 +491,6 @@
                 <xs:annotation>
                     <xs:documentation>
                         Student Mobility for Studies (SMS).
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="student-traineeships">
-                <xs:annotation>
-                    <xs:documentation>
-                        Student Mobility for Traineeships (SMT).
                     </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
@@ -683,6 +520,12 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Isced">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{4}"/>
         </xs:restriction>
     </xs:simpleType>
 

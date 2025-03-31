@@ -15,13 +15,31 @@ and enumerate mobilities stored on the sending HEI's servers.
 Currently, this API describes mobilities **of one type only** - *Student
 Mobilities for Studies*. More types MAY be added in the future.
 
+If HEI provides any API from the following group:
+* Outgoing Mobilities
+* Outgoing Mobilities CNR
+* Outgoing Mobilities Stats
+* Incoming Mobilities
+* Incoming Mobilities CNR
+
+it MUST provide all APIs from this group.
+
+
+### Business requirements and processes
+
+
+[Business requirements and processes](resources/mandatory_business_requirements_nominations.pdf)
+document clarifies the requirements for the technical solutions
+developed under EWP and in the local implementation that should adequately support
+the business processes related to nominations at Higher Education Institutions.
+
 
 Reminder on vocabulary
 ----------------------
 
 Keep in mind that definitions of "sending HEI" and "receiving HEI" come from
-the "mobility vocabulary", not the "HTTP vocabulary". In case of this
-particular API this means that:
+the "mobility vocabulary", not the "HTTP vocabulary". In the case of this
+particular API, this means that:
 
 * **sending HEI == responding HEI** (HEI which is sending the student == HEI
   which implements the API, *receives* the HTTP request, and responds to it),
@@ -30,6 +48,32 @@ particular API this means that:
 
 As long as we use these terms consistently, there shouldn't be much confusion
 though.
+
+For brevity, we will use the following shortcuts:
+* `S` - sending HEI
+* `R` - receiving HEI
+
+
+Important rules
+---------------
+
+* The nomination is uniquely identified by the `omobility-id`.
+* S sends the nomination to R – the nomination is in the `pending` state.
+* When S is sure that R has received information about the nomination
+  (it correctly received the CNR or performed a GET),
+  S must immediately inform its users about it (an internal `delivered` status may be noted in the local system).
+* R can accept the nomination – it changes the state to `approved`.
+* R can reject the nomination – it changes the state to `rejected`.
+* R cannot reject a nomination in the `approved` state.
+* If the nomination is in the `approved` state, S can notify R about the change of the student's personal data
+  (given names, family name, birthdate, nationality, gender, email).
+  This notification does not require R to make a new decision (the nomination remains in the `approved` state).
+* If the nomination is in the `approved` state, S cannot propose to R changes to this nomination
+  in the data other than student’s personal data listed in the point above.
+* If the nomination has been rejected, S can submit a proposal for changes to this nomination
+  (this requires changing the `proposal-id`). R can accept or reject this proposal.
+* S can cancel the nomination at any time – it changes the status to `cancelled`.
+  Such a nomination cannot be submitted for reconsideration.
 
 
 Security
@@ -53,6 +97,7 @@ Server implementers MUST:
 
  * Implement the [`get` endpoint](endpoints/get.md).
  * Implement the [`index` endpoint](endpoints/index.md).
+ * Implement the [`update` endpoint](endpoints/update.md).
  * Put the URLs of these endpoints in their [manifest file][discovery-api], as
    described in [manifest-entry.xsd](manifest-entry.xsd).
 
@@ -70,100 +115,94 @@ Data model entities involved in the response
  * Academic Term
 
 
-Workflows of changes in nomination and departure statuses
----------------------------------------------------------
+Workflows of changes in nomination statuses
+-------------------------------------------
 
-Mobility and its nomination have two different sets of statuses sent via Outgoing/Incoming Mobilities API get response. Example scenarios of status changes are presented below.
+Nominations have sets of statuses (pending, approved, rejected, cancelled) 
+managed by the sending institution and sent via Outgoing Mobilities API get response.
+Receiving institution verifies the nomination (approve or reject) via Outgoing Mobilities API update request.
+Scenarios of status changes are presented below.
 
-* `--MOBILITYSTATUS-->` - Outgoing Mobilities API get response
-* `<--NOMINATIONSTATUS--` - Incoming Mobilities API get response
-* `S` - sending HEI
-* `R` - receiving HEI
+The example scenarios will be described using the following symbols:
+
+* `--MOBILITY-STATUS-->` - Outgoing Mobilities API get response
+* `<--MOBILITY-UPDATE--` - Outgoing Mobilities API update request
 
 
-**1.**
+### Simple nomination approval
 
-* S informs R via CNR about new nomination.
-* `S --NOMINATION--> R`
-* S ask R about nomination, but R has done nothing yet.
-* `S <--PENDING-- R`
-* R informs S that via CNR that nomination was changed.
-* `S <--REJECTED-- R`
-* S identifies problem and corrects nomination data
-* S informs R via CNR about changed nomination.
-* `S --NOMINATION--> R`
-* R informs S via CNR that nomination was changed.
-* `S <--VERIFIED-- R`
+* S informs R via CNR about the new nomination.
+* `S --PENDING--> R`
+* S marks the nomination internally as `delivered`.
+* R processes the nomination internally.
+* `S <--APPROVE--R`
+* S informs R via CNR about the approved nomination.
+* `S --APPROVED--> R`
 
-**2.**
+### Simple nomination rejection
 
-* Nomination was sent but student or S wants to cancel the mobility.
+* S informs R via CNR about the new nomination.
+* `S --PENDING--> R`
+* S marks the nomination internally as `delivered`.
+* R processes the nomination internally.
+* `S <--REJECT--R`
+* S informs R via CNR about the rejected nomination.
+* `S --REJECTED--> R`
 
-  Initial state:
-  
-  `S --NOMINATION--> R`
-  
-  `S <--ANY-- R`
+### Rejection, correction and approval (part marked with ! may occur multiple times)
 
-* S informs R via CNR about changed nomination.
+* S informs R via CNR about the new nomination.
+* `S --PENDING--> R`
+* S marks the nomination internally as `delivered`.
+* ! R processes the nomination internally.
+* ! `S <--REJECT--R`
+* ! S informs R via CNR about the rejected nomination.
+* ! `S --REJECTED--> R`
+* ! S corrects the nomination according to the suggestions sent by R in update,
+  changes the proposal id and removes internal `delivered` flag.
+* ! S informs R via CNR about the modified nomination.
+* ! `S --PENDING--> R`
+* ! S marks the nomination internally as `delivered`.
+* R processes the nomination internally.
+* `S <--APPROVE--R`
+* S informs R via CNR about the approved nomination.
+* `S --APPROVED--> R`
+
+### Change of student’s personal data (initial status: `pending`)
+
+* S changes student’s personal data.
+* S does not change the proposal id.
+* S informs R via CNR about the nomination with modified student’s personal data.
+* `S --PENDING--> R`
+
+### Change of student’s personal data (initial status: `approved`)
+
+* S changes student’s personal data.
+* S does not change the proposal id.
+* S informs R via CNR about the nomination with modified student’s personal data.
+* `S --APPROVED--> R`
+
+### Cancellation of a nomination (initial status: any)
+
+* S cancels the nomination internally.
+* S informs R via CNR about the cancelled nomination.
 * `S --CANCELLED--> R`
 
-**3.**
+### Change of non-personal data (initial status: `pending`)
 
-* Nomination status is `VERIFIED` and student is about to leave for R.
+* S changes non-personal data.
+* S changes the proposal id and removes internal `delivered` flag.
+* S informs R via CNR about the modified nomination.
+* `S --PENDING--> R`
 
-  Initial state:
+### Change of non-personal data (initial status: `approved`)
 
-  `S --NOMINATION--> R`
-  
-  `S <--VERIFIED-- R`
-
-* S informs R via CNR about changed nomination/mobility.
-* `S --LIVE--> R`
-* From this moment we don't care about nomination status.
-* Time passes.
-* Student passes all the exams and returns to S.
-* S informs R via CNR about changed mobility.
-* `S --RECOGNIZED--> R` (OR, sometimes, `S --LIVE--> R` - some HEIs don't store explicit information about mobility recognition)
-
-**4.**
-
-* Nomination has been accepted by the receiving HEI, and all initial formalities have been settled. Student is about to leave for R. Suddenly, student or S wants to cancel the mobility.
-
-  Initial state:
-  
-  `S --LIVE--> R`
-  
-  `S <--VERIFIED-- R`
-
-* S informs R via CNR about changed mobility.
+* S cancels the nomination internally.
+* S informs R via CNR about the cancelled nomination.
 * `S --CANCELLED--> R`
-
-**5.**
-
-* Student returns prematurely from R. Student can't justify it and has to return money from grant.
-
-  Initial state:
-  
-  `S --LIVE--> R`
-  
-  `S <--VERIFIED-- R`
-
-* S informs R via CNR about changed mobility.
-* `S --CANCELLED--> R`
-
-**6.**
-
-* Student returns prematurely from R. Student can justify it (force majeure) and doesn't have to return money from grant.
-
-  Initial state:
-  
-  `S --LIVE--> R`
-  
-  `S <--VERIFIED-- R`
-
-* S informs R via CNR about changed mobility.
-* `S --RECOGNIZED--> R` (OR, sometimes, `S --LIVE--> R` - some HEIs don't store explicit information about mobility recognition)
+* S creates a new nomination for the same student with new mobility id and new proposal id.
+* S informs R via CNR about the new nomination.
+* `S --PENDING--> R`
 
 
 [develhub]: http://developers.erasmuswithoutpaper.eu/
