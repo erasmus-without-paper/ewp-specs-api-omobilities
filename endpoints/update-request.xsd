@@ -88,7 +88,7 @@
     <xs:element name="reject-proposal-v1">
         <xs:annotation>
             <xs:documentation>
-                This request is sent by the receiving HEI when it wants to comment on a `proposal`.
+                This request is sent by the receiving HEI when it wants to reject a `proposal`.
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
@@ -103,7 +103,7 @@
                 <xs:element name="proposal-id" type="xs:string" minOccurs="1" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
-                            Identifier of the current state of the `proposal`, which is being commented.
+                            Identifier of the current state of the `proposal`, which is being rejected.
                             This element is required here to prevent edit conflicts as in `approve-proposal-v1`.
                         </xs:documentation>
                     </xs:annotation>

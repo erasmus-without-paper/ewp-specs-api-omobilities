@@ -434,7 +434,7 @@
                         Identifier of this mobility proposal. It MUST change if and only if
                         the proposal content changes.
 
-                        It will be used in update request to identify the version being approved/commented.
+                        It will be used in update request to identify the version being approved/rejected.
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
