@@ -8,15 +8,26 @@ document, starting from its first beta draft version.
 3.0.0
 -----
 
+* Update Scenarios document and examples.
+* Renamed verified as approved.
+* Added important rules.
+* Updated approve and reject examples.
+* Renamed comment to reject.
+* Added rejected status.
+* Reworded cancelled status description.
+* Removed recognized status.
+* Replaced live status with verified.
+* Renamed nomination status as pending.
+* Updated scenarios.
+* Changed "accept" to "approve".
+* Added update endpoint and proposal id.
+* Added changelog for version 3.0.0.
 * Added global_id and activity_attributes parameters to the index.
 * Added "is mutually approved" to the iia-id description.
 * Receiving HEI's ID must be provided with sending HEI's ID.
 * IIA ID must be provided if it exists.
 * Removed notes from iia-id description.
-* Fixed the description of "recognized" status.
-* Student personal date change MUST not influence mobility state.
-* Updated use-case with personal date change.
-* Both Outgoing and Incoming Mobilities APIs are required.
+* All Outgoing and Incoming Mobilities APIs are required.
 * Removed the student-traineeships activity type.
 * Removed additional requirements.
 * Updated scenario examples.
@@ -28,7 +39,7 @@ document, starting from its first beta draft version.
 * Made email mandatory.
 * Made nationality mandatory.
 * Renamed citizenship to nationality.
-* Made birth-date mandatory.
+* Made birthdate mandatory.
 * Removed nominee-language-skill.
 * Removed planned-arrival-date and planned-departure-date.
 * Removed phone-number.
