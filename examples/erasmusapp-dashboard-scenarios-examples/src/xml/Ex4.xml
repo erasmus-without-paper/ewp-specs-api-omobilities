@@ -1,7 +1,7 @@
 <omobility-update-request>
     <reject-proposal-v1>
         <omobility-id>c442c289-5541-4cae-9edb-8ad83e133</omobility-id>
-        <proposal-id>93C167125FA32452E9460731C57515E76B603EB1</proposal-id>
-        <comment>Reason to reject the nomination.</comment>
+        <proposal-id>AE61266750D019063512516C7EE01968012C81F25A89</proposal-id>
+        <comment>The limit of mobilities has already been reached.</comment>
     </reject-proposal-v1>
 </omobility-update-request>
