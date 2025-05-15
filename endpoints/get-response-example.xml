@@ -7,19 +7,8 @@
         https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-api-omobilities/stable-v3/endpoints/get-response.xsd
     "
 >
-    <student-mobility proposal-id="AE61266750D019063512516C7EE01968012C81F25A89">
+    <student-mobility>
         <omobility-id>c442c289-5541-4cae-9edb-8ad83e133613</omobility-id>
-        <sending-hei>
-            <hei-id>uio.no</hei-id>
-            <ounit-id>140</ounit-id>
-            <iia-id>dd87538e-49e3-44ae-844e-55ad1b819ce9</iia-id>
-        </sending-hei>
-        <receiving-hei>
-            <hei-id>uw.edu.pl</hei-id>
-            <iia-id>549117543</iia-id> <!-- We recommend UUIDs though. -->
-        </receiving-hei>
-        <sending-academic-term-ewp-id>2022/2023-2/2</sending-academic-term-ewp-id>
-        <receiving-academic-year-id>2022/2023</receiving-academic-year-id>
         <student>
             <given-names>Ivan Petrovich</given-names>
             <given-names xml:lang="ru-Cyrl">Иван Петрович</given-names>
@@ -31,11 +20,24 @@
             <gender>1</gender>
             <email>ivan@example.com</email>
         </student>
+        <nomination proposal-id="AE61266750D019063512516C7EE01968012C81F25A89">
+            <sending-hei>
+                <hei-id>uio.no</hei-id>
+                <ounit-id>140</ounit-id>
+                <iia-id>dd87538e-49e3-44ae-844e-55ad1b819ce9</iia-id>
+            </sending-hei>
+            <receiving-hei>
+                <hei-id>uw.edu.pl</hei-id>
+                <iia-id>549117543</iia-id> <!-- We recommend UUIDs though. -->
+            </receiving-hei>
+            <sending-academic-term-ewp-id>2022/2023-2/2</sending-academic-term-ewp-id>
+            <receiving-academic-year-id>2022/2023</receiving-academic-year-id>
+            <activity-type>student-studies</activity-type>
+            <activity-attributes>long-term</activity-attributes>
+            <agreement-isced-f-code>1234</agreement-isced-f-code>
+            <eqf-level-studied-at-departure>8</eqf-level-studied-at-departure>
+            <nominee-isced-f-code>1234</nominee-isced-f-code>
+        </nomination>
         <status>approved</status>
-        <activity-type>student-studies</activity-type>
-        <activity-attributes>long-term</activity-attributes>
-        <agreement-isced-f-code>1234</agreement-isced-f-code>
-        <eqf-level-studied-at-departure>8</eqf-level-studied-at-departure>
-        <nominee-isced-f-code>1234</nominee-isced-f-code>
     </student-mobility>
 </omobilities-get-response>
