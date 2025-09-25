@@ -294,8 +294,8 @@
                         <xs:element name="iia-id" type="ewp:AsciiPrintableIdentifier" minOccurs="0" maxOccurs="1">
                             <xs:annotation>
                                 <xs:documentation>
-                                    *Receiving HEI's* ID assigned to the IIA based on which the
-                                    student is being sent. If sending HEI's ID has been provided,
+                                    *Receiving HEI's* IIA ID assigned to the IIA based on which the
+                                    student is being sent. If sending HEI's IIA ID has been provided,
                                     then this field MUST also be provided.
 
                                     Clients can fetch more information on this agreement from IIAs API served on
